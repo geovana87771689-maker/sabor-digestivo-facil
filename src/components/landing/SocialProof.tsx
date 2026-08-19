@@ -202,26 +202,20 @@ export function SocialProof() {
       <style
         dangerouslySetInnerHTML={{
           __html: `
-            .testimonial-track {
-              --count: ${count};
-              width: calc(var(--count) * 100%);
+            .testimonial-stack {
+              width: calc(${extended.length} * 100%);
             }
             .testimonial-card {
-              width: calc(33.333% / var(--count));
+              transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1), opacity 700ms cubic-bezier(0.22, 1, 0.36, 1);
             }
-            .testimonial-card.side-card {
-              width: calc(25% / var(--count));
+            .testimonial-card.left-card {
+              transform: translateX(-37.5%);
+            }
+            .testimonial-card.right-card {
+              transform: translateX(37.5%);
             }
             .testimonial-card.center-card {
-              width: calc(50% / var(--count));
-            }
-            @media (min-width: 640px) {
-              .testimonial-card.side-card {
-                width: calc(27% / var(--count));
-              }
-              .testimonial-card.center-card {
-                width: calc(46% / var(--count));
-              }
+              transform: translateX(-50%);
             }
           `,
         }}
