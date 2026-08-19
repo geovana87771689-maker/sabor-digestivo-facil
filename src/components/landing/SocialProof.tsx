@@ -10,6 +10,69 @@ import dishSteak from "@/assets/WhatsApp_Image_2026-08-19_at_15.55.41.jpeg.asset
 import dishTacos from "@/assets/WhatsApp_Image_2026-08-19_at_15.55.42_1.jpeg.asset.json";
 import dishToast from "@/assets/WhatsApp_Image_2026-08-19_at_15.55.42_2.jpeg.asset.json";
 
+function AnimatedNumber({ value, duration = 1500 }: { value: string; duration?: number }) {
+  const [display, setDisplay] = useState(() => value.replace(/[0-9]/g, "0"));
+  const ref = useRef<HTMLSpanElement>(null);
+  const hasStarted = useRef(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || hasStarted.current) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0]?.isIntersecting && !hasStarted.current) {
+          hasStarted.current = true;
+          observer.disconnect();
+
+          const tokens = value.split(/(\d+(?:-\d+)?)/g);
+          const numericTokens = tokens
+            .map((t, i) => ({ t, i, isNum: /^\d+(?:-\d+)?$/.test(t) }))
+            .filter((x) => x.isNum)
+            .map((x) => ({
+              ...x,
+              ranges: x.t.split("-").map((n) => Number(n)),
+            }));
+
+          const start = performance.now();
+          const step = (now: number) => {
+            const progress = Math.min((now - start) / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+
+            const newTokens = [...tokens];
+            for (const nt of numericTokens) {
+              if (nt.ranges.length === 1) {
+                const current = Math.round(nt.ranges[0] * eased);
+                newTokens[nt.i] = String(current);
+              } else {
+                newTokens[nt.i] = nt.ranges
+                  .map((n) => Math.round(n * eased))
+                  .join("-");
+              }
+            }
+            setDisplay(newTokens.join(""));
+
+            if (progress < 1) {
+              requestAnimationFrame(step);
+            } else {
+              setDisplay(value);
+            }
+          };
+
+          requestAnimationFrame(step);
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [value, duration]);
+
+  return <span ref={ref}>{display}</span>;
+}
+
+
 const stats = [
   { value: "+100", label: "Recetas compactas y digestivas" },
   { value: "15 min", label: "Tiempo promedio de preparación" },
