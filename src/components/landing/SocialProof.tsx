@@ -145,53 +145,38 @@ const testimonials = [
 ];
 
 export function SocialProof() {
+  const isMobile = useIsMobile();
   const count = testimonials.length;
-  const extended = [...testimonials, ...testimonials, ...testimonials];
-  const [currentIndex, setCurrentIndex] = useState(count);
-  const [isTransitioning, setIsTransitioning] = useState(true);
-  const [isPaused, setIsPaused] = useState(false);
-  const [isDragging, setIsDragging] = useState(false);
-  const dragStart = useRef({ x: 0 });
+  const angle = 360 / count;
+  const cardWidth = isMobile ? 210 : 300;
+  const radius = Math.round(cardWidth / 2 / Math.tan(Math.PI / count)) + (isMobile ? 30 : 60);
 
-  // Avance automático contínuo.
+  const [index, setIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const dragStart = useRef({ x: 0, active: false });
+
   useEffect(() => {
     if (isPaused) return;
-    const id = setInterval(() => setCurrentIndex((i) => i + 1), 4000);
+    const id = setInterval(() => setIndex((i) => i + 1), 4000);
     return () => clearInterval(id);
-  }, [isPaused, count]);
-
-  // Loop infinito: ao chegar no terceiro conjunto, salta para o segundo sem animação.
-  useEffect(() => {
-    if (currentIndex < 2 * count) return;
-    const timer = setTimeout(() => {
-      setIsTransitioning(false);
-      setCurrentIndex(count);
-      requestAnimationFrame(() => setIsTransitioning(true));
-    }, 500);
-    return () => clearTimeout(timer);
-  }, [currentIndex, count]);
+  }, [isPaused]);
 
   const handlePointerDown = (e: React.PointerEvent) => {
-    setIsDragging(true);
+    dragStart.current = { x: e.clientX, active: true };
     setIsPaused(true);
-    dragStart.current = { x: e.clientX };
     e.currentTarget.setPointerCapture(e.pointerId);
   };
 
   const handlePointerUp = (e: React.PointerEvent) => {
-    if (!isDragging) return;
-    setIsDragging(false);
+    if (!dragStart.current.active) return;
+    dragStart.current.active = false;
     try {
       e.currentTarget.releasePointerCapture(e.pointerId);
     } catch {
-      // capture may have been released automatically
+      // capture may already be released
     }
     const dx = dragStart.current.x - e.clientX;
-    if (Math.abs(dx) > 40) {
-      setCurrentIndex((i) =>
-        Math.max(0, Math.min(i + (dx > 0 ? 1 : -1), 2 * count - 1))
-      );
-    }
+    if (Math.abs(dx) > 40) setIndex((i) => i + (dx > 0 ? 1 : -1));
     setIsPaused(false);
   };
 
@@ -214,95 +199,79 @@ export function SocialProof() {
         <h2 className="mx-auto mt-10 max-w-2xl text-center text-2xl font-extrabold tracking-tight text-foreground sm:text-4xl">
           Personas como tú que volvieron a disfrutar la comida
         </h2>
+
         <div
-          className="relative mx-auto mt-6 max-w-4xl select-none"
+          className="relative mx-auto mt-6 max-w-4xl touch-pan-y select-none overflow-hidden"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
-          onTouchStart={() => setIsPaused(true)}
-          onTouchEnd={() => setIsPaused(false)}
           onPointerDown={handlePointerDown}
           onPointerUp={handlePointerUp}
         >
-          <div className="relative h-[22rem] overflow-hidden rounded-3xl py-2 sm:h-[28rem] sm:py-4">
+          <div
+            className="relative h-[24rem] sm:h-[30rem]"
+            style={{ perspective: isMobile ? "900px" : "1400px" }}
+          >
             <div
-              className={`flex h-full ${
-                isTransitioning ? "transition-transform duration-700" : ""
-              }`}
+              className="absolute left-1/2 top-0 h-full w-0 transition-transform duration-700"
               style={{
-                width: `${extended.length * 100}%`,
-                transform: `translateX(-${(currentIndex * 100) / extended.length}%)`,
+                transformStyle: "preserve-3d",
+                transform: `translateZ(-${radius}px) rotateY(${-index * angle}deg)`,
                 transitionTimingFunction: "cubic-bezier(0.22, 1, 0.36, 1)",
               }}
             >
-              {extended.map((t, i) => {
-                const prev = extended[(i - 1 + extended.length) % extended.length]!;
-                const next = extended[(i + 1) % extended.length]!;
+              {testimonials.map((t, i) => {
+                const rel = ((i - index) % count + count) % count;
+                const isActive = rel === 0;
+                const isNear = rel === 1 || rel === count - 1;
                 return (
-                  <div
-                    key={`${t.name}-${i}`}
-                    className="relative shrink-0"
-                    style={{ width: `${100 / extended.length}%` }}
+                  <figure
+                    key={t.name}
+                    className={`absolute top-0 flex h-full flex-col overflow-hidden rounded-3xl border bg-card p-3 transition-[opacity,box-shadow] duration-500 sm:p-5 ${
+                      isActive
+                        ? "z-20 border-primary opacity-100 shadow-xl ring-2 ring-primary"
+                        : isNear
+                          ? "border-border opacity-60 shadow-md"
+                          : "border-border opacity-0 shadow-none"
+                    }`}
+                    style={{
+                      width: `${cardWidth}px`,
+                      left: `${-cardWidth / 2}px`,
+                      transform: `rotateY(${i * angle}deg) translateZ(${radius}px)`,
+                      backfaceVisibility: "hidden",
+                    }}
+                    aria-hidden={!isActive}
                   >
-                    {/* Left peek card */}
-                    <figure className="absolute inset-y-0 left-0 z-10 w-[30%] overflow-hidden rounded-2xl border border-border bg-card p-1.5 shadow-md opacity-75 sm:w-[40%] sm:rounded-3xl sm:p-3">
-                      <div className="flex h-full flex-col">
-                        <img
-                          src={prev.photo}
-                          alt=""
-                          loading="lazy"
-                          className="h-full w-full rounded-lg object-cover opacity-80 sm:rounded-2xl"
-                        />
-                      </div>
-                    </figure>
-
-                    {/* Right peek card */}
-                    <figure className="absolute inset-y-0 right-0 z-10 w-[30%] overflow-hidden rounded-2xl border border-border bg-card p-1.5 shadow-md opacity-75 sm:w-[40%] sm:rounded-3xl sm:p-3">
-                      <div className="flex h-full flex-col">
-                        <img
-                          src={next.photo}
-                          alt=""
-                          loading="lazy"
-                          className="h-full w-full rounded-lg object-cover opacity-80 sm:rounded-2xl"
-                        />
-                      </div>
-                    </figure>
-
-                    {/* Center featured card */}
-                    <figure className="absolute inset-y-0 left-1/2 z-20 w-[70%] -translate-x-1/2 overflow-hidden rounded-2xl border border-border bg-card p-3 shadow-xl ring-2 ring-primary sm:w-[60%] sm:rounded-3xl sm:p-5">
-                      <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary/0 via-primary to-primary/0 opacity-60" />
+                    <img
+                      src={t.photo}
+                      alt={t.photoAlt}
+                      loading="lazy"
+                      className="h-32 w-full rounded-2xl object-cover sm:h-48"
+                    />
+                    <blockquote className="mt-3 line-clamp-6 text-[12px] leading-relaxed text-foreground sm:text-sm">
+                      {t.text}
+                    </blockquote>
+                    <figcaption className="mt-auto flex items-center gap-2 border-t border-border pt-3 sm:gap-3 sm:pt-4">
                       <img
-                        src={t.photo}
-                        alt={t.photoAlt}
+                        src={t.avatar}
+                        alt={`Foto de perfil de ${t.name}`}
                         loading="lazy"
-                        className="h-24 w-full rounded-xl object-cover sm:h-44 sm:rounded-2xl"
+                        className="h-9 w-9 shrink-0 rounded-full object-cover ring-2 ring-accent sm:h-11 sm:w-11"
                       />
-                      <blockquote className="mt-2 line-clamp-5 text-[11px] leading-relaxed text-foreground sm:mt-3 sm:text-sm">
-                        {t.text}
-                      </blockquote>
-                      <figcaption className="mt-auto flex items-center gap-2 border-t border-border pt-2 sm:gap-3 sm:pt-4">
-                        <img
-                          src={t.avatar}
-                          alt={`Foto de perfil de ${t.name}`}
-                          loading="lazy"
-                          className="h-7 w-7 shrink-0 rounded-full object-cover ring-2 ring-accent sm:h-10 sm:w-10"
-                        />
-                        <span className="min-w-0">
-                          <span className="block text-[11px] font-bold text-foreground sm:text-xs">
-                            {t.name}
-                          </span>
-                          <span className="block text-[10px] leading-tight text-muted-foreground sm:text-xs">
-                            {t.place}
-                          </span>
-                          <span className="mt-0.5 flex gap-0.5 text-gold">
-                            {Array.from({ length: 5 }).map((_, i) => (
-                              <Star key={i} className="h-3 w-3 fill-current sm:h-3.5 sm:w-3.5" />
-                            ))}
-                          </span>
+                      <span className="min-w-0">
+                        <span className="block text-[12px] font-bold text-foreground sm:text-sm">
+                          {t.name}
                         </span>
-                      </figcaption>
-
-                    </figure>
-                  </div>
+                        <span className="block text-[10px] leading-tight text-muted-foreground sm:text-xs">
+                          {t.place}
+                        </span>
+                        <span className="mt-0.5 flex gap-0.5 text-gold">
+                          {Array.from({ length: 5 }).map((_, s) => (
+                            <Star key={s} className="h-3 w-3 fill-current sm:h-3.5 sm:w-3.5" />
+                          ))}
+                        </span>
+                      </span>
+                    </figcaption>
+                  </figure>
                 );
               })}
             </div>
@@ -322,3 +291,4 @@ export function SocialProof() {
     </section>
   );
 }
+
