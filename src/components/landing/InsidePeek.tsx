@@ -143,10 +143,7 @@ export function InsidePeek() {
               style={{ opacity: Math.min(1, Math.abs(angle) / 60) }}
             />
             {/* Borrão de curiosidad */}
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-card via-card/85 to-transparent backdrop-blur-[3px]" />
-            <p className="absolute inset-x-0 bottom-4 text-center text-sm font-semibold text-foreground">
-              Y 95+ creaciones más listas para descargar...
-            </p>
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-card via-card/85 to-transparent backdrop-blur-[3px]" />
           </div>
 
           <p className="pointer-events-none absolute -bottom-6 left-0 right-0 text-center text-xs text-muted-foreground/80 sm:text-sm">
