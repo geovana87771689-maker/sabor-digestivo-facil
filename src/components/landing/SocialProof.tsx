@@ -4,7 +4,7 @@ import avatarMariana from "@/assets/Erica_Perfil.jpeg.asset.json";
 import avatarAndres from "@/assets/richard.jpg.asset.json";
 import avatarCarolina from "@/assets/WhatsApp-Image-2022-02-18-at-08.52.06.jpeg.asset.json";
 import avatarJuliana from "@/assets/mulher-negra-carol-figueiredo-cabelo-natural-20231127160756.webp.asset.json";
-import dishChicken from "@/assets/WhatsApp_Image_2026-08-19_at_15.55.41_1.jpeg.asset.json";
+import dishChicken from "@/assets/WhatsApp_Image_2026-08-19_at_15.55.42_3-2.jpeg.asset.json";
 import dishSteak from "@/assets/WhatsApp_Image_2026-08-19_at_15.55.41.jpeg.asset.json";
 import dishTacos from "@/assets/WhatsApp_Image_2026-08-19_at_15.55.42_1.jpeg.asset.json";
 import dishToast from "@/assets/WhatsApp_Image_2026-08-19_at_15.55.42_2.jpeg.asset.json";
