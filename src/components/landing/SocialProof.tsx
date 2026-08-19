@@ -243,15 +243,6 @@ export function SocialProof() {
         <h2 className="mx-auto mt-10 max-w-2xl text-center text-2xl font-extrabold tracking-tight text-foreground sm:text-4xl">
           Personas como tú que volvieron a disfrutar la comida
         </h2>
-        <div className="mt-4 flex items-center justify-center gap-1.5 text-gold">
-          {Array.from({ length: 5 }).map((_, i) => (
-            <Star key={i} className="h-4 w-4 fill-current" />
-          ))}
-          <span className="ml-2 text-sm font-semibold text-muted-foreground">
-            Testimonios de lectores del recetario
-          </span>
-        </div>
-
         <div
           className="relative mx-auto mt-6 max-w-5xl select-none"
           onMouseEnter={() => setIsPaused(true)}
