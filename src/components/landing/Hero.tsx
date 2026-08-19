@@ -73,11 +73,11 @@ export function Hero({ onCta, onSecondaryCta }: { onCta: () => void; onSecondary
           </div>
 
           <div className="lg:pl-4">
-            <ul className="flex snap-x snap-mandatory gap-3 overflow-x-auto lg:grid lg:grid-cols-3 lg:overflow-visible">
+            <ul className="flex flex-col gap-3">
               {bullets.map((b) => (
                 <li
                   key={b.text}
-                  className="min-w-[78vw] snap-center rounded-2xl border border-border bg-card p-5 shadow-soft lg:min-w-0"
+                  className="rounded-2xl border border-border bg-card p-5 shadow-soft"
                 >
                   <span className="text-2xl">{b.emoji}</span>
                   <p className="mt-3 text-sm font-semibold text-foreground sm:text-base">
