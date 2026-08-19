@@ -25,13 +25,13 @@ const cards = [
 
 export function PainPoints() {
   return (
-    <section className="bg-background py-16 sm:py-20">
+    <section className="bg-background py-10 sm:py-12">
       <div className="mx-auto max-w-5xl px-5">
         <h2 className="mx-auto max-w-2xl text-center text-2xl font-extrabold tracking-tight text-foreground sm:text-4xl">
           ¿Sientes que comer se volvió una obligación pesada en lugar de un placer?
         </h2>
 
-        <div className="mt-10 grid gap-4 sm:grid-cols-2">
+        <div className="mt-8 grid gap-4 sm:grid-cols-2">
           {cards.map((c) => (
             <article
               key={c.title}

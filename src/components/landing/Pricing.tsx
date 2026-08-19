@@ -82,7 +82,7 @@ export function Pricing({ id }: { id: string }) {
   const [active, setActive] = useState(2);
 
   return (
-    <section id={id} className="scroll-mt-4 bg-background py-16 sm:py-20">
+    <section id={id} className="scroll-mt-4 bg-background py-10 sm:py-12">
       <div className="mx-auto max-w-6xl px-5">
         <h2 className="text-center text-2xl font-extrabold tracking-tight text-foreground sm:text-4xl">
           Elige tu plan y comienza hoy mismo
@@ -94,7 +94,7 @@ export function Pricing({ id }: { id: string }) {
         <div
           role="tablist"
           aria-label="Planes disponibles"
-          className="mx-auto mt-8 grid max-w-md grid-cols-3 gap-2 rounded-2xl border border-border bg-card p-2 shadow-soft lg:hidden"
+          className="mx-auto mt-6 grid max-w-md grid-cols-3 gap-2 rounded-2xl border border-border bg-card p-2 shadow-soft lg:hidden"
         >
           {tiers.map((t, i) => (
             <button
@@ -115,7 +115,7 @@ export function Pricing({ id }: { id: string }) {
           ))}
         </div>
 
-        <div className="mt-6 grid gap-4 lg:mt-10 lg:grid-cols-3 lg:gap-6">
+        <div className="mt-4 grid gap-4 lg:mt-8 lg:grid-cols-3 lg:gap-6">
           {tiers.map((t, i) => (
             <article
               key={t.name}

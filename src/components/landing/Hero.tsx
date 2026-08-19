@@ -22,7 +22,7 @@ export function Hero({ onCta, onSecondaryCta }: { onCta: () => void; onSecondary
         aria-hidden
         className="pointer-events-none absolute -top-32 -right-24 h-80 w-80 rounded-full bg-accent blur-3xl opacity-60"
       />
-      <div className="relative mx-auto max-w-3xl px-5 py-12 sm:py-20">
+      <div className="relative mx-auto max-w-3xl px-5 py-10 sm:py-12">
         <div className="flex flex-col gap-8">
           <div className="text-center">
             <span className="inline-flex items-center gap-2 rounded-full border border-gold/50 bg-gold/15 px-4 py-1.5 text-[11px] font-semibold tracking-wide text-gold-foreground uppercase sm:text-xs">

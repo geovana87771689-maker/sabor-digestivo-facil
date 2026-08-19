@@ -34,7 +34,7 @@ const faqs = [
 
 export function Faq() {
   return (
-    <section className="bg-cream py-16 sm:py-20">
+    <section className="bg-cream py-10 sm:py-12">
       <div className="mx-auto max-w-3xl px-5">
         <h2 className="text-center text-2xl font-extrabold tracking-tight text-foreground sm:text-4xl">
           Preguntas Frecuentes
@@ -43,7 +43,7 @@ export function Faq() {
           Todo lo que necesitas saber antes de comenzar.
         </p>
 
-        <Accordion type="single" collapsible className="mt-8 w-full space-y-3">
+        <Accordion type="single" collapsible className="mt-6 w-full space-y-3">
           {faqs.map((f, i) => (
             <AccordionItem
               key={f.q}

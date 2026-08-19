@@ -16,13 +16,13 @@ const notForYou = [
 
 export function ForWho() {
   return (
-    <section className="bg-background py-16 sm:py-20">
+    <section className="bg-background py-10 sm:py-12">
       <div className="mx-auto max-w-5xl px-5">
         <h2 className="mx-auto max-w-2xl text-center text-2xl font-extrabold tracking-tight text-foreground sm:text-4xl">
           ¿Es para ti? Seamos honestos
         </h2>
 
-        <div className="mt-10 grid gap-4 sm:grid-cols-2">
+        <div className="mt-8 grid gap-4 sm:grid-cols-2">
           <div className="rounded-3xl border-2 border-primary/30 bg-card p-7 shadow-soft">
             <h3 className="text-base font-extrabold text-foreground sm:text-lg">
               Sí, esto es para ti si…
