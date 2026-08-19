@@ -17,7 +17,7 @@ const features = [
     text: "Combinaciones pensadas para evitar la fermentación gástrica.",
   },
   {
-    icon: Clock,
+    icon: PieChart,
     title: "Fichas Nutricionales Claras",
     text: "Conteo exacto de gramos de proteína (25g a 35g) y calorías por porción para un control diario sin complicaciones.",
   },
