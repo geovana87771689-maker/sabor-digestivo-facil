@@ -1,7 +1,6 @@
 import { useRef, useState } from "react";
 import { Hand, LayoutList, Camera } from "lucide-react";
 
-
 import peek1 from "@/assets/peek-1.jpg.asset.json";
 import peek2 from "@/assets/peek-2-new.jpg.asset.json";
 import peek3 from "@/assets/peek-3-new.jpg.asset.json";
@@ -51,17 +50,17 @@ const highlights = [
 export function InsidePeek() {
   const [active, setActive] = useState(0);
   const [drag, setDrag] = useState(0);
-  const [flipping, setFlipping] = useState<0 | 1 | -1>(0);
+  const [flipping, setFlipping] = useState(false);
   const startX = useRef<number | null>(null);
   const total = pages.length;
 
-  const go = (dir: number) => {
+  const next = () => {
     if (flipping) return;
-    setFlipping(dir as 1 | -1);
+    setFlipping(true);
     setDrag(0);
     window.setTimeout(() => {
-      setActive((i) => (i + dir + total) % total);
-      setFlipping(0);
+      setActive((i) => (i + 1) % total);
+      setFlipping(false);
     }, 500);
   };
 
@@ -69,24 +68,30 @@ export function InsidePeek() {
     if (flipping) return;
     startX.current = x;
   };
+
   const onMove = (x: number) => {
     if (startX.current === null) return;
-    setDrag(Math.max(-140, Math.min(140, x - startX.current)));
+    const delta = x - startX.current;
+    // solo permite arrastrar hacia la izquierda (delta negativo)
+    const clamped = Math.max(-140, Math.min(0, delta));
+    setDrag(clamped);
   };
+
   const onUp = () => {
     if (startX.current === null) return;
-    const d = drag;
     startX.current = null;
+    const d = drag;
     setDrag(0);
-    if (d < -50) go(1);
-    else if (d > 50) go(-1);
+    if (d < -50) next();
   };
 
-  const angle = flipping ? flipping * -160 : (drag / 140) * -40;
-  const origin = (flipping ?? 0) > 0 || drag < 0 ? "left center" : "right center";
+  // ángulo de la página mientras se arrastra o se anima
+  const progress = flipping ? 1 : Math.abs(drag) / 140;
+  const angle = flipping ? -160 : (drag / 140) * -55;
+  const opacity = 1 - Math.min(1, progress * 0.9);
 
   return (
-    <section className="bg-cream py-16 sm:py-20">
+    <section id="inside" className="bg-cream py-16 sm:py-20">
       <div className="mx-auto max-w-5xl px-5">
         <p className="text-center text-xs font-semibold tracking-[0.2em] text-emerald uppercase">
           Por dentro
@@ -103,20 +108,9 @@ export function InsidePeek() {
           <div className="pointer-events-none absolute inset-x-8 top-6 -z-0 hidden h-full rotate-[-5deg] rounded-2xl bg-card shadow-soft sm:block" />
           <div className="pointer-events-none absolute inset-x-8 top-4 -z-0 hidden h-full rotate-[4deg] rounded-2xl bg-card shadow-soft sm:block" />
 
-          {/* página siguiente (debajo) */}
-          <div className="absolute inset-0 overflow-hidden rounded-2xl border border-border bg-card shadow-soft">
-            <img
-              src={pages[(active + 1) % total]!.src}
-              alt=""
-              aria-hidden
-              loading="lazy"
-              className="h-full w-full object-cover"
-            />
-          </div>
-
           <div
             role="group"
-            aria-label="Vista previa del e-book, arrastrá para pasar la página"
+            aria-label="Vista previa del e-book, deslizá hacia la izquierda para pasar la página"
             onPointerDown={(e) => onDown(e.clientX)}
             onPointerMove={(e) => onMove(e.clientX)}
             onPointerUp={onUp}
@@ -125,9 +119,12 @@ export function InsidePeek() {
             className="relative cursor-grab touch-pan-y overflow-hidden rounded-2xl border border-border bg-card shadow-editorial select-none active:cursor-grabbing"
             style={{
               transform: `rotateY(${angle}deg)`,
-              transformOrigin: origin,
+              transformOrigin: "left center",
               transformStyle: "preserve-3d",
-              transition: startX.current === null ? "transform 500ms ease-in-out" : "none",
+              backfaceVisibility: "hidden",
+              opacity,
+              transition:
+                startX.current === null ? "transform 500ms ease-in-out, opacity 500ms ease-in-out" : "none",
             }}
           >
             <img
@@ -145,14 +142,18 @@ export function InsidePeek() {
               className="pointer-events-none absolute inset-0 bg-gradient-to-l from-black/25 to-transparent"
               style={{ opacity: Math.min(1, Math.abs(angle) / 60) }}
             />
-            {/* Borrão de curiosidade */}
+            {/* Borrão de curiosidad */}
             <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-card via-card/85 to-transparent backdrop-blur-[3px]" />
             <p className="absolute inset-x-0 bottom-4 text-center text-sm font-semibold text-foreground">
               Y 95+ creaciones más listas para descargar...
             </p>
           </div>
 
-          <div className="mt-4 flex justify-center gap-2">
+          <p className="pointer-events-none absolute -bottom-6 left-0 right-0 text-center text-xs text-muted-foreground/80 sm:text-sm">
+            Deslizá hacia la izquierda para pasar la página
+          </p>
+
+          <div className="mt-10 flex justify-center gap-2">
             {pages.map((p, i) => (
               <button
                 key={p.label}
@@ -169,7 +170,6 @@ export function InsidePeek() {
             ))}
           </div>
         </div>
-
 
         <div className="mt-12 grid gap-4 sm:grid-cols-3">
           {highlights.map((h) => (
