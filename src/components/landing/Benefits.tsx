@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   Clock,
   Dumbbell,
@@ -56,19 +56,34 @@ const benefits = [
 export function Benefits() {
   const [active, setActive] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
 
   const next = () => setActive((i) => (i + 1) % benefits.length);
 
   useEffect(() => {
-    if (isPaused) return;
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => setIsVisible(entries[0]?.isIntersecting ?? false),
+      { threshold: 0.3 }
+    );
+
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!isVisible || isPaused) return;
     const id = setInterval(next, 2000);
     return () => clearInterval(id);
-  }, [isPaused]);
+  }, [isVisible, isPaused]);
 
   const current = benefits[active]!;
 
   return (
-    <section className="bg-background py-16 sm:py-20">
+    <section ref={sectionRef} className="bg-background py-16 sm:py-20">
       <div className="mx-auto max-w-3xl px-5">
         <p className="text-center text-xs font-semibold tracking-[0.2em] text-primary uppercase">
           Lo que cambia desde la primera semana
