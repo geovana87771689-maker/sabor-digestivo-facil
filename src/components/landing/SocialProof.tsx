@@ -10,7 +10,7 @@ import dishSteak from "@/assets/WhatsApp_Image_2026-08-19_at_15.55.41.jpeg.asset
 import dishTacos from "@/assets/WhatsApp_Image_2026-08-19_at_15.55.42_1.jpeg.asset.json";
 import dishToast from "@/assets/WhatsApp_Image_2026-08-19_at_15.55.42_2.jpeg.asset.json";
 
-function AnimatedNumber({ value, duration = 1500 }: { value: string; duration?: number }) {
+function AnimatedNumber({ value, duration = 2500 }: { value: string; duration?: number }) {
   const [display, setDisplay] = useState(() => value.replace(/[0-9]/g, "0"));
   const ref = useRef<HTMLSpanElement>(null);
   const hasStarted = useRef(false);
@@ -62,7 +62,7 @@ function AnimatedNumber({ value, duration = 1500 }: { value: string; duration?: 
           requestAnimationFrame(step);
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.1 }
     );
 
     observer.observe(el);
