@@ -56,14 +56,29 @@ const benefits = [
 export function Benefits() {
   const [active, setActive] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
 
   const next = () => setActive((i) => (i + 1) % benefits.length);
 
   useEffect(() => {
-    if (isPaused) return;
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsVisible(entry.isIntersecting),
+      { threshold: 0.3 }
+    );
+
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!isVisible || isPaused) return;
     const id = setInterval(next, 2000);
     return () => clearInterval(id);
-  }, [isPaused]);
+  }, [isVisible, isPaused]);
 
   const current = benefits[active]!;
 
