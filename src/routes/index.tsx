@@ -5,6 +5,7 @@ import { AnnouncementBar } from "@/components/landing/AnnouncementBar";
 import { Hero } from "@/components/landing/Hero";
 import { PainPoints } from "@/components/landing/PainPoints";
 import { Solution } from "@/components/landing/Solution";
+import { InsidePeek } from "@/components/landing/InsidePeek";
 import { Benefits } from "@/components/landing/Benefits";
 import { SocialProof } from "@/components/landing/SocialProof";
 import { ForWho } from "@/components/landing/ForWho";
