@@ -19,7 +19,7 @@ type Tier = {
 
 const tiers: Tier[] = [
   {
-    name: "Plan Inicio Rápido",
+    name: "Básico (1 Semana): Plan Inicial · 7 Días de Adaptación",
     short: "1 Semana",
     icon: Zap,
     duration: "1 Semana",
@@ -36,7 +36,7 @@ const tiers: Tier[] = [
     cta: "Comenzar Plan de 1 Semana",
   },
   {
-    name: "Plan Adaptación Total",
+    name: "Intermediário (2 Semanas): Plan Esencial · 14 Días de Rutina",
     short: "2 Semanas",
     icon: CalendarDays,
     duration: "2 Semanas",
@@ -54,7 +54,7 @@ const tiers: Tier[] = [
     cta: "Elegir Plan de 2 Semanas",
   },
   {
-    name: "Programa Maestro & Transformación",
+    name: "Principal (5 Semanas): Plan Integral · 5 Semanas Completas",
     short: "5 Semanas",
     icon: Crown,
     duration: "5 Semanas · 34 Días",
@@ -145,7 +145,7 @@ export function Pricing({ id }: { id: string }) {
               </p>
               <p className="mt-2 inline-flex items-center gap-1.5 text-[11px] font-semibold text-muted-foreground">
                 <ShieldCheck className="h-3.5 w-3.5 shrink-0 text-gold" />
-                Garantía incondicional
+                Garantía incondicional de 7 días
               </p>
 
               <div className="mt-5 flex flex-wrap items-end gap-2">
