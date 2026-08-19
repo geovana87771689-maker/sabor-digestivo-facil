@@ -1,6 +1,5 @@
-import { ArrowDown, BadgeCheck, Download, ShieldCheck, Lock, ChevronRight } from "lucide-react";
+import { ArrowDown, BadgeCheck, Download, ShieldCheck, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import heroAsset from "@/assets/hero-sabor-balance-v2.png.asset.json";
 
 const bullets = [
   { emoji: "🛡️", text: "25g - 35g de proteína pura por porción compacta" },
@@ -23,78 +22,73 @@ export function Hero({ onCta, onSecondaryCta }: { onCta: () => void; onSecondary
         aria-hidden
         className="pointer-events-none absolute -top-32 -right-24 h-80 w-80 rounded-full bg-accent blur-3xl opacity-60"
       />
-      <div className="relative mx-auto max-w-3xl px-5 py-12 text-center sm:py-20">
-        <span className="inline-flex items-center gap-2 rounded-full border border-gold/50 bg-gold/15 px-4 py-1.5 text-[11px] font-semibold tracking-wide text-gold-foreground uppercase sm:text-xs">
-          <BadgeCheck className="h-3.5 w-3.5 shrink-0" />
-          Guía Culinaria &amp; Nutricional Premium · Protocolos GLP-1 / GIP
-        </span>
-
-        <h1 className="mt-5 text-[28px] leading-[1.12] font-extrabold tracking-tight text-foreground sm:text-5xl">
-          Más de{" "}
-          <span className="text-primary">100 recetas compactas</span> para comer
-          sin pesadez, proteger tu músculo y aprovechar tu tratamiento
-        </h1>
-
-        <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-          Recetas digestivas, altas en proteína y listas en 15 minutos. Diseñadas
-          para quienes buscan sabor, confort y resultados reales sin batidos
-          artificiales.
-        </p>
-
-        <div className="mx-auto mt-6 flex w-full max-w-md flex-col gap-3 sm:flex-row sm:justify-center">
-          <Button
-            size="lg"
-            onClick={onCta}
-            className="h-auto w-full rounded-full px-8 py-4 text-base font-bold shadow-editorial sm:w-auto"
-          >
-            Quiero la guía ahora
-            <ArrowDown className="ml-1 h-4 w-4" />
-          </Button>
-          <Button
-            size="lg"
-            variant="outline"
-            onClick={onSecondaryCta}
-            className="h-auto w-full rounded-full border-border bg-card px-6 py-4 text-base font-semibold shadow-soft hover:bg-accent hover:text-accent-foreground sm:w-auto"
-          >
-            Ver lo que está incluido
-            <ChevronRight className="ml-1 h-4 w-4" />
-          </Button>
-        </div>
-
-        <div className="mx-auto mt-6 max-w-md">
-          <img
-            src={heroAsset.url}
-            alt="Mockup de la guía Sabor y Balance mostrado en una tablet junto a un bowl de pollo, quinoa y vegetales frescos en una cocina moderna"
-            width={1024}
-            height={1024}
-            className="w-full rounded-2xl border border-border shadow-editorial"
-          />
-        </div>
-
-        <ul className="mx-auto mt-8 grid max-w-xl gap-3 text-left">
-          {bullets.map((b) => (
-            <li
-              key={b.text}
-              className="flex items-start gap-3 rounded-xl border border-border bg-card px-4 py-3 shadow-soft"
-            >
-              <span className="text-lg leading-none">{b.emoji}</span>
-              <span className="min-w-0 text-sm font-medium text-foreground sm:text-base">
-                {b.text}
-              </span>
-            </li>
-          ))}
-        </ul>
-
-        <div className="mt-6 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs text-muted-foreground sm:text-sm">
-          {trust.map((t) => (
-            <span key={t.label} className="inline-flex items-center gap-1.5">
-              <t.icon className="h-3.5 w-3.5 shrink-0 text-primary" />
-              {t.label}
+      <div className="relative mx-auto max-w-6xl px-5 py-12 sm:py-20">
+        <div className="grid items-center gap-8 lg:grid-cols-2">
+          <div className="text-center lg:text-left">
+            <span className="inline-flex items-center gap-2 rounded-full border border-gold/50 bg-gold/15 px-4 py-1.5 text-[11px] font-semibold tracking-wide text-gold-foreground uppercase sm:text-xs">
+              <BadgeCheck className="h-3.5 w-3.5 shrink-0" />
+              Guía Culinaria &amp; Nutricional Premium · Protocolos GLP-1 / GIP
             </span>
-          ))}
+
+            <h1 className="mt-5 text-[28px] leading-[1.12] font-extrabold tracking-tight text-foreground sm:text-5xl">
+              Más de{" "}
+              <span className="text-primary">100 recetas compactas</span> para comer
+              sin pesadez, proteger tu músculo y aprovechar tu tratamiento
+            </h1>
+
+            <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg lg:mx-0">
+              Recetas digestivas, altas en proteína y listas en 15 minutos. Diseñadas
+              para quienes buscan sabor, confort y resultados reales sin batidos
+              artificiales.
+            </p>
+
+            <div className="mx-auto mt-6 flex w-full max-w-md flex-col gap-3 lg:mx-0 lg:max-w-none sm:flex-row sm:justify-center lg:justify-start">
+              <Button
+                size="lg"
+                onClick={onCta}
+                className="h-auto w-full rounded-full px-8 py-4 text-base font-bold shadow-editorial sm:w-auto"
+              >
+                Quiero la guía ahora
+                <ArrowDown className="ml-1 h-4 w-4" />
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                onClick={onSecondaryCta}
+                className="h-auto w-full rounded-full border-border bg-card px-6 py-4 text-base font-semibold shadow-soft hover:bg-accent hover:text-accent-foreground sm:w-auto"
+              >
+                Ver lo que está incluido
+                <ChevronRight className="ml-1 h-4 w-4" />
+              </Button>
+            </div>
+
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs text-muted-foreground sm:text-sm lg:justify-start">
+              {trust.map((t) => (
+                <span key={t.label} className="inline-flex items-center gap-1.5">
+                  <t.icon className="h-3.5 w-3.5 shrink-0 text-primary" />
+                  {t.label}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div className="lg:pl-4">
+            <ul className="flex snap-x snap-mandatory gap-3 overflow-x-auto lg:grid lg:grid-cols-3 lg:overflow-visible">
+              {bullets.map((b) => (
+                <li
+                  key={b.text}
+                  className="min-w-[78vw] snap-center rounded-2xl border border-border bg-card p-5 shadow-soft lg:min-w-0"
+                >
+                  <span className="text-2xl">{b.emoji}</span>
+                  <p className="mt-3 text-sm font-semibold text-foreground sm:text-base">
+                    {b.text}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </section>
   );
 }
-
