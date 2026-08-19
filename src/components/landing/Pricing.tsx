@@ -114,7 +114,7 @@ export function Pricing({ id }: { id: string }) {
                     {t.oldPrice}
                   </span>
                 )}
-                <span className="text-4xl font-extrabold tracking-tight text-foreground">
+                <span className="text-3xl font-extrabold tracking-tight text-foreground">
                   {t.price}
                 </span>
               </div>
