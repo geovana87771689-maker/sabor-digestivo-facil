@@ -61,10 +61,11 @@ function Index() {
       <div ref={heroRef}>
         <Hero onCta={scrollToPricing} onSecondaryCta={scrollToSolution} />
       </div>
-      <PainPoints />
       <div ref={solutionRef}>
         <InsidePeek />
       </div>
+      <PainPoints />
+
       <Benefits />
       <SocialProof />
       <ForWho />
