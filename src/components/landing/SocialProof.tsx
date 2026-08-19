@@ -199,6 +199,33 @@ export function SocialProof() {
 
   return (
     <section className="bg-cream py-10 sm:py-12">
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
+            .testimonial-track {
+              --count: ${count};
+              width: calc(var(--count) * 100%);
+            }
+            .testimonial-card {
+              width: calc(33.333% / var(--count));
+            }
+            .testimonial-card.side-card {
+              width: calc(25% / var(--count));
+            }
+            .testimonial-card.center-card {
+              width: calc(50% / var(--count));
+            }
+            @media (min-width: 640px) {
+              .testimonial-card.side-card {
+                width: calc(27% / var(--count));
+              }
+              .testimonial-card.center-card {
+                width: calc(46% / var(--count));
+              }
+            }
+          `,
+        }}
+      />
       <div className="mx-auto max-w-6xl px-5">
         <div className="grid gap-4 rounded-3xl border border-border bg-card p-6 shadow-soft sm:grid-cols-4 sm:p-8">
           {stats.map((s) => (
@@ -236,25 +263,23 @@ export function SocialProof() {
         >
           <div className="overflow-hidden rounded-3xl py-4 sm:py-6">
             <div
-              className={`flex ${
+              className={`testimonial-track flex ${
                 isTransitioning ? "transition-transform duration-500 ease-out" : ""
               }`}
               style={{
-                width: `${extended.length * (100 / VISIBLE)}%`,
-                transform: `translateX(-${(currentIndex - 1) * (100 / extended.length)}%)`,
+                transform: `translateX(-${((currentIndex - 1) * (100 / VISIBLE)) / count}%)`,
               }}
             >
               {extended.map((t, i) => {
-                const isCenter = i === currentIndex;
+                const offset = i - currentIndex;
+                const isCenter = offset === 0;
+                const isSide = offset === -1 || offset === 1;
                 return (
                   <figure
                     key={`${t.name}-${i}`}
-                    className={`flex flex-col rounded-2xl border border-border bg-card p-3 shadow-soft transition-all duration-500 sm:rounded-3xl sm:p-5 ${
-                      isCenter
-                        ? "z-10 scale-[1.06] ring-2 ring-primary shadow-lg"
-                        : "scale-[0.94] opacity-80"
-                    }`}
-                    style={{ width: `${100 / extended.length}%` }}
+                    className={`testimonial-card flex shrink-0 flex-col rounded-2xl border border-border bg-card p-3 shadow-soft transition-all duration-500 sm:rounded-3xl sm:p-5 ${
+                      isCenter ? "center-card z-10 ring-2 ring-primary shadow-lg" : ""
+                    } ${isSide ? "side-card opacity-80" : "opacity-60"}`}
                   >
                     <img
                       src={t.photo}
