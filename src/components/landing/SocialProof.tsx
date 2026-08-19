@@ -263,8 +263,8 @@ export function SocialProof() {
               }}
             >
               {extended.map((t, i) => {
-                const prev = extended[(i - 1 + extended.length) % extended.length];
-                const next = extended[(i + 1) % extended.length];
+                const prev = extended[(i - 1 + extended.length) % extended.length]!;
+                const next = extended[(i + 1) % extended.length]!;
                 return (
                   <div
                     key={`${t.name}-${i}`}
