@@ -5,6 +5,9 @@ import { AnnouncementBar } from "@/components/landing/AnnouncementBar";
 import { Hero } from "@/components/landing/Hero";
 import { PainPoints } from "@/components/landing/PainPoints";
 import { Solution } from "@/components/landing/Solution";
+import { Benefits } from "@/components/landing/Benefits";
+import { SocialProof } from "@/components/landing/SocialProof";
+import { ForWho } from "@/components/landing/ForWho";
 import { Pricing } from "@/components/landing/Pricing";
 import { Guarantee } from "@/components/landing/Guarantee";
 import { Faq } from "@/components/landing/Faq";
@@ -57,6 +60,9 @@ function Index() {
       </div>
       <PainPoints />
       <Solution />
+      <Benefits />
+      <SocialProof />
+      <ForWho />
       <div ref={pricingRef}>
         <Pricing id="planes" />
       </div>
