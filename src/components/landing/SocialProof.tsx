@@ -23,7 +23,7 @@ const testimonials = [
     text: "En la semana 3 del tratamiento ya no toleraba nada. Empecé con las mini-recetas de pollo al papillote y por fin volví a terminar un plato completo sin náuseas.",
     avatar: avatarMariana.url,
     photo: dishChicken.url,
-    photoAlt: "Plato de pollo asado en rodajas con ensalada verde y tomate",
+    photoAlt: "Bowl con yogur griego, duraznos frescos y miel de abeja",
   },
   {
     name: "Andrés P.",
