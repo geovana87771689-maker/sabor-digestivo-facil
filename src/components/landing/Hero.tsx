@@ -1,5 +1,6 @@
 import { ArrowDown, BadgeCheck, Download, ShieldCheck, Lock } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import coverAsset from "@/assets/cover-sabor-balance.png.asset.json";
 
 const bullets = [
   { emoji: "🛡️", text: "25g - 35g de proteína pura por porción compacta" },
@@ -34,7 +35,17 @@ export function Hero({ onCta }: { onCta: () => void }) {
           Pesadez Ni Náuseas
         </h1>
 
-        <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+        <div className="mx-auto mt-8 max-w-md">
+          <img
+            src={coverAsset.url}
+            alt="Portada de la guía Sabor & Balance mostrada en una tablet sobre la barra de la cocina junto a un bowl de pollo y quinoa"
+            width={824}
+            height={1024}
+            className="w-full rounded-3xl border border-border shadow-editorial"
+          />
+        </div>
+
+        <p className="mx-auto mt-8 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
           Descubre más de 100 recetas compactas, digestivas y listas en 15 minutos, diseñadas
           específicamente para blindar tu masa muscular y maximizar tu inversión en tu
           tratamiento diario.

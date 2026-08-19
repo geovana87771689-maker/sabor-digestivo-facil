@@ -1,8 +1,11 @@
-import { Check, Crown, Sparkles } from "lucide-react";
+import { useState } from "react";
+import { Check, Crown, Sparkles, Zap, CalendarDays, type LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 type Tier = {
   name: string;
+  short: string;
+  icon: LucideIcon;
   duration: string;
   price: string;
   oldPrice?: string;
@@ -16,6 +19,8 @@ type Tier = {
 const tiers: Tier[] = [
   {
     name: "Plan Inicio Rápido",
+    short: "1 Semana",
+    icon: Zap,
     duration: "1 Semana",
     price: "$ 8.076,07 ARS",
     note: "Pago único",
@@ -30,6 +35,8 @@ const tiers: Tier[] = [
   },
   {
     name: "Plan Adaptación Total",
+    short: "2 Semanas",
+    icon: CalendarDays,
     duration: "2 Semanas",
     price: "$ 13.865,37 ARS",
     note: "Pago único",
@@ -45,6 +52,8 @@ const tiers: Tier[] = [
   },
   {
     name: "Programa Maestro & Transformación",
+    short: "6 Semanas",
+    icon: Crown,
     duration: "1 Mes y Medio · 6 Semanas",
     price: "$ 10.970,72 ARS",
     oldPrice: "$ 22.549,32 ARS",
@@ -66,6 +75,8 @@ const tiers: Tier[] = [
 ];
 
 export function Pricing({ id }: { id: string }) {
+  const [active, setActive] = useState(2);
+
   return (
     <section id={id} className="scroll-mt-4 bg-background py-16 sm:py-20">
       <div className="mx-auto max-w-6xl px-5">
@@ -76,19 +87,40 @@ export function Pricing({ id }: { id: string }) {
           Pago único, sin suscripciones. Descarga inmediata en PDF tras la confirmación.
         </p>
 
-        <p className="mt-6 text-center text-xs text-muted-foreground lg:hidden">
-          Deslizá hacia el costado para ver todos los planes →
-        </p>
+        <div
+          role="tablist"
+          aria-label="Planes disponibles"
+          className="mx-auto mt-8 grid max-w-md grid-cols-3 gap-2 rounded-2xl border border-border bg-card p-2 shadow-soft lg:hidden"
+        >
+          {tiers.map((t, i) => (
+            <button
+              key={t.name}
+              type="button"
+              role="tab"
+              aria-selected={active === i}
+              onClick={() => setActive(i)}
+              className={
+                active === i
+                  ? "flex min-w-0 flex-col items-center gap-1 rounded-xl bg-primary px-2 py-3 text-[11px] font-bold text-primary-foreground"
+                  : "flex min-w-0 flex-col items-center gap-1 rounded-xl px-2 py-3 text-[11px] font-semibold text-muted-foreground transition-colors hover:bg-accent"
+              }
+            >
+              <t.icon className="h-5 w-5 shrink-0" />
+              <span className="truncate">{t.short}</span>
+            </button>
+          ))}
+        </div>
 
-        <div className="-mx-5 mt-4 flex snap-x snap-mandatory items-start gap-4 overflow-x-auto px-5 pb-4 lg:mx-0 lg:mt-10 lg:grid lg:grid-cols-3 lg:gap-6 lg:overflow-visible lg:pb-0">
-          {tiers.map((t) => (
+        <div className="mt-6 grid gap-4 lg:mt-10 lg:grid-cols-3 lg:gap-6">
+          {tiers.map((t, i) => (
             <article
               key={t.name}
-              className={
+              className={[
+                active === i ? "block" : "hidden lg:block",
                 t.featured
-                  ? "relative order-first w-[85vw] shrink-0 snap-center rounded-3xl border-2 border-primary bg-card p-7 shadow-editorial sm:w-[380px] lg:order-last lg:w-auto"
-                  : "w-[85vw] shrink-0 snap-center rounded-3xl border border-border bg-card p-7 shadow-soft sm:w-[380px] lg:w-auto"
-              }
+                  ? "relative rounded-3xl border-2 border-primary bg-card p-7 shadow-editorial"
+                  : "rounded-3xl border border-border bg-card p-7 shadow-soft",
+              ].join(" ")}
             >
               {t.featured && (
                 <div className="mb-4 flex flex-wrap items-center gap-2">
