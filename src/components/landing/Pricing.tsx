@@ -28,8 +28,8 @@ const tiers: Tier[] = [
     subtitle: "Ideal para probar el método y experimentar alivio digestivo inmediato.",
     highlight: "Beneficio clave: alivio digestivo desde la primera semana",
     features: [
-      "25 Recetas express anti-náusea (Desayunos, Almuerzos y Cenas)",
-      "Guía de cocción rápida (Menos de 15 minutos)",
+      "1 semana de almuerzos planificados",
+      "Recetas express anti-náusea para el almuerzo",
       "Lista de compras inteligente para 7 días",
       "Formato PDF interactivo para móvil y tablet",
     ],
@@ -45,7 +45,7 @@ const tiers: Tier[] = [
     subtitle: "Estructura completa para consolidar el hábito proteico y digestivo.",
     highlight: "Beneficio clave: 14 días planificados + actualizaciones de por vida",
     features: [
-      "55 Recetas optimizadas de alta biodisponibilidad proteica",
+      "2 semanas de almuerzos planificados",
       "Menú planificado día a día para 14 días",
       "Guía anti-reflujo y cronograma de hidratación funcional",
       "Lista de compras categorizada para 2 semanas",
