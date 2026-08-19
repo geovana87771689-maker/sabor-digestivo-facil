@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Check, Crown, Sparkles, Zap, CalendarDays, type LucideIcon } from "lucide-react";
+import { Check, Crown, Sparkles, Zap, CalendarDays, ShieldCheck, type LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 type Tier = {

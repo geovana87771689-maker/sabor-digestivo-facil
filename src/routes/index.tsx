@@ -9,7 +9,6 @@ import { Benefits } from "@/components/landing/Benefits";
 import { SocialProof } from "@/components/landing/SocialProof";
 import { ForWho } from "@/components/landing/ForWho";
 import { Pricing } from "@/components/landing/Pricing";
-import { Guarantee } from "@/components/landing/Guarantee";
 import { Faq } from "@/components/landing/Faq";
 import { SiteFooter } from "@/components/landing/SiteFooter";
 import { StickyMobileCta } from "@/components/landing/StickyMobileCta";
@@ -72,7 +71,6 @@ function Index() {
       <div ref={pricingRef}>
         <Pricing id="planes" />
       </div>
-      <Guarantee />
       <Faq />
       <SiteFooter />
       <StickyMobileCta visible={showSticky} onCta={scrollToPricing} />
