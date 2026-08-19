@@ -19,8 +19,8 @@ type Tier = {
 
 const tiers: Tier[] = [
   {
-    name: "Básico (1 Semana)",
-    short: "1 Semana",
+    name: "Plan Inicial · 7 Días de Adaptación",
+    short: "Básico",
     icon: Zap,
     duration: "1 Semana",
     price: "$ 8.076,07 ARS",
@@ -36,8 +36,8 @@ const tiers: Tier[] = [
     cta: "Comenzar Plan de 1 Semana",
   },
   {
-    name: "Intermediário (2 Semanas)",
-    short: "2 Semanas",
+    name: "Plan Esencial · 14 Días de Rutina",
+    short: "Intermediário",
     icon: CalendarDays,
     duration: "2 Semanas",
     price: "$ 13.865,37 ARS",
@@ -54,8 +54,8 @@ const tiers: Tier[] = [
     cta: "Elegir Plan de 2 Semanas",
   },
   {
-    name: "Principal (5 Semanas)",
-    short: "5 Semanas",
+    name: "Plan Integral · 5 Semanas Completas",
+    short: "Principal",
     icon: Crown,
     duration: "5 Semanas",
     price: "$ 10.970,72 ARS",
