@@ -78,7 +78,6 @@ function AnimatedNumber({ value, duration = 2500 }: { value: string; duration?: 
   return <span ref={ref}>{display}</span>;
 }
 
-
 const stats = [
   { value: "+100", label: "Recetas compactas y digestivas" },
   { value: "15 min", label: "Tiempo promedio de preparación" },
@@ -145,11 +144,54 @@ const testimonials = [
   },
 ];
 
+const VISIBLE_COUNT = 3;
+
 export function SocialProof() {
   const [active, setActive] = useState(0);
-  const t = testimonials[active]!;
-  const go = (dir: number) =>
-    setActive((i) => (i + dir + testimonials.length) % testimonials.length);
+  const maxIndex = Math.max(0, testimonials.length - VISIBLE_COUNT);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const dragStart = useRef({ x: 0, scroll: 0 });
+
+  const go = (dir: number) => {
+    setActive((i) => Math.max(0, Math.min(i + dir, maxIndex)));
+  };
+
+  const visibleTestimonials = testimonials.slice(active, active + VISIBLE_COUNT);
+
+  useEffect(() => {
+    if (trackRef.current) {
+      const cardWidth = trackRef.current.scrollWidth / testimonials.length;
+      trackRef.current.scrollTo({
+        left: active * cardWidth,
+        behavior: "smooth",
+      });
+    }
+  }, [active]);
+
+  const handlePointerDown = (e: React.PointerEvent) => {
+    setIsDragging(true);
+    dragStart.current = { x: e.clientX, scroll: trackRef.current?.scrollLeft ?? 0 };
+    if (trackRef.current) trackRef.current.setPointerCapture(e.pointerId);
+  };
+
+  const handlePointerMove = (e: React.PointerEvent) => {
+    if (!isDragging || !trackRef.current) return;
+    const dx = dragStart.current.x - e.clientX;
+    trackRef.current.scrollLeft = dragStart.current.scroll + dx;
+  };
+
+  const handlePointerUp = (e: React.PointerEvent) => {
+    if (!isDragging || !trackRef.current) return;
+    setIsDragging(false);
+    const dx = dragStart.current.x - e.clientX;
+    if (Math.abs(dx) > 40) {
+      go(dx > 0 ? 1 : -1);
+    } else {
+      const cardWidth = trackRef.current.scrollWidth / testimonials.length;
+      trackRef.current.scrollTo({ left: active * cardWidth, behavior: "smooth" });
+    }
+  };
 
   return (
     <section className="bg-cream py-16 sm:py-20">
@@ -179,75 +221,106 @@ export function SocialProof() {
           </span>
         </div>
 
-        <div className="mx-auto mt-8 flex max-w-md items-center justify-center gap-3">
-          {testimonials.map((item, i) => (
-            <button
-              key={item.name}
-              type="button"
-              onClick={() => setActive(i)}
-              aria-label={`Ver testimonio de ${item.name}`}
-              aria-pressed={active === i}
-              className={
-                active === i
-                  ? "rounded-full ring-2 ring-primary ring-offset-2 ring-offset-cream transition"
-                  : "rounded-full opacity-60 transition hover:opacity-100"
-              }
-            >
-              <img
-                src={item.avatar}
-                alt={`Foto de perfil de ${item.name}`}
-                loading="lazy"
-                className="h-12 w-12 rounded-full object-cover"
-              />
-            </button>
-          ))}
-        </div>
-
-        <figure className="mx-auto mt-6 max-w-3xl rounded-3xl border border-border bg-card p-6 shadow-soft sm:p-8">
-          <div className="grid gap-6 sm:grid-cols-2 sm:items-center">
-            <img
-              src={t.photo}
-              alt={t.photoAlt}
-              loading="lazy"
-              className="h-52 w-full rounded-2xl object-cover sm:h-64"
-            />
-            <div>
-              <span className="flex gap-0.5 text-gold">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} className="h-4 w-4 fill-current" />
-                ))}
-              </span>
-              <blockquote className="mt-3 text-sm leading-relaxed text-foreground sm:text-base">
-                {t.text}
-              </blockquote>
-              <figcaption className="mt-5 flex items-center gap-3">
+        <div className="relative mx-auto mt-8 max-w-5xl">
+          <div className="hidden sm:flex items-center justify-between gap-4">
+            {visibleTestimonials.map((t, idx) => (
+              <figure
+                key={t.name}
+                className={`relative flex flex-col rounded-3xl border border-border bg-card p-5 shadow-soft transition-all duration-500 ${
+                  idx === 0 ? "ring-2 ring-primary" : ""
+                }`}
+                style={{ width: `${100 / VISIBLE_COUNT}%` }}
+              >
                 <img
-                  src={t.avatar}
-                  alt=""
+                  src={t.photo}
+                  alt={t.photoAlt}
                   loading="lazy"
-                  className="h-10 w-10 shrink-0 rounded-full object-cover ring-2 ring-accent"
+                  className="h-40 w-full rounded-2xl object-cover"
                 />
-                <span className="min-w-0">
-                  <span className="block text-sm font-bold text-foreground">{t.name}</span>
-                  <span className="block text-xs text-muted-foreground">{t.place}</span>
+                <span className="mt-4 flex gap-0.5 text-gold">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <Star key={i} className="h-3.5 w-3.5 fill-current" />
+                  ))}
                 </span>
-              </figcaption>
-            </div>
+                <blockquote className="mt-3 flex-1 text-sm leading-relaxed text-foreground">
+                  {t.text}
+                </blockquote>
+                <figcaption className="mt-4 flex items-center gap-3 border-t border-border pt-4">
+                  <img
+                    src={t.avatar}
+                    alt={`Foto de perfil de ${t.name}`}
+                    loading="lazy"
+                    className="h-10 w-10 shrink-0 rounded-full object-cover ring-2 ring-accent"
+                  />
+                  <span className="min-w-0">
+                    <span className="block text-sm font-bold text-foreground">{t.name}</span>
+                    <span className="block text-xs text-muted-foreground">{t.place}</span>
+                  </span>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+
+          <div
+            ref={trackRef}
+            onPointerDown={handlePointerDown}
+            onPointerMove={handlePointerMove}
+            onPointerUp={handlePointerUp}
+            className="flex snap-x snap-mandatory gap-4 overflow-x-auto sm:hidden"
+            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+          >
+            {testimonials.map((t) => (
+              <figure
+                key={t.name}
+                className="w-[85vw] shrink-0 snap-center rounded-3xl border border-border bg-card p-5 shadow-soft"
+              >
+                <img
+                  src={t.photo}
+                  alt={t.photoAlt}
+                  loading="lazy"
+                  className="h-44 w-full rounded-2xl object-cover"
+                />
+                <span className="mt-4 flex gap-0.5 text-gold">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <Star key={i} className="h-3.5 w-3.5 fill-current" />
+                  ))}
+                </span>
+                <blockquote className="mt-3 text-sm leading-relaxed text-foreground">
+                  {t.text}
+                </blockquote>
+                <figcaption className="mt-4 flex items-center gap-3 border-t border-border pt-4">
+                  <img
+                    src={t.avatar}
+                    alt={`Foto de perfil de ${t.name}`}
+                    loading="lazy"
+                    className="h-10 w-10 shrink-0 rounded-full object-cover ring-2 ring-accent"
+                  />
+                  <span className="min-w-0">
+                    <span className="block text-sm font-bold text-foreground">{t.name}</span>
+                    <span className="block text-xs text-muted-foreground">{t.place}</span>
+                  </span>
+                </figcaption>
+              </figure>
+            ))}
           </div>
 
           <div className="mt-6 flex items-center justify-center gap-4">
             <button
               type="button"
               onClick={() => go(-1)}
-              aria-label="Testimonio anterior"
-              className="rounded-full border border-border p-2 text-foreground transition-colors hover:bg-accent"
+              disabled={active === 0}
+              aria-label="Avaliações anteriores"
+              className="rounded-full border border-border p-2 text-foreground transition-colors hover:bg-accent disabled:opacity-40"
             >
               <ChevronLeft className="h-4 w-4" />
             </button>
             <div className="flex gap-1.5">
-              {testimonials.map((item, i) => (
-                <span
-                  key={item.name}
+              {Array.from({ length: maxIndex + 1 }).map((_, i) => (
+                <button
+                  key={i}
+                  type="button"
+                  onClick={() => setActive(i)}
+                  aria-label={`Ver avaliações ${i * VISIBLE_COUNT + 1} a ${Math.min((i + 1) * VISIBLE_COUNT, testimonials.length)}`}
                   className={
                     active === i
                       ? "h-2 w-6 rounded-full bg-primary transition-all"
@@ -259,13 +332,14 @@ export function SocialProof() {
             <button
               type="button"
               onClick={() => go(1)}
-              aria-label="Testimonio siguiente"
-              className="rounded-full border border-border p-2 text-foreground transition-colors hover:bg-accent"
+              disabled={active === maxIndex}
+              aria-label="Próximas avaliações"
+              className="rounded-full border border-border p-2 text-foreground transition-colors hover:bg-accent disabled:opacity-40"
             >
               <ChevronRight className="h-4 w-4" />
             </button>
           </div>
-        </figure>
+        </div>
 
         <p className="mx-auto mt-8 max-w-2xl text-center text-[11px] leading-relaxed text-muted-foreground">
           Testimonios individuales de lectores; las experiencias varían de una persona a otra.
