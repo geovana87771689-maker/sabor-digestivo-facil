@@ -83,7 +83,7 @@ export function Benefits() {
   const current = benefits[active]!;
 
   return (
-    <section ref={sectionRef} className="bg-background py-16 sm:py-20">
+    <section ref={sectionRef} className="bg-background py-10 sm:py-12">
       <div className="mx-auto max-w-3xl px-5">
         <p className="text-center text-xs font-semibold tracking-[0.2em] text-primary uppercase">
           Lo que cambia desde la primera semana

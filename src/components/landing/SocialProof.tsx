@@ -194,7 +194,7 @@ export function SocialProof() {
   };
 
   return (
-    <section className="bg-cream py-16 sm:py-20">
+    <section className="bg-cream py-10 sm:py-12">
       <div className="mx-auto max-w-6xl px-5">
         <div className="grid gap-4 rounded-3xl border border-border bg-card p-6 shadow-soft sm:grid-cols-4 sm:p-8">
           {stats.map((s) => (
