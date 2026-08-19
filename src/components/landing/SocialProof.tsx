@@ -241,7 +241,7 @@ export function SocialProof() {
               }`}
               style={{
                 width: `${extended.length * (100 / VISIBLE)}%`,
-                transform: `translateX(-${(currentIndex - 1) * (100 / VISIBLE)}%)`,
+                transform: `translateX(-${(currentIndex - 1) * (100 / extended.length)}%)`,
               }}
             >
               {extended.map((t, i) => {
