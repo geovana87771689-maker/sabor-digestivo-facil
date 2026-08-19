@@ -57,7 +57,7 @@ const tiers: Tier[] = [
     name: "Principal (5 Semanas): Plan Integral · 5 Semanas Completas",
     short: "5 Semanas",
     icon: Crown,
-    duration: "5 Semanas · 34 Días",
+    duration: "5 Semanas",
     price: "$ 10.970,72 ARS",
     oldPrice: "$ 22.549,32 ARS",
     note: "Descuento único: de $ 22.549,32 a $ 10.970,72 ARS · Pago único",
