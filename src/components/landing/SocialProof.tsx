@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 
 import avatarMariana from "@/assets/Erica_Perfil.jpeg.asset.json";
