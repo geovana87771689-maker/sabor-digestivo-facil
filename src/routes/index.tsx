@@ -38,9 +38,10 @@ function Index() {
     const el = heroRef.current;
     if (!el) return;
     const observer = new IntersectionObserver(
-      ([entry]) => setShowSticky(!entry.isIntersecting),
+      (entries) => setShowSticky(!(entries[0]?.isIntersecting ?? true)),
       { threshold: 0 },
     );
+
     observer.observe(el);
     return () => observer.disconnect();
   }, []);
