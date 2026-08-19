@@ -66,6 +66,7 @@ function Index() {
       <div ref={solutionRef}>
         <Solution />
       </div>
+      <InsidePeek />
       <Benefits />
       <SocialProof />
       <ForWho />
