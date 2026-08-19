@@ -1,5 +1,6 @@
 import { ArrowDown, BadgeCheck, Download, ShieldCheck, Lock } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import coverAsset from "@/assets/cover-sabor-balance.png.asset.json";
 
 const bullets = [
   { emoji: "🛡️", text: "25g - 35g de proteína pura por porción compacta" },
