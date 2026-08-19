@@ -57,7 +57,7 @@ const tiers: Tier[] = [
     name: "Principal (5 Semanas): Plan Integral · 5 Semanas Completas",
     short: "5 Semanas",
     icon: Crown,
-    duration: "5 Semanas · 34 Días",
+    duration: "5 Semanas",
     price: "$ 10.970,72 ARS",
     oldPrice: "$ 22.549,32 ARS",
     note: "Descuento único: de $ 22.549,32 a $ 10.970,72 ARS · Pago único",
@@ -65,7 +65,7 @@ const tiers: Tier[] = [
       "La solución integral y definitiva para acompañar todo tu protocolo sin preocuparte por qué cocinar.",
     highlight: "Beneficio clave: ahorras $ 11.578,60 ARS + acceso vitalicio",
     features: [
-      "Protocolo Completo de 5 Semanas (34 Días): Desayuno, almuerzo y cena 100% planificados para cubrir todo tu primer ciclo sin pensar qué comer.",
+      "Protocolo Completo de 5 Semanas: Desayuno, almuerzo y cena 100% planificados para cubrir todo tu primer ciclo sin pensar qué comer.",
       "Colección Completa de 100 Recetas Gourmet: Alta densidad proteica (25g+ por porción) en porciones reducidas, ideales para la saciedad temprana.",
       "Fórmulas Anti-Náusea y Digestión Ligera: Platos calibrados con técnicas de cocción suaves (papillote, vapor y caldos de colágeno) para cuidar tu estómago.",
       "Capítulos Exclusivos de Snacks y Postres: 20 snacks funcionales y 20 postres proteicos sin azúcar para controlar la ansiedad entre comidas.",
