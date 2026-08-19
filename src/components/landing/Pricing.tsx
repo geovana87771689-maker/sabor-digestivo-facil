@@ -19,7 +19,7 @@ type Tier = {
 
 const tiers: Tier[] = [
   {
-    name: "Básico (1 Semana): Plan Inicial · 7 Días de Adaptación",
+    name: "Básico (1 Semana)",
     short: "1 Semana",
     icon: Zap,
     duration: "1 Semana",
@@ -36,7 +36,7 @@ const tiers: Tier[] = [
     cta: "Comenzar Plan de 1 Semana",
   },
   {
-    name: "Intermediário (2 Semanas): Plan Esencial · 14 Días de Rutina",
+    name: "Intermediário (2 Semanas)",
     short: "2 Semanas",
     icon: CalendarDays,
     duration: "2 Semanas",
@@ -54,7 +54,7 @@ const tiers: Tier[] = [
     cta: "Elegir Plan de 2 Semanas",
   },
   {
-    name: "Principal (5 Semanas): Plan Integral · 5 Semanas Completas",
+    name: "Principal (5 Semanas)",
     short: "5 Semanas",
     icon: Crown,
     duration: "5 Semanas",
