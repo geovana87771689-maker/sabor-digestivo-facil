@@ -35,6 +35,8 @@ const tiers: Tier[] = [
   },
   {
     name: "Plan Adaptación Total",
+    short: "2 Semanas",
+    icon: CalendarDays,
     duration: "2 Semanas",
     price: "$ 13.865,37 ARS",
     note: "Pago único",
