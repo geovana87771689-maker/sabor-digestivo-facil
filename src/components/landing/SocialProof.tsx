@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { ChevronLeft, ChevronRight, Star } from "lucide-react";
+import { Star } from "lucide-react";
 
 import avatarMariana from "@/assets/Erica_Perfil.jpeg.asset.json";
 import avatarAndres from "@/assets/richard.jpg.asset.json";
@@ -144,52 +144,33 @@ const testimonials = [
   },
 ];
 
-const VISIBLE_COUNT = 3;
-
 export function SocialProof() {
-  const [active, setActive] = useState(0);
-  const maxIndex = Math.max(0, testimonials.length - VISIBLE_COUNT);
   const trackRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
   const dragStart = useRef({ x: 0, scroll: 0 });
 
-  const go = (dir: number) => {
-    setActive((i) => Math.max(0, Math.min(i + dir, maxIndex)));
-  };
-
-  const visibleTestimonials = testimonials.slice(active, active + VISIBLE_COUNT);
-
-  useEffect(() => {
-    if (trackRef.current) {
-      const cardWidth = trackRef.current.scrollWidth / testimonials.length;
-      trackRef.current.scrollTo({
-        left: active * cardWidth,
-        behavior: "smooth",
-      });
-    }
-  }, [active]);
-
   const handlePointerDown = (e: React.PointerEvent) => {
+    const el = trackRef.current;
+    if (!el) return;
     setIsDragging(true);
-    dragStart.current = { x: e.clientX, scroll: trackRef.current?.scrollLeft ?? 0 };
-    if (trackRef.current) trackRef.current.setPointerCapture(e.pointerId);
+    dragStart.current = { x: e.clientX, scroll: el.scrollLeft };
+    el.setPointerCapture(e.pointerId);
   };
 
   const handlePointerMove = (e: React.PointerEvent) => {
-    if (!isDragging || !trackRef.current) return;
-    const dx = dragStart.current.x - e.clientX;
-    trackRef.current.scrollLeft = dragStart.current.scroll + dx;
+    const el = trackRef.current;
+    if (!isDragging || !el) return;
+    el.scrollLeft = dragStart.current.scroll + (dragStart.current.x - e.clientX);
   };
 
   const handlePointerUp = (e: React.PointerEvent) => {
-    if (!isDragging || !trackRef.current) return;
+    const el = trackRef.current;
+    if (!el) return;
     setIsDragging(false);
-    const dx = dragStart.current.x - e.clientX;
-    if (Math.abs(dx) > 40) {
-      go(dx > 0 ? 1 : -1);
-    } else {
-      const cardWidth = trackRef.current.scrollWidth / testimonials.length;
-      trackRef.current.scrollTo({ left: active * cardWidth, behavior: "smooth" });
+    try {
+      el.releasePointerCapture(e.pointerId);
+    } catch {
+      // capture may have been lost automatically
     }
   };
 
@@ -222,123 +203,58 @@ export function SocialProof() {
         </div>
 
         <div className="relative mx-auto mt-6 max-w-5xl">
-          <div className="hidden sm:flex items-center justify-between gap-4">
-            {visibleTestimonials.map((t, idx) => (
-              <figure
-                key={t.name}
-                className={`relative flex flex-col rounded-3xl border border-border bg-card p-5 shadow-soft transition-all duration-500 ${
-                  idx === 0 ? "ring-2 ring-primary" : ""
-                }`}
-                style={{ width: `${100 / VISIBLE_COUNT}%` }}
-              >
-                <img
-                  src={t.photo}
-                  alt={t.photoAlt}
-                  loading="lazy"
-                  className="h-40 w-full rounded-2xl object-cover"
-                />
-                <span className="mt-4 flex gap-0.5 text-gold">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Star key={i} className="h-3.5 w-3.5 fill-current" />
-                  ))}
-                </span>
-                <blockquote className="mt-3 flex-1 text-sm leading-relaxed text-foreground">
-                  {t.text}
-                </blockquote>
-                <figcaption className="mt-4 flex items-center gap-3 border-t border-border pt-4">
-                  <img
-                    src={t.avatar}
-                    alt={`Foto de perfil de ${t.name}`}
-                    loading="lazy"
-                    className="h-10 w-10 shrink-0 rounded-full object-cover ring-2 ring-accent"
-                  />
-                  <span className="min-w-0">
-                    <span className="block text-sm font-bold text-foreground">{t.name}</span>
-                    <span className="block text-xs text-muted-foreground">{t.place}</span>
-                  </span>
-                </figcaption>
-              </figure>
-            ))}
-          </div>
-
           <div
             ref={trackRef}
             onPointerDown={handlePointerDown}
             onPointerMove={handlePointerMove}
             onPointerUp={handlePointerUp}
-            className="flex snap-x snap-mandatory gap-3 overflow-x-auto sm:hidden"
+            className={`flex gap-3 overflow-x-auto pb-2 sm:gap-4 ${
+              isDragging ? "snap-none" : "snap-x snap-mandatory"
+            }`}
             style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
           >
             {testimonials.map((t) => (
               <figure
                 key={t.name}
-                className="w-[30vw] min-w-[120px] shrink-0 snap-start rounded-2xl border border-border bg-card p-3 shadow-soft"
+                className="flex-none w-[30vw] min-w-[120px] snap-start rounded-2xl border border-border bg-card p-3 shadow-soft sm:w-[calc(33.333%-0.666rem)] sm:p-5"
               >
                 <img
                   src={t.photo}
                   alt={t.photoAlt}
                   loading="lazy"
-                  className="h-24 w-full rounded-xl object-cover"
+                  className="h-24 w-full rounded-xl object-cover sm:h-40 sm:rounded-2xl"
                 />
-                <span className="mt-2 flex gap-0.5 text-gold">
+                <span className="mt-2 flex gap-0.5 text-gold sm:mt-4">
                   {Array.from({ length: 5 }).map((_, i) => (
-                    <Star key={i} className="h-3 w-3 fill-current" />
+                    <Star key={i} className="h-3 w-3 fill-current sm:h-3.5 sm:w-3.5" />
                   ))}
                 </span>
-                <blockquote className="mt-2 line-clamp-4 text-[11px] leading-relaxed text-foreground">
+                <blockquote className="mt-2 line-clamp-4 text-[11px] leading-relaxed text-foreground sm:mt-3 sm:text-sm">
                   {t.text}
                 </blockquote>
-                <figcaption className="mt-2 flex items-center gap-2 border-t border-border pt-2">
+                <figcaption className="mt-2 flex items-center gap-2 border-t border-border pt-2 sm:mt-4 sm:gap-3 sm:pt-4">
                   <img
                     src={t.avatar}
                     alt={`Foto de perfil de ${t.name}`}
                     loading="lazy"
-                    className="h-7 w-7 shrink-0 rounded-full object-cover ring-2 ring-accent"
+                    className="h-7 w-7 shrink-0 rounded-full object-cover ring-2 ring-accent sm:h-10 sm:w-10"
                   />
                   <span className="min-w-0">
-                    <span className="block text-xs font-bold text-foreground">{t.name}</span>
-                    <span className="block text-[10px] leading-tight text-muted-foreground">{t.place}</span>
+                    <span className="block text-xs font-bold text-foreground sm:text-sm">
+                      {t.name}
+                    </span>
+                    <span className="block text-[10px] leading-tight text-muted-foreground sm:text-xs">
+                      {t.place}
+                    </span>
                   </span>
                 </figcaption>
               </figure>
             ))}
           </div>
 
-          <div className="mt-6 flex items-center justify-center gap-4">
-            <button
-              type="button"
-              onClick={() => go(-1)}
-              disabled={active === 0}
-              aria-label="Avaliações anteriores"
-              className="rounded-full border border-border p-2 text-foreground transition-colors hover:bg-accent disabled:opacity-40"
-            >
-              <ChevronLeft className="h-4 w-4" />
-            </button>
-            <div className="flex gap-1.5">
-              {Array.from({ length: maxIndex + 1 }).map((_, i) => (
-                <button
-                  key={i}
-                  type="button"
-                  onClick={() => setActive(i)}
-                  aria-label={`Ver avaliações ${i * VISIBLE_COUNT + 1} a ${Math.min((i + 1) * VISIBLE_COUNT, testimonials.length)}`}
-                  className={
-                    active === i
-                      ? "h-2 w-6 rounded-full bg-primary transition-all"
-                      : "h-2 w-2 rounded-full bg-border transition-all"
-                  }
-                />
-              ))}
-            </div>
-            <button
-              type="button"
-              onClick={() => go(1)}
-              disabled={active === maxIndex}
-              aria-label="Próximas avaliações"
-              className="rounded-full border border-border p-2 text-foreground transition-colors hover:bg-accent disabled:opacity-40"
-            >
-              <ChevronRight className="h-4 w-4" />
-            </button>
-          </div>
+          <p className="mt-3 text-center text-xs text-muted-foreground sm:hidden">
+            Deslizá hacia la izquierda para ver más
+          </p>
         </div>
 
         <p className="mx-auto mt-6 max-w-2xl text-center text-[11px] leading-relaxed text-muted-foreground">
