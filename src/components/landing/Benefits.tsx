@@ -1,4 +1,7 @@
+import { useEffect, useState } from "react";
 import {
+  ChevronLeft,
+  ChevronRight,
   Clock,
   Dumbbell,
   HeartPulse,
@@ -53,9 +56,24 @@ const benefits = [
 ];
 
 export function Benefits() {
+  const [active, setActive] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  const next = () => setActive((i) => (i + 1) % benefits.length);
+  const prev = () => setActive((i) => (i - 1 + benefits.length) % benefits.length);
+
+  useEffect(() => {
+    if (isPaused) return;
+    const id = setInterval(next, 4000);
+    return () => clearInterval(id);
+  }, [isPaused]);
+
+  const current = benefits[active]!;
+  const Icon = current.icon;
+
   return (
     <section className="bg-background py-16 sm:py-20">
-      <div className="mx-auto max-w-6xl px-5">
+      <div className="mx-auto max-w-3xl px-5">
         <p className="text-center text-xs font-semibold tracking-[0.2em] text-primary uppercase">
           Lo que cambia desde la primera semana
         </p>
@@ -67,19 +85,68 @@ export function Benefits() {
           de alguien que trabaja, cocina rápido y quiere seguir sintiéndose fuerte.
         </p>
 
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {benefits.map((b) => (
-            <article
-              key={b.title}
-              className="group rounded-2xl border border-border bg-card p-6 shadow-soft transition-all hover:-translate-y-1 hover:shadow-editorial"
+        <div
+          className="mt-10"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          onTouchStart={() => setIsPaused(true)}
+          onTouchEnd={() => setIsPaused(false)}
+        >
+          <div className="relative overflow-hidden rounded-2xl border border-border bg-card p-7 shadow-soft sm:p-10">
+            <div className="absolute left-0 top-0 h-1 w-full bg-gradient-to-r from-primary via-sage-400 to-emerald-400" />
+
+            <div
+              key={current.title}
+              className="animate-fade-in text-center"
             >
-              <span className="inline-grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-accent text-accent-foreground transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
-                <b.icon className="h-5 w-5" />
+              <span className="mx-auto inline-grid h-14 w-14 place-items-center rounded-2xl bg-accent text-accent-foreground">
+                <Icon className="h-6 w-6" />
               </span>
-              <h3 className="mt-4 text-base font-bold text-foreground">{b.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{b.text}</p>
-            </article>
-          ))}
+              <h3 className="mt-5 text-lg font-bold text-foreground sm:text-xl">
+                {current.title}
+              </h3>
+              <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+                {current.text}
+              </p>
+            </div>
+
+            <div className="mt-6 flex items-center justify-center gap-4">
+              <button
+                type="button"
+                onClick={prev}
+                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border bg-background text-foreground transition-colors hover:bg-accent"
+                aria-label="Beneficio anterior"
+              >
+                <ChevronLeft className="h-4 w-4" />
+              </button>
+
+              <div className="flex items-center gap-2">
+                {benefits.map((b, i) => (
+                  <button
+                    key={b.title}
+                    type="button"
+                    onClick={() => setActive(i)}
+                    className={`h-2 rounded-full transition-all ${
+                      i === active
+                        ? "w-6 bg-primary"
+                        : "w-2 bg-border hover:bg-muted-foreground/40"
+                    }`}
+                    aria-label={`Ver beneficio ${i + 1}`}
+                    aria-current={i === active ? "true" : undefined}
+                  />
+                ))}
+              </div>
+
+              <button
+                type="button"
+                onClick={next}
+                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border bg-background text-foreground transition-colors hover:bg-accent"
+                aria-label="Siguiente beneficio"
+              >
+                <ChevronRight className="h-4 w-4" />
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </section>
