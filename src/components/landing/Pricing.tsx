@@ -1,8 +1,11 @@
-import { Check, Crown, Sparkles } from "lucide-react";
+import { useState } from "react";
+import { Check, Crown, Sparkles, Zap, CalendarDays, type LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 type Tier = {
   name: string;
+  short: string;
+  icon: LucideIcon;
   duration: string;
   price: string;
   oldPrice?: string;
