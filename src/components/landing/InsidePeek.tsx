@@ -2,9 +2,9 @@ import { useState } from "react";
 import { ChevronLeft, ChevronRight, Hand, LayoutList, Camera } from "lucide-react";
 
 import peek1 from "@/assets/peek-1.jpg.asset.json";
-import peek2 from "@/assets/peek-2.jpg.asset.json";
-import peek3 from "@/assets/peek-3.jpg.asset.json";
-import peek4 from "@/assets/peek-4.jpg.asset.json";
+import peek2 from "@/assets/peek-2-new.jpg.asset.json";
+import peek3 from "@/assets/peek-3-new.jpg.asset.json";
+import peek4 from "@/assets/peek-4-new.jpg.asset.json";
 
 const pages = [
   {
