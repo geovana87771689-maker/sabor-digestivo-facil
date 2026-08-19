@@ -52,6 +52,8 @@ const tiers: Tier[] = [
   },
   {
     name: "Programa Maestro & Transformación",
+    short: "6 Semanas",
+    icon: Crown,
     duration: "1 Mes y Medio · 6 Semanas",
     price: "$ 10.970,72 ARS",
     oldPrice: "$ 22.549,32 ARS",
