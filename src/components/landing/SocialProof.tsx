@@ -144,34 +144,58 @@ const testimonials = [
   },
 ];
 
+const VISIBLE = 3;
+
 export function SocialProof() {
-  const trackRef = useRef<HTMLDivElement>(null);
+  const count = testimonials.length;
+  const extended = [...testimonials, ...testimonials, ...testimonials];
+  const [currentIndex, setCurrentIndex] = useState(count);
+  const [isTransitioning, setIsTransitioning] = useState(true);
+  const [isPaused, setIsPaused] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
-  const dragStart = useRef({ x: 0, scroll: 0 });
+  const dragStart = useRef({ x: 0 });
+
+  // Avance automático contínuo.
+  useEffect(() => {
+    if (isPaused) return;
+    const id = setInterval(() => setCurrentIndex((i) => i + 1), 4000);
+    return () => clearInterval(id);
+  }, [isPaused, count]);
+
+  // Loop infinito: ao chegar no terceiro conjunto, salta para o segundo sem animação.
+  useEffect(() => {
+    if (currentIndex >= 2 * count) {
+      const timer = setTimeout(() => {
+        setIsTransitioning(false);
+        setCurrentIndex(count);
+        requestAnimationFrame(() => setIsTransitioning(true));
+      }, 500);
+      return () => clearTimeout(timer);
+    }
+  }, [currentIndex, count]);
 
   const handlePointerDown = (e: React.PointerEvent) => {
-    const el = trackRef.current;
-    if (!el) return;
     setIsDragging(true);
-    dragStart.current = { x: e.clientX, scroll: el.scrollLeft };
-    el.setPointerCapture(e.pointerId);
-  };
-
-  const handlePointerMove = (e: React.PointerEvent) => {
-    const el = trackRef.current;
-    if (!isDragging || !el) return;
-    el.scrollLeft = dragStart.current.scroll + (dragStart.current.x - e.clientX);
+    setIsPaused(true);
+    dragStart.current = { x: e.clientX };
+    e.currentTarget.setPointerCapture(e.pointerId);
   };
 
   const handlePointerUp = (e: React.PointerEvent) => {
-    const el = trackRef.current;
-    if (!el) return;
+    if (!isDragging) return;
     setIsDragging(false);
     try {
-      el.releasePointerCapture(e.pointerId);
+      e.currentTarget.releasePointerCapture(e.pointerId);
     } catch {
-      // capture may have been lost automatically
+      // capture may have been released automatically
     }
+    const dx = dragStart.current.x - e.clientX;
+    if (Math.abs(dx) > 40) {
+      setCurrentIndex((i) =>
+        Math.max(0, Math.min(i + (dx > 0 ? 1 : -1), 2 * count - 1))
+      );
+    }
+    setIsPaused(false);
   };
 
   return (
@@ -202,57 +226,89 @@ export function SocialProof() {
           </span>
         </div>
 
-        <div className="relative mx-auto mt-6 max-w-5xl">
-          <div
-            ref={trackRef}
-            onPointerDown={handlePointerDown}
-            onPointerMove={handlePointerMove}
-            onPointerUp={handlePointerUp}
-            className={`flex gap-3 overflow-x-auto pb-2 sm:gap-4 ${
-              isDragging ? "snap-none" : "snap-x snap-mandatory"
-            }`}
-            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-          >
-            {testimonials.map((t) => (
-              <figure
-                key={t.name}
-                className="flex-none w-[30vw] min-w-[120px] snap-start rounded-2xl border border-border bg-card p-3 shadow-soft sm:w-[calc(33.333%-0.666rem)] sm:p-5"
-              >
-                <img
-                  src={t.photo}
-                  alt={t.photoAlt}
-                  loading="lazy"
-                  className="h-24 w-full rounded-xl object-cover sm:h-40 sm:rounded-2xl"
-                />
-                <span className="mt-2 flex gap-0.5 text-gold sm:mt-4">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Star key={i} className="h-3 w-3 fill-current sm:h-3.5 sm:w-3.5" />
-                  ))}
-                </span>
-                <blockquote className="mt-2 line-clamp-4 text-[11px] leading-relaxed text-foreground sm:mt-3 sm:text-sm">
-                  {t.text}
-                </blockquote>
-                <figcaption className="mt-2 flex items-center gap-2 border-t border-border pt-2 sm:mt-4 sm:gap-3 sm:pt-4">
-                  <img
-                    src={t.avatar}
-                    alt={`Foto de perfil de ${t.name}`}
-                    loading="lazy"
-                    className="h-7 w-7 shrink-0 rounded-full object-cover ring-2 ring-accent sm:h-10 sm:w-10"
-                  />
-                  <span className="min-w-0">
-                    <span className="block text-xs font-bold text-foreground sm:text-sm">
-                      {t.name}
+        <div
+          className="relative mx-auto mt-6 max-w-5xl select-none"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          onTouchStart={() => setIsPaused(true)}
+          onTouchEnd={() => setIsPaused(false)}
+          onPointerDown={handlePointerDown}
+          onPointerUp={handlePointerUp}
+        >
+          <div className="overflow-hidden rounded-3xl py-4 sm:py-6">
+            <div
+              className={`flex ${
+                isTransitioning ? "transition-transform duration-500 ease-out" : ""
+              }`}
+              style={{
+                width: `${extended.length * (100 / VISIBLE)}%`,
+                transform: `translateX(-${(currentIndex - 1) * (100 / VISIBLE)}%)`,
+              }}
+            >
+              {extended.map((t, i) => {
+                const isCenter = i === currentIndex;
+                return (
+                  <figure
+                    key={`${t.name}-${i}`}
+                    className={`flex flex-col rounded-2xl border border-border bg-card p-3 shadow-soft transition-all duration-500 sm:rounded-3xl sm:p-5 ${
+                      isCenter
+                        ? "z-10 scale-[1.06] ring-2 ring-primary shadow-lg"
+                        : "scale-[0.94] opacity-80"
+                    }`}
+                    style={{ width: `${100 / extended.length}%` }}
+                  >
+                    <img
+                      src={t.photo}
+                      alt={t.photoAlt}
+                      loading="lazy"
+                      className={`w-full rounded-xl object-cover sm:rounded-2xl ${
+                        isCenter ? "h-28 sm:h-44" : "h-24 sm:h-40"
+                      }`}
+                    />
+                    <span className="mt-2 flex gap-0.5 text-gold sm:mt-4">
+                      {Array.from({ length: 5 }).map((_, i) => (
+                        <Star
+                          key={i}
+                          className={`fill-current ${
+                            isCenter ? "h-3.5 w-3.5 sm:h-4 sm:w-4" : "h-3 w-3 sm:h-3.5 sm:w-3.5"
+                          }`}
+                        />
+                      ))}
                     </span>
-                    <span className="block text-[10px] leading-tight text-muted-foreground sm:text-xs">
-                      {t.place}
-                    </span>
-                  </span>
-                </figcaption>
-              </figure>
-            ))}
+                    <blockquote
+                      className={`mt-2 leading-relaxed text-foreground sm:mt-3 ${
+                        isCenter
+                          ? "text-xs sm:text-sm"
+                          : "line-clamp-3 text-[11px] sm:text-xs"
+                      }`}
+                    >
+                      {t.text}
+                    </blockquote>
+                    <figcaption className="mt-2 flex items-center gap-2 border-t border-border pt-2 sm:mt-4 sm:gap-3 sm:pt-4">
+                      <img
+                        src={t.avatar}
+                        alt={`Foto de perfil de ${t.name}`}
+                        loading="lazy"
+                        className={`shrink-0 rounded-full object-cover ring-2 ring-accent ${
+                          isCenter ? "h-8 w-8 sm:h-10 sm:w-10" : "h-7 w-7 sm:h-9 sm:w-9"
+                        }`}
+                      />
+                      <span className="min-w-0">
+                        <span className="block text-xs font-bold text-foreground sm:text-sm">
+                          {t.name}
+                        </span>
+                        <span className="block text-[10px] leading-tight text-muted-foreground sm:text-xs">
+                          {t.place}
+                        </span>
+                      </span>
+                    </figcaption>
+                  </figure>
+                );
+              })}
+            </div>
           </div>
 
-          <p className="mt-3 text-center text-xs text-muted-foreground sm:hidden">
+          <p className="mt-2 text-center text-xs text-muted-foreground sm:hidden">
             Deslizá hacia la izquierda para ver más
           </p>
         </div>
