@@ -60,6 +60,9 @@ function Index() {
       </div>
       <PainPoints />
       <Solution />
+      <Benefits />
+      <SocialProof />
+      <ForWho />
       <div ref={pricingRef}>
         <Pricing id="planes" />
       </div>
