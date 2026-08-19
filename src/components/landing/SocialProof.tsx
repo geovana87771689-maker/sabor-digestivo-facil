@@ -266,38 +266,38 @@ export function SocialProof() {
             onPointerDown={handlePointerDown}
             onPointerMove={handlePointerMove}
             onPointerUp={handlePointerUp}
-            className="flex snap-x snap-mandatory gap-4 overflow-x-auto sm:hidden"
+            className="flex snap-x snap-mandatory gap-3 overflow-x-auto sm:hidden"
             style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
           >
             {testimonials.map((t) => (
               <figure
                 key={t.name}
-                className="w-[85vw] shrink-0 snap-center rounded-3xl border border-border bg-card p-5 shadow-soft"
+                className="w-[30vw] min-w-[120px] shrink-0 snap-start rounded-2xl border border-border bg-card p-3 shadow-soft"
               >
                 <img
                   src={t.photo}
                   alt={t.photoAlt}
                   loading="lazy"
-                  className="h-44 w-full rounded-2xl object-cover"
+                  className="h-24 w-full rounded-xl object-cover"
                 />
-                <span className="mt-4 flex gap-0.5 text-gold">
+                <span className="mt-2 flex gap-0.5 text-gold">
                   {Array.from({ length: 5 }).map((_, i) => (
-                    <Star key={i} className="h-3.5 w-3.5 fill-current" />
+                    <Star key={i} className="h-3 w-3 fill-current" />
                   ))}
                 </span>
-                <blockquote className="mt-3 text-sm leading-relaxed text-foreground">
+                <blockquote className="mt-2 line-clamp-4 text-[11px] leading-relaxed text-foreground">
                   {t.text}
                 </blockquote>
-                <figcaption className="mt-4 flex items-center gap-3 border-t border-border pt-4">
+                <figcaption className="mt-2 flex items-center gap-2 border-t border-border pt-2">
                   <img
                     src={t.avatar}
                     alt={`Foto de perfil de ${t.name}`}
                     loading="lazy"
-                    className="h-10 w-10 shrink-0 rounded-full object-cover ring-2 ring-accent"
+                    className="h-7 w-7 shrink-0 rounded-full object-cover ring-2 ring-accent"
                   />
                   <span className="min-w-0">
-                    <span className="block text-sm font-bold text-foreground">{t.name}</span>
-                    <span className="block text-xs text-muted-foreground">{t.place}</span>
+                    <span className="block text-xs font-bold text-foreground">{t.name}</span>
+                    <span className="block text-[10px] leading-tight text-muted-foreground">{t.place}</span>
                   </span>
                 </figcaption>
               </figure>
