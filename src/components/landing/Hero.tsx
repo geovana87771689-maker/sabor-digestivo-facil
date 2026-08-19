@@ -22,9 +22,9 @@ export function Hero({ onCta, onSecondaryCta }: { onCta: () => void; onSecondary
         aria-hidden
         className="pointer-events-none absolute -top-32 -right-24 h-80 w-80 rounded-full bg-accent blur-3xl opacity-60"
       />
-      <div className="relative mx-auto max-w-6xl px-5 py-12 sm:py-20">
-        <div className="grid items-center gap-8 lg:grid-cols-2">
-          <div className="text-center lg:text-left">
+      <div className="relative mx-auto max-w-3xl px-5 py-12 sm:py-20">
+        <div className="flex flex-col gap-8">
+          <div className="text-center">
             <span className="inline-flex items-center gap-2 rounded-full border border-gold/50 bg-gold/15 px-4 py-1.5 text-[11px] font-semibold tracking-wide text-gold-foreground uppercase sm:text-xs">
               <BadgeCheck className="h-3.5 w-3.5 shrink-0" />
               Guía Culinaria &amp; Nutricional Premium · Protocolos GLP-1 / GIP
@@ -36,13 +36,13 @@ export function Hero({ onCta, onSecondaryCta }: { onCta: () => void; onSecondary
               sin pesadez, proteger tu músculo y aprovechar tu tratamiento
             </h1>
 
-            <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg lg:mx-0">
+            <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
               Recetas digestivas, altas en proteína y listas en 15 minutos. Diseñadas
               para quienes buscan sabor, confort y resultados reales sin batidos
               artificiales.
             </p>
 
-            <div className="mx-auto mt-6 flex w-full max-w-md flex-col gap-3 lg:mx-0 lg:max-w-none sm:flex-row sm:justify-center lg:justify-start">
+            <div className="mx-auto mt-6 flex w-full max-w-md flex-col gap-3 sm:flex-row sm:justify-center">
               <Button
                 size="lg"
                 onClick={onCta}
@@ -62,7 +62,7 @@ export function Hero({ onCta, onSecondaryCta }: { onCta: () => void; onSecondary
               </Button>
             </div>
 
-            <div className="mt-6 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs text-muted-foreground sm:text-sm lg:justify-start">
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs text-muted-foreground sm:text-sm">
               {trust.map((t) => (
                 <span key={t.label} className="inline-flex items-center gap-1.5">
                   <t.icon className="h-3.5 w-3.5 shrink-0 text-primary" />
@@ -72,21 +72,19 @@ export function Hero({ onCta, onSecondaryCta }: { onCta: () => void; onSecondary
             </div>
           </div>
 
-          <div className="lg:pl-4">
-            <ul className="flex flex-col gap-3">
-              {bullets.map((b) => (
-                <li
-                  key={b.text}
-                  className="rounded-2xl border border-border bg-card p-5 shadow-soft"
-                >
-                  <span className="text-2xl">{b.emoji}</span>
-                  <p className="mt-3 text-sm font-semibold text-foreground sm:text-base">
-                    {b.text}
-                  </p>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <ul className="flex flex-col gap-3">
+            {bullets.map((b) => (
+              <li
+                key={b.text}
+                className="rounded-2xl border border-border bg-card p-5 shadow-soft"
+              >
+                <span className="text-2xl">{b.emoji}</span>
+                <p className="mt-3 text-sm font-semibold text-foreground sm:text-base">
+                  {b.text}
+                </p>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>
