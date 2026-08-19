@@ -45,7 +45,7 @@ export function Solution() {
           El Método de Densidad Proteica Compacta: Nutrición Real en Bocados Pequeños
         </h2>
 
-        <div className="mt-10 grid gap-4 sm:grid-cols-3">
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {features.map((f) => (
             <article
               key={f.title}
