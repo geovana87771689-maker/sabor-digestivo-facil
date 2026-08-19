@@ -45,8 +45,8 @@ const tiers: Tier[] = [
     subtitle: "Estructura completa para consolidar el hábito proteico y digestivo.",
     highlight: "Beneficio clave: 14 días planificados + actualizaciones de por vida",
     features: [
-      "2 semanas de almuerzos planificados",
-      "Menú planificado día a día para 14 días",
+      "2 semanas de almuerzos y cenas planificadas",
+      "Menú planificado día a día para 14 días (almuerzo y janta)",
       "Guía anti-reflujo y cronograma de hidratación funcional",
       "Lista de compras categorizada para 2 semanas",
       "Actualizaciones de por vida del recetario",
