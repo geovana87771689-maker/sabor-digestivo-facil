@@ -61,7 +61,7 @@ export function Benefits() {
 
   useEffect(() => {
     if (isPaused) return;
-    const id = setInterval(next, 4000);
+    const id = setInterval(next, 2000);
     return () => clearInterval(id);
   }, [isPaused]);
 
