@@ -128,7 +128,7 @@ export function SocialProof() {
           {stats.map((s) => (
             <div key={s.label} className="text-center">
               <p className="text-2xl font-extrabold tracking-tight text-primary sm:text-3xl">
-                {s.value}
+                <AnimatedNumber value={s.value} />
               </p>
               <p className="mt-1 text-xs leading-snug text-muted-foreground sm:text-sm">
                 {s.label}
