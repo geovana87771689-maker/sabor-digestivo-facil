@@ -276,15 +276,10 @@ export function SocialProof() {
                         loading="lazy"
                         className="h-24 w-full rounded-xl object-cover sm:h-44 sm:rounded-2xl"
                       />
-                      <span className="mt-2 flex gap-0.5 text-gold sm:mt-4">
-                        {Array.from({ length: 5 }).map((_, i) => (
-                          <Star key={i} className="h-3 w-3 fill-current sm:h-4 sm:w-4" />
-                        ))}
-                      </span>
                       <blockquote className="mt-2 line-clamp-5 text-[11px] leading-relaxed text-foreground sm:mt-3 sm:text-sm">
                         {t.text}
                       </blockquote>
-                      <figcaption className="mt-auto flex items-center gap-2 border-t border-border pt-2 sm:mt-4 sm:gap-3 sm:pt-4">
+                      <figcaption className="mt-auto flex items-center gap-2 border-t border-border pt-2 sm:gap-3 sm:pt-4">
                         <img
                           src={t.avatar}
                           alt={`Foto de perfil de ${t.name}`}
@@ -298,8 +293,14 @@ export function SocialProof() {
                           <span className="block text-[10px] leading-tight text-muted-foreground sm:text-xs">
                             {t.place}
                           </span>
+                          <span className="mt-0.5 flex gap-0.5 text-gold">
+                            {Array.from({ length: 5 }).map((_, i) => (
+                              <Star key={i} className="h-3 w-3 fill-current sm:h-3.5 sm:w-3.5" />
+                            ))}
+                          </span>
                         </span>
                       </figcaption>
+
                     </figure>
                   </div>
                 );
