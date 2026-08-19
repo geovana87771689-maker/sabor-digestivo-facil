@@ -66,7 +66,7 @@ export function Benefits() {
     if (!section) return;
 
     const observer = new IntersectionObserver(
-      ([entry]) => setIsVisible(entry.isIntersecting),
+      (entries) => setIsVisible(entries[0]?.isIntersecting ?? false),
       { threshold: 0.3 }
     );
 
