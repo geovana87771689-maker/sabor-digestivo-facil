@@ -1,24 +1,68 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useEffect, useRef, useState } from "react";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
+import { AnnouncementBar } from "@/components/landing/AnnouncementBar";
+import { Hero } from "@/components/landing/Hero";
+import { PainPoints } from "@/components/landing/PainPoints";
+import { Solution } from "@/components/landing/Solution";
+import { Pricing } from "@/components/landing/Pricing";
+import { Guarantee } from "@/components/landing/Guarantee";
+import { Faq } from "@/components/landing/Faq";
+import { SiteFooter } from "@/components/landing/SiteFooter";
+import { StickyMobileCta } from "@/components/landing/StickyMobileCta";
+
+const TITLE = "Sabor & Balance · Recetas Proteicas y Digestivas GLP-1";
+const DESCRIPTION =
+  "Más de 100 recetas compactas, altas en proteína y fáciles de digerir, listas en 15 minutos. Guía digital en PDF con descarga inmediata.";
+
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: TITLE },
+      { name: "description", content: DESCRIPTION },
+      { property: "og:title", content: TITLE },
+      { property: "og:description", content: DESCRIPTION },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
+  const heroRef = useRef<HTMLDivElement | null>(null);
+  const pricingRef = useRef<HTMLDivElement | null>(null);
+  const [showSticky, setShowSticky] = useState(false);
+
+  useEffect(() => {
+    const el = heroRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setShowSticky(!entry.isIntersecting),
+      { threshold: 0 },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  const scrollToPricing = () =>
+    pricingRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <main className="min-h-screen bg-background">
+      <AnnouncementBar />
+      <div ref={heroRef}>
+        <Hero onCta={scrollToPricing} />
+      </div>
+      <PainPoints />
+      <Solution />
+      <div ref={pricingRef}>
+        <Pricing id="planes" />
+      </div>
+      <Guarantee />
+      <Faq />
+      <SiteFooter />
+      <StickyMobileCta visible={showSticky} onCta={scrollToPricing} />
+    </main>
   );
 }
