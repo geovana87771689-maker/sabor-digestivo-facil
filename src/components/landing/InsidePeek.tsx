@@ -91,7 +91,7 @@ export function InsidePeek() {
   const opacity = 1 - Math.min(1, progress * 0.9);
 
   return (
-    <section id="inside" className="bg-cream py-16 sm:py-20">
+    <section id="inside" className="bg-cream py-10 sm:py-12">
       <div className="mx-auto max-w-5xl px-5">
         <p className="text-center text-xs font-semibold tracking-[0.2em] text-emerald uppercase">
           Por dentro
@@ -104,7 +104,7 @@ export function InsidePeek() {
         </p>
 
         {/* Libro interactivo: arrastrá para pasar la página */}
-        <div className="relative mx-auto mt-10 max-w-md" style={{ perspective: "1600px" }}>
+        <div className="relative mx-auto mt-6 max-w-md" style={{ perspective: "1600px" }}>
           <div className="pointer-events-none absolute inset-x-8 top-6 -z-0 hidden h-full rotate-[-5deg] rounded-2xl bg-card shadow-soft sm:block" />
           <div className="pointer-events-none absolute inset-x-8 top-4 -z-0 hidden h-full rotate-[4deg] rounded-2xl bg-card shadow-soft sm:block" />
 
@@ -171,7 +171,7 @@ export function InsidePeek() {
           </div>
         </div>
 
-        <div className="mt-12 grid gap-4 sm:grid-cols-3">
+        <div className="mt-8 grid gap-4 sm:grid-cols-3">
           {highlights.map((h) => (
             <article key={h.title} className="rounded-2xl border border-border bg-card p-5 shadow-soft">
               <span className="inline-grid h-10 w-10 place-items-center rounded-xl bg-sage text-sage-foreground">

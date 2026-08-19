@@ -198,12 +198,12 @@ export function SocialProof() {
           ))}
         </div>
 
-        <h2 className="mx-auto mt-10 max-w-2xl text-center text-2xl font-extrabold tracking-tight text-foreground sm:text-4xl">
+        <h2 className="mx-auto mt-8 max-w-2xl text-center text-2xl font-extrabold tracking-tight text-foreground sm:text-4xl">
           Personas como tú que volvieron a disfrutar la comida
         </h2>
 
         <div
-          className="relative mx-auto mt-6 max-w-4xl touch-pan-y select-none overflow-hidden"
+          className="relative mx-auto mt-4 max-w-4xl touch-pan-y select-none overflow-hidden"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
           onPointerDown={handlePointerDown}

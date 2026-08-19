@@ -88,16 +88,16 @@ export function Benefits() {
         <p className="text-center text-xs font-semibold tracking-[0.2em] text-primary uppercase">
           Lo que cambia desde la primera semana
         </p>
-        <h2 className="mx-auto mt-2 max-w-3xl text-center text-2xl font-extrabold tracking-tight text-foreground sm:text-4xl">
+        <h2 className="mx-auto mt-1 max-w-3xl text-center text-2xl font-extrabold tracking-tight text-foreground sm:text-4xl">
           No es un recetario más: es tu manual diario para comer bien durante el protocolo
         </h2>
-        <p className="mx-auto mt-3 max-w-2xl text-center text-sm leading-relaxed text-muted-foreground sm:text-base">
+        <p className="mx-auto mt-2 max-w-2xl text-center text-sm leading-relaxed text-muted-foreground sm:text-base">
           Cada receta fue pensada para el estómago sensible, el apetito reducido y la agenda real
           de alguien que trabaja, cocina rápido y quiere seguir sintiéndose fuerte.
         </p>
 
         <div
-          className="mt-6"
+          className="mt-4"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
           onTouchStart={() => setIsPaused(true)}
