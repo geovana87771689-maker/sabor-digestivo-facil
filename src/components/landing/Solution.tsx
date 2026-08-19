@@ -1,4 +1,4 @@
-import { ChefHat, Clock, Download, Soup, TableProperties } from "lucide-react";
+import { ChefHat, Clock, Download, PieChart, Soup, TableProperties } from "lucide-react";
 
 const features = [
   {
