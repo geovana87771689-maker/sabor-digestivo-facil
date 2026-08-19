@@ -11,6 +11,7 @@ type Tier = {
   oldPrice?: string;
   note: string;
   subtitle: string;
+  highlight: string;
   features: string[];
   cta: string;
   featured?: boolean;
@@ -25,6 +26,7 @@ const tiers: Tier[] = [
     price: "$ 8.076,07 ARS",
     note: "Pago único",
     subtitle: "Ideal para probar el método y experimentar alivio digestivo inmediato.",
+    highlight: "Beneficio clave: alivio digestivo desde la primera semana",
     features: [
       "25 Recetas express anti-náusea (Desayunos, Almuerzos y Cenas)",
       "Guía de cocción rápida (Menos de 15 minutos)",
@@ -41,6 +43,7 @@ const tiers: Tier[] = [
     price: "$ 13.865,37 ARS",
     note: "Pago único",
     subtitle: "Estructura completa para consolidar el hábito proteico y digestivo.",
+    highlight: "Beneficio clave: 14 días planificados + actualizaciones de por vida",
     features: [
       "55 Recetas optimizadas de alta biodisponibilidad proteica",
       "Menú planificado día a día para 14 días",
@@ -60,6 +63,7 @@ const tiers: Tier[] = [
     note: "Descuento único: de $ 22.549,32 a $ 10.970,72 ARS · Pago único",
     subtitle:
       "La solución integral y definitiva para acompañar todo tu protocolo sin preocuparte por qué cocinar.",
+    highlight: "Beneficio clave: ahorras $ 11.578,60 ARS + 3 bonus y acceso vitalicio",
     features: [
       "Todo lo de los planes anteriores + Más de 100 Recetas Gourmet Exclusivas",
       "Planificador de menús completo para 45 días continuos (6 semanas)",
@@ -151,6 +155,16 @@ export function Pricing({ id }: { id: string }) {
                 </span>
               </div>
               <p className="mt-1 text-xs text-muted-foreground">{t.note}</p>
+
+              <p
+                className={
+                  t.featured
+                    ? "mt-4 rounded-xl bg-gold/20 px-4 py-3 text-sm font-bold text-gold-foreground"
+                    : "mt-4 rounded-xl bg-accent px-4 py-3 text-sm font-bold text-primary"
+                }
+              >
+                {t.highlight}
+              </p>
 
               <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{t.subtitle}</p>
 
