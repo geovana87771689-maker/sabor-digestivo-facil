@@ -119,6 +119,30 @@ const testimonials = [
     photo: dishTacos.url,
     photoAlt: "Tacos de pollo con pimientos, cebolla morada y frijoles",
   },
+  {
+    name: "Renata L.",
+    place: "Montevideo, Uruguay",
+    text: "Con el tratamiento me llenaba con dos bocados. Las porciones del recetario son chicas pero completas: como tranquila y llego a mi proteína del día sin sufrir.",
+    avatar: avatarRenata.url,
+    photo: dishSalad.url,
+    photoAlt: "Bowl de ensalada verde con pollo grillado y tomates cherry",
+  },
+  {
+    name: "Valentina C.",
+    place: "Santiago, Chile",
+    text: "Pensé que iba a ser comida triste de dieta y me encontré con platos con sabor de verdad. Mi marido come lo mismo que yo y ni se da cuenta.",
+    avatar: avatarValentina.url,
+    photo: dishCurry.url,
+    photoAlt: "Bowl de curry cremoso con arroz y cilantro fresco",
+  },
+  {
+    name: "Matías D.",
+    place: "Córdoba, Argentina",
+    text: "Bajé de peso pero estaba perdiendo fuerza en el gimnasio. Sumé las recetas altas en proteína y en un mes volví a levantar lo mismo de antes.",
+    avatar: avatarMatias.url,
+    photo: dishKale.url,
+    photoAlt: "Plato con cerdo grillado en fetas y kale salteado",
+  },
 ];
 
 export function SocialProof() {
