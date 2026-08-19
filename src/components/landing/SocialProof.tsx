@@ -9,6 +9,12 @@ import dishChicken from "@/assets/WhatsApp_Image_2026-08-19_at_15.55.42_3-2.jpeg
 import dishSteak from "@/assets/WhatsApp_Image_2026-08-19_at_15.55.41.jpeg.asset.json";
 import dishTacos from "@/assets/WhatsApp_Image_2026-08-19_at_15.55.42_1.jpeg.asset.json";
 import dishToast from "@/assets/WhatsApp_Image_2026-08-19_at_15.55.42_2.jpeg.asset.json";
+import avatarRenata from "@/assets/Renata_1.jpg.asset.json";
+import avatarValentina from "@/assets/images.png.asset.json";
+import avatarMatias from "@/assets/WhatsApp_Image_2026-03-30_at_17.39.59.jpeg.asset.json";
+import dishSalad from "@/assets/WhatsApp_Image_2026-08-19_at_15.55.41_1-2.jpeg.asset.json";
+import dishCurry from "@/assets/WhatsApp_Image_2026-08-19_at_15.55.41_2.jpeg.asset.json";
+import dishKale from "@/assets/WhatsApp_Image_2026-08-19_at_15.55.42.jpeg.asset.json";
 
 function AnimatedNumber({ value, duration = 2500 }: { value: string; duration?: number }) {
   const [display, setDisplay] = useState(() => value.replace(/[0-9]/g, "0"));
@@ -112,6 +118,30 @@ const testimonials = [
     avatar: avatarJuliana.url,
     photo: dishTacos.url,
     photoAlt: "Tacos de pollo con pimientos, cebolla morada y frijoles",
+  },
+  {
+    name: "Renata L.",
+    place: "Montevideo, Uruguay",
+    text: "Con el tratamiento me llenaba con dos bocados. Las porciones del recetario son chicas pero completas: como tranquila y llego a mi proteína del día sin sufrir.",
+    avatar: avatarRenata.url,
+    photo: dishSalad.url,
+    photoAlt: "Bowl de ensalada verde con pollo grillado y tomates cherry",
+  },
+  {
+    name: "Valentina C.",
+    place: "Santiago, Chile",
+    text: "Pensé que iba a ser comida triste de dieta y me encontré con platos con sabor de verdad. Mi marido come lo mismo que yo y ni se da cuenta.",
+    avatar: avatarValentina.url,
+    photo: dishCurry.url,
+    photoAlt: "Bowl de curry cremoso con arroz y cilantro fresco",
+  },
+  {
+    name: "Matías D.",
+    place: "Córdoba, Argentina",
+    text: "Bajé de peso pero estaba perdiendo fuerza en el gimnasio. Sumé las recetas altas en proteína y en un mes volví a levantar lo mismo de antes.",
+    avatar: avatarMatias.url,
+    photo: dishKale.url,
+    photoAlt: "Plato con cerdo grillado en fetas y kale salteado",
   },
 ];
 
