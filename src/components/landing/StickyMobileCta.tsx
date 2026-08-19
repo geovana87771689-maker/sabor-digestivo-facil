@@ -9,7 +9,7 @@ export function StickyMobileCta({ visible, onCta }: { visible: boolean; onCta: (
     >
       <div className="flex items-center gap-3">
         <div className="min-w-0">
-          <p className="truncate text-xs font-semibold text-foreground">Desde R$ 49,90</p>
+          <p className="truncate text-xs font-semibold text-foreground">Desde $ 8.076,07 ARS</p>
           <p className="truncate text-[11px] text-muted-foreground">Pago único · PDF inmediato</p>
         </div>
         <Button onClick={onCta} className="ml-auto shrink-0 rounded-full px-6 font-bold">
