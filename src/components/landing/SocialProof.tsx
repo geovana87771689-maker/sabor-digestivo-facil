@@ -229,7 +229,8 @@ export function SocialProof() {
                 isTransitioning ? "transition-transform duration-700" : ""
               }`}
               style={{
-                transform: `translateX(calc(-${currentIndex} * 100% / ${extended.length}))`,
+                width: `${extended.length * 100}%`,
+                transform: `translateX(-${(currentIndex * 100) / extended.length}%)`,
                 transitionTimingFunction: "cubic-bezier(0.22, 1, 0.36, 1)",
               }}
             >
@@ -239,7 +240,8 @@ export function SocialProof() {
                 return (
                   <div
                     key={`${t.name}-${i}`}
-                    className="relative flex-[0_0_100%]"
+                    className="relative shrink-0"
+                    style={{ width: `${100 / extended.length}%` }}
                   >
                     {/* Left peek card */}
                     <figure className="absolute inset-y-0 left-0 z-10 w-[30%] overflow-hidden rounded-2xl border border-border bg-card p-1.5 shadow-md opacity-75 sm:w-[40%] sm:rounded-3xl sm:p-3">
