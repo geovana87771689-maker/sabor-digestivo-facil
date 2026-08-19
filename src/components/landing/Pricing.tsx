@@ -17,7 +17,7 @@ const tiers: Tier[] = [
   {
     name: "Plan Inicio Rápido",
     duration: "1 Semana",
-    price: "R$ 49,90",
+    price: "$ 8.076,07 ARS",
     note: "Pago único",
     subtitle: "Ideal para probar el método y experimentar alivio digestivo inmediato.",
     features: [
@@ -31,7 +31,7 @@ const tiers: Tier[] = [
   {
     name: "Plan Adaptación Total",
     duration: "2 Semanas",
-    price: "R$ 79,90",
+    price: "$ 13.865,37 ARS",
     note: "Pago único",
     subtitle: "Estructura completa para consolidar el hábito proteico y digestivo.",
     features: [
@@ -46,9 +46,9 @@ const tiers: Tier[] = [
   {
     name: "Programa Maestro & Transformación",
     duration: "1 Mes y Medio · 6 Semanas",
-    price: "R$ 97,00",
-    oldPrice: "R$ 149,90",
-    note: "Pago único · Más del 40% de descuento relativo",
+    price: "$ 10.970,72 ARS",
+    oldPrice: "$ 22.549,32 ARS",
+    note: "Descuento único: de $ 22.549,32 a $ 10.970,72 ARS · Pago único",
     subtitle:
       "La solución integral y definitiva para acompañar todo tu protocolo sin preocuparte por qué cocinar.",
     features: [
@@ -76,14 +76,18 @@ export function Pricing({ id }: { id: string }) {
           Pago único, sin suscripciones. Descarga inmediata en PDF tras la confirmación.
         </p>
 
-        <div className="mt-10 grid items-start gap-6 lg:grid-cols-3">
+        <p className="mt-6 text-center text-xs text-muted-foreground lg:hidden">
+          Deslizá hacia el costado para ver todos los planes →
+        </p>
+
+        <div className="-mx-5 mt-4 flex snap-x snap-mandatory items-start gap-4 overflow-x-auto px-5 pb-4 lg:mx-0 lg:mt-10 lg:grid lg:grid-cols-3 lg:gap-6 lg:overflow-visible lg:pb-0">
           {tiers.map((t) => (
             <article
               key={t.name}
               className={
                 t.featured
-                  ? "relative order-first rounded-3xl border-2 border-primary bg-card p-7 shadow-editorial lg:order-last"
-                  : "rounded-3xl border border-border bg-card p-7 shadow-soft"
+                  ? "relative order-first w-[85vw] shrink-0 snap-center rounded-3xl border-2 border-primary bg-card p-7 shadow-editorial sm:w-[380px] lg:order-last lg:w-auto"
+                  : "w-[85vw] shrink-0 snap-center rounded-3xl border border-border bg-card p-7 shadow-soft sm:w-[380px] lg:w-auto"
               }
             >
               {t.featured && (

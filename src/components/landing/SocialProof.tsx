@@ -80,11 +80,15 @@ export function SocialProof() {
           </span>
         </div>
 
-        <div className="mt-10 grid gap-4 sm:grid-cols-2">
+        <p className="mt-6 text-center text-xs text-muted-foreground sm:hidden">
+          Deslizá hacia el costado para ver más testimonios →
+        </p>
+
+        <div className="-mx-5 mt-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-4 sm:mx-0 sm:mt-10 sm:grid sm:grid-cols-2 sm:overflow-visible sm:pb-0">
           {testimonials.map((t) => (
             <figure
               key={t.name}
-              className="relative rounded-2xl border border-border bg-card p-6 shadow-soft transition-shadow hover:shadow-editorial"
+              className="relative w-[85vw] shrink-0 snap-center rounded-2xl border sm:w-auto border-border bg-card p-6 shadow-soft transition-shadow hover:shadow-editorial"
             >
               <Quote className="h-6 w-6 text-primary/40" aria-hidden />
               <blockquote className="mt-3 text-sm leading-relaxed text-foreground sm:text-base">
