@@ -50,8 +50,40 @@ const highlights = [
 
 export function InsidePeek() {
   const [active, setActive] = useState(0);
+  const [drag, setDrag] = useState(0);
+  const [flipping, setFlipping] = useState<0 | 1 | -1>(0);
+  const startX = useRef<number | null>(null);
   const total = pages.length;
-  const go = (dir: number) => setActive((i) => (i + dir + total) % total);
+
+  const go = (dir: number) => {
+    if (flipping) return;
+    setFlipping(dir as 1 | -1);
+    setDrag(0);
+    window.setTimeout(() => {
+      setActive((i) => (i + dir + total) % total);
+      setFlipping(0);
+    }, 500);
+  };
+
+  const onDown = (x: number) => {
+    if (flipping) return;
+    startX.current = x;
+  };
+  const onMove = (x: number) => {
+    if (startX.current === null) return;
+    setDrag(Math.max(-140, Math.min(140, x - startX.current)));
+  };
+  const onUp = () => {
+    if (startX.current === null) return;
+    const d = drag;
+    startX.current = null;
+    setDrag(0);
+    if (d < -50) go(1);
+    else if (d > 50) go(-1);
+  };
+
+  const angle = flipping ? flipping * -160 : (drag / 140) * -40;
+  const origin = (flipping ?? 0) > 0 || drag < 0 ? "left center" : "right center";
 
   return (
     <section className="bg-cream py-16 sm:py-20">
@@ -66,12 +98,38 @@ export function InsidePeek() {
           Diseñado con la claridad de una revista gourmet y la precisión de una guía clínica.
         </p>
 
-        {/* Mockup en capas + carrusel */}
-        <div className="relative mx-auto mt-10 max-w-md">
+        {/* Libro interactivo: arrastrá para pasar la página */}
+        <div className="relative mx-auto mt-10 max-w-md" style={{ perspective: "1600px" }}>
           <div className="pointer-events-none absolute inset-x-8 top-6 -z-0 hidden h-full rotate-[-5deg] rounded-2xl bg-card shadow-soft sm:block" />
           <div className="pointer-events-none absolute inset-x-8 top-4 -z-0 hidden h-full rotate-[4deg] rounded-2xl bg-card shadow-soft sm:block" />
 
-          <div className="relative overflow-hidden rounded-2xl border border-border bg-card shadow-editorial">
+          {/* página siguiente (debajo) */}
+          <div className="absolute inset-0 overflow-hidden rounded-2xl border border-border bg-card shadow-soft">
+            <img
+              src={pages[(active + 1) % total]!.src}
+              alt=""
+              aria-hidden
+              loading="lazy"
+              className="h-full w-full object-cover"
+            />
+          </div>
+
+          <div
+            role="group"
+            aria-label="Vista previa del e-book, arrastrá para pasar la página"
+            onPointerDown={(e) => onDown(e.clientX)}
+            onPointerMove={(e) => onMove(e.clientX)}
+            onPointerUp={onUp}
+            onPointerCancel={onUp}
+            onPointerLeave={onUp}
+            className="relative cursor-grab touch-pan-y overflow-hidden rounded-2xl border border-border bg-card shadow-editorial select-none active:cursor-grabbing"
+            style={{
+              transform: `rotateY(${angle}deg)`,
+              transformOrigin: origin,
+              transformStyle: "preserve-3d",
+              transition: startX.current === null ? "transform 500ms ease-in-out" : "none",
+            }}
+          >
             <img
               key={pages[active]!.src}
               src={pages[active]!.src}
@@ -79,33 +137,19 @@ export function InsidePeek() {
               loading="lazy"
               width={1024}
               height={1408}
+              draggable={false}
               className="h-auto w-full"
+            />
+            {/* sombra de pliegue */}
+            <div
+              className="pointer-events-none absolute inset-0 bg-gradient-to-l from-black/25 to-transparent"
+              style={{ opacity: Math.min(1, Math.abs(angle) / 60) }}
             />
             {/* Borrão de curiosidade */}
             <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-card via-card/85 to-transparent backdrop-blur-[3px]" />
             <p className="absolute inset-x-0 bottom-4 text-center text-sm font-semibold text-foreground">
               Y 95+ creaciones más listas para descargar...
             </p>
-          </div>
-
-          <div className="mt-4 flex items-center justify-between gap-3">
-            <button
-              type="button"
-              onClick={() => go(-1)}
-              aria-label="Página anterior"
-              className="grid h-10 w-10 place-items-center rounded-full border border-border bg-card text-foreground transition hover:bg-accent"
-            >
-              <ChevronLeft className="h-5 w-5" />
-            </button>
-            <p className="text-sm font-medium text-muted-foreground">{pages[active]!.label}</p>
-            <button
-              type="button"
-              onClick={() => go(1)}
-              aria-label="Página siguiente"
-              className="grid h-10 w-10 place-items-center rounded-full border border-border bg-card text-foreground transition hover:bg-accent"
-            >
-              <ChevronRight className="h-5 w-5" />
-            </button>
           </div>
 
           <div className="mt-4 flex justify-center gap-2">
@@ -125,6 +169,7 @@ export function InsidePeek() {
             ))}
           </div>
         </div>
+
 
         <div className="mt-12 grid gap-4 sm:grid-cols-3">
           {highlights.map((h) => (
