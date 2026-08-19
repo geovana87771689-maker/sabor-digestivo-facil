@@ -197,15 +197,6 @@ export function SocialProof() {
 
   return (
     <section className="bg-cream py-10 sm:py-12">
-      <style
-        dangerouslySetInnerHTML={{
-          __html: `
-            .testimonial-stack {
-              width: calc(${extended.length} * 100%);
-            }
-          `,
-        }}
-      />
       <div className="mx-auto max-w-6xl px-5">
         <div className="grid gap-4 rounded-3xl border border-border bg-card p-6 shadow-soft sm:grid-cols-4 sm:p-8">
           {stats.map((s) => (
@@ -234,11 +225,11 @@ export function SocialProof() {
         >
           <div className="relative h-[22rem] overflow-hidden rounded-3xl py-2 sm:h-[28rem] sm:py-4">
             <div
-              className={`testimonial-stack flex h-full ${
+              className={`flex h-full ${
                 isTransitioning ? "transition-transform duration-700" : ""
               }`}
               style={{
-                transform: `translateX(-${currentIndex * 100}%)`,
+                transform: `translateX(calc(-${currentIndex} * 100% / ${extended.length}))`,
                 transitionTimingFunction: "cubic-bezier(0.22, 1, 0.36, 1)",
               }}
             >
@@ -248,7 +239,7 @@ export function SocialProof() {
                 return (
                   <div
                     key={`${t.name}-${i}`}
-                    className="relative w-full shrink-0"
+                    className="relative flex-[0_0_100%]"
                   >
                     {/* Left peek card */}
                     <figure className="absolute inset-y-0 left-0 z-10 w-[30%] overflow-hidden rounded-2xl border border-border bg-card p-1.5 shadow-md opacity-75 sm:w-[40%] sm:rounded-3xl sm:p-3">
@@ -281,14 +272,14 @@ export function SocialProof() {
                         src={t.photo}
                         alt={t.photoAlt}
                         loading="lazy"
-                        className="h-28 w-full rounded-xl object-cover sm:h-44 sm:rounded-2xl"
+                        className="h-24 w-full rounded-xl object-cover sm:h-44 sm:rounded-2xl"
                       />
                       <span className="mt-2 flex gap-0.5 text-gold sm:mt-4">
                         {Array.from({ length: 5 }).map((_, i) => (
                           <Star key={i} className="h-3 w-3 fill-current sm:h-4 sm:w-4" />
                         ))}
                       </span>
-                      <blockquote className="mt-2 text-[11px] leading-relaxed text-foreground sm:mt-3 sm:text-sm">
+                      <blockquote className="mt-2 line-clamp-5 text-[11px] leading-relaxed text-foreground sm:mt-3 sm:text-sm">
                         {t.text}
                       </blockquote>
                       <figcaption className="mt-auto flex items-center gap-2 border-t border-border pt-2 sm:mt-4 sm:gap-3 sm:pt-4">
