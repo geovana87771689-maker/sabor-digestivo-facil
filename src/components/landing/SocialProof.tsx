@@ -244,7 +244,7 @@ export function SocialProof() {
           Personas como tú que volvieron a disfrutar la comida
         </h2>
         <div
-          className="relative mx-auto mt-6 max-w-5xl select-none"
+          className="relative mx-auto mt-6 max-w-4xl select-none"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
           onTouchStart={() => setIsPaused(true)}
@@ -252,9 +252,9 @@ export function SocialProof() {
           onPointerDown={handlePointerDown}
           onPointerUp={handlePointerUp}
         >
-          <div className="overflow-hidden rounded-3xl py-4 sm:py-6">
+          <div className="relative h-96 overflow-hidden rounded-3xl py-4 sm:h-[28rem] sm:py-6">
             <div
-              className={`testimonial-track flex ${
+              className={`testimonial-stack flex h-full ${
                 isTransitioning ? "transition-transform duration-700" : ""
               }`}
               style={{
@@ -268,64 +268,112 @@ export function SocialProof() {
                 return (
                   <div
                     key={`${t.name}-${i}`}
-                    className="w-full shrink-0 px-1 sm:px-2"
+                    className="relative w-full shrink-0 px-4 sm:px-6"
                   >
-                    <div className="flex items-stretch justify-center gap-2 sm:gap-4">
-                      {/* Left peek */}
-                      <figure className="hidden w-[15%] shrink-0 overflow-hidden rounded-2xl opacity-40 shadow-sm sm:block">
+                    {/* Left peek card */}
+                    <figure className="testimonial-card absolute inset-y-0 left-4 right-auto z-10 w-[85%] overflow-hidden rounded-2xl border border-border bg-card p-3 shadow-md opacity-75 sm:left-6 sm:w-[70%] sm:rounded-3xl sm:p-4">
+                      <div className="flex h-full flex-col">
                         <img
                           src={prev.photo}
                           alt=""
                           loading="lazy"
-                          className="h-full w-full object-cover"
+                          className="h-32 w-full rounded-xl object-cover opacity-90 sm:h-44 sm:rounded-2xl"
                         />
-                      </figure>
-
-                      {/* Center featured */}
-                      <figure className="relative z-10 flex w-[85%] shrink-0 flex-col overflow-hidden rounded-2xl border border-border bg-card p-3 shadow-xl ring-2 ring-primary sm:w-[70%] sm:rounded-3xl sm:p-5">
-                        <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary/0 via-primary to-primary/0 opacity-60" />
-                        <img
-                          src={t.photo}
-                          alt={t.photoAlt}
-                          loading="lazy"
-                          className="h-28 w-full rounded-xl object-cover sm:h-44 sm:rounded-2xl"
-                        />
-                        <span className="mt-2 flex gap-0.5 text-gold sm:mt-4">
-                          {Array.from({ length: 5 }).map((_, i) => (
-                            <Star key={i} className="h-3.5 w-3.5 fill-current sm:h-4 sm:w-4" />
-                          ))}
-                        </span>
-                        <blockquote className="mt-2 text-xs leading-relaxed text-foreground sm:mt-3 sm:text-sm">
-                          {t.text}
-                        </blockquote>
-                        <figcaption className="mt-auto flex items-center gap-2 border-t border-border pt-2 sm:mt-4 sm:gap-3 sm:pt-4">
-                          <img
-                            src={t.avatar}
-                            alt={`Foto de perfil de ${t.name}`}
-                            loading="lazy"
-                            className="h-8 w-8 shrink-0 rounded-full object-cover ring-2 ring-accent sm:h-10 sm:w-10"
-                          />
-                          <span className="min-w-0">
-                            <span className="block text-xs font-bold text-foreground sm:text-sm">
-                              {t.name}
-                            </span>
-                            <span className="block text-[10px] leading-tight text-muted-foreground sm:text-xs">
-                              {t.place}
-                            </span>
+                        <div className="mt-2 flex flex-1 flex-col justify-end sm:mt-3">
+                          <span className="flex gap-0.5 text-gold">
+                            {Array.from({ length: 5 }).map((_, i) => (
+                              <Star key={i} className="h-3 w-3 fill-current sm:h-3.5 sm:w-3.5" />
+                            ))}
                           </span>
-                        </figcaption>
-                      </figure>
+                          <div className="mt-2 flex items-center gap-2 sm:mt-3 sm:gap-3">
+                            <img
+                              src={prev.avatar}
+                              alt=""
+                              loading="lazy"
+                              className="h-7 w-7 shrink-0 rounded-full object-cover ring-2 ring-accent sm:h-9 sm:w-9"
+                            />
+                            <span className="min-w-0">
+                              <span className="block text-[11px] font-bold text-foreground sm:text-xs">
+                                {prev.name}
+                              </span>
+                              <span className="block text-[9px] leading-tight text-muted-foreground sm:text-[10px]">
+                                {prev.place}
+                              </span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </figure>
 
-                      {/* Right peek */}
-                      <figure className="hidden w-[15%] shrink-0 overflow-hidden rounded-2xl opacity-40 shadow-sm sm:block">
+                    {/* Right peek card */}
+                    <figure className="testimonial-card absolute inset-y-0 right-4 left-auto z-10 w-[85%] overflow-hidden rounded-2xl border border-border bg-card p-3 shadow-md opacity-75 sm:right-6 sm:w-[70%] sm:rounded-3xl sm:p-4">
+                      <div className="flex h-full flex-col">
                         <img
                           src={next.photo}
                           alt=""
                           loading="lazy"
-                          className="h-full w-full object-cover"
+                          className="h-32 w-full rounded-xl object-cover opacity-90 sm:h-44 sm:rounded-2xl"
                         />
-                      </figure>
-                    </div>
+                        <div className="mt-2 flex flex-1 flex-col justify-end sm:mt-3">
+                          <span className="flex gap-0.5 text-gold">
+                            {Array.from({ length: 5 }).map((_, i) => (
+                              <Star key={i} className="h-3 w-3 fill-current sm:h-3.5 sm:w-3.5" />
+                            ))}
+                          </span>
+                          <div className="mt-2 flex items-center gap-2 sm:mt-3 sm:gap-3">
+                            <img
+                              src={next.avatar}
+                              alt=""
+                              loading="lazy"
+                              className="h-7 w-7 shrink-0 rounded-full object-cover ring-2 ring-accent sm:h-9 sm:w-9"
+                            />
+                            <span className="min-w-0">
+                              <span className="block text-[11px] font-bold text-foreground sm:text-xs">
+                                {next.name}
+                              </span>
+                              <span className="block text-[9px] leading-tight text-muted-foreground sm:text-[10px]">
+                                {next.place}
+                              </span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </figure>
+
+                    {/* Center featured card */}
+                    <figure className="testimonial-card absolute inset-y-0 left-1/2 z-20 w-[85%] overflow-hidden rounded-2xl border border-border bg-card p-3 shadow-xl ring-2 ring-primary sm:w-[70%] sm:rounded-3xl sm:p-5">
+                      <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary/0 via-primary to-primary/0 opacity-60" />
+                      <img
+                        src={t.photo}
+                        alt={t.photoAlt}
+                        loading="lazy"
+                        className="h-32 w-full rounded-xl object-cover sm:h-44 sm:rounded-2xl"
+                      />
+                      <span className="mt-2 flex gap-0.5 text-gold sm:mt-4">
+                        {Array.from({ length: 5 }).map((_, i) => (
+                          <Star key={i} className="h-3.5 w-3.5 fill-current sm:h-4 sm:w-4" />
+                        ))}
+                      </span>
+                      <blockquote className="mt-2 text-xs leading-relaxed text-foreground sm:mt-3 sm:text-sm">
+                        {t.text}
+                      </blockquote>
+                      <figcaption className="mt-auto flex items-center gap-2 border-t border-border pt-2 sm:mt-4 sm:gap-3 sm:pt-4">
+                        <img
+                          src={t.avatar}
+                          alt={`Foto de perfil de ${t.name}`}
+                          loading="lazy"
+                          className="h-8 w-8 shrink-0 rounded-full object-cover ring-2 ring-accent sm:h-10 sm:w-10"
+                        />
+                        <span className="min-w-0">
+                          <span className="block text-xs font-bold text-foreground sm:text-sm">
+                            {t.name}
+                          </span>
+                        </span>
+                        <span className="block text-[10px] leading-tight text-muted-foreground sm:text-xs">
+                          {t.place}
+                        </span>
+                      </figcaption>
+                    </figure>
                   </div>
                 );
               })}
