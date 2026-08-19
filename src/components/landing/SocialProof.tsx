@@ -1,4 +1,5 @@
-import { Quote, Star } from "lucide-react";
+import { useState } from "react";
+import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 
 import avatarMariana from "@/assets/Erica_Perfil.jpeg.asset.json";
 import avatarAndres from "@/assets/richard.jpg.asset.json";
@@ -52,6 +53,11 @@ const testimonials = [
 ];
 
 export function SocialProof() {
+  const [active, setActive] = useState(0);
+  const t = testimonials[active]!;
+  const go = (dir: number) =>
+    setActive((i) => (i + dir + testimonials.length) % testimonials.length);
+
   return (
     <section className="bg-cream py-16 sm:py-20">
       <div className="mx-auto max-w-6xl px-5">
@@ -80,32 +86,51 @@ export function SocialProof() {
           </span>
         </div>
 
-        <p className="mt-6 text-center text-xs text-muted-foreground sm:hidden">
-          Deslizá hacia el costado para ver más testimonios →
-        </p>
-
-        <div className="-mx-5 mt-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-4 sm:mx-0 sm:mt-10 sm:grid sm:grid-cols-2 sm:overflow-visible sm:pb-0">
-          {testimonials.map((t) => (
-            <figure
-              key={t.name}
-              className="relative w-[85vw] shrink-0 snap-center rounded-2xl border sm:w-auto border-border bg-card p-6 shadow-soft transition-shadow hover:shadow-editorial"
+        <div className="mx-auto mt-8 flex max-w-md items-center justify-center gap-3">
+          {testimonials.map((item, i) => (
+            <button
+              key={item.name}
+              type="button"
+              onClick={() => setActive(i)}
+              aria-label={`Ver testimonio de ${item.name}`}
+              aria-pressed={active === i}
+              className={
+                active === i
+                  ? "rounded-full ring-2 ring-primary ring-offset-2 ring-offset-cream transition"
+                  : "rounded-full opacity-60 transition hover:opacity-100"
+              }
             >
-              <Quote className="h-6 w-6 text-primary/40" aria-hidden />
-              <blockquote className="mt-3 text-sm leading-relaxed text-foreground sm:text-base">
-                “{t.text}”
-              </blockquote>
-
               <img
-                src={t.photo}
-                alt={t.photoAlt}
+                src={item.avatar}
+                alt={`Foto de perfil de ${item.name}`}
                 loading="lazy"
-                className="mt-4 h-44 w-full rounded-xl object-cover sm:h-52"
+                className="h-12 w-12 rounded-full object-cover"
               />
+            </button>
+          ))}
+        </div>
 
+        <figure className="mx-auto mt-6 max-w-3xl rounded-3xl border border-border bg-card p-6 shadow-soft sm:p-8">
+          <div className="grid gap-6 sm:grid-cols-2 sm:items-center">
+            <img
+              src={t.photo}
+              alt={t.photoAlt}
+              loading="lazy"
+              className="h-52 w-full rounded-2xl object-cover sm:h-64"
+            />
+            <div>
+              <span className="flex gap-0.5 text-gold">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Star key={i} className="h-4 w-4 fill-current" />
+                ))}
+              </span>
+              <blockquote className="mt-3 text-sm leading-relaxed text-foreground sm:text-base">
+                {t.text}
+              </blockquote>
               <figcaption className="mt-5 flex items-center gap-3">
                 <img
                   src={t.avatar}
-                  alt={`Foto de perfil de ${t.name}`}
+                  alt=""
                   loading="lazy"
                   className="h-10 w-10 shrink-0 rounded-full object-cover ring-2 ring-accent"
                 />
@@ -113,15 +138,41 @@ export function SocialProof() {
                   <span className="block text-sm font-bold text-foreground">{t.name}</span>
                   <span className="block text-xs text-muted-foreground">{t.place}</span>
                 </span>
-                <span className="ml-auto flex gap-0.5 text-gold">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Star key={i} className="h-3.5 w-3.5 fill-current" />
-                  ))}
-                </span>
               </figcaption>
-            </figure>
-          ))}
-        </div>
+            </div>
+          </div>
+
+          <div className="mt-6 flex items-center justify-center gap-4">
+            <button
+              type="button"
+              onClick={() => go(-1)}
+              aria-label="Testimonio anterior"
+              className="rounded-full border border-border p-2 text-foreground transition-colors hover:bg-accent"
+            >
+              <ChevronLeft className="h-4 w-4" />
+            </button>
+            <div className="flex gap-1.5">
+              {testimonials.map((item, i) => (
+                <span
+                  key={item.name}
+                  className={
+                    active === i
+                      ? "h-2 w-6 rounded-full bg-primary transition-all"
+                      : "h-2 w-2 rounded-full bg-border transition-all"
+                  }
+                />
+              ))}
+            </div>
+            <button
+              type="button"
+              onClick={() => go(1)}
+              aria-label="Testimonio siguiente"
+              className="rounded-full border border-border p-2 text-foreground transition-colors hover:bg-accent"
+            >
+              <ChevronRight className="h-4 w-4" />
+            </button>
+          </div>
+        </figure>
 
         <p className="mx-auto mt-8 max-w-2xl text-center text-[11px] leading-relaxed text-muted-foreground">
           Testimonios individuales de lectores; las experiencias varían de una persona a otra.
