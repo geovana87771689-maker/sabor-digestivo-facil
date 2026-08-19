@@ -42,11 +42,11 @@ function AnimatedNumber({ value, duration = 1500 }: { value: string; duration?: 
             const newTokens = [...tokens];
             for (const nt of numericTokens) {
               if (nt.ranges.length === 1) {
-                const current = Math.round(nt.ranges[0] * eased);
+                const current = Math.round((nt.ranges[0] ?? 0) * eased);
                 newTokens[nt.i] = String(current);
               } else {
                 newTokens[nt.i] = nt.ranges
-                  .map((n) => Math.round(n * eased))
+                  .map((n) => Math.round((n ?? 0) * eased))
                   .join("-");
               }
             }
