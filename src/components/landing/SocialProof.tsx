@@ -209,7 +209,7 @@ export function SocialProof() {
           ))}
         </div>
 
-        <h2 className="mx-auto mt-14 max-w-2xl text-center text-2xl font-extrabold tracking-tight text-foreground sm:text-4xl">
+        <h2 className="mx-auto mt-10 max-w-2xl text-center text-2xl font-extrabold tracking-tight text-foreground sm:text-4xl">
           Personas como tú que volvieron a disfrutar la comida
         </h2>
         <div className="mt-4 flex items-center justify-center gap-1.5 text-gold">
@@ -221,7 +221,7 @@ export function SocialProof() {
           </span>
         </div>
 
-        <div className="relative mx-auto mt-8 max-w-5xl">
+        <div className="relative mx-auto mt-6 max-w-5xl">
           <div className="hidden sm:flex items-center justify-between gap-4">
             {visibleTestimonials.map((t, idx) => (
               <figure
@@ -341,7 +341,7 @@ export function SocialProof() {
           </div>
         </div>
 
-        <p className="mx-auto mt-8 max-w-2xl text-center text-[11px] leading-relaxed text-muted-foreground">
+        <p className="mx-auto mt-6 max-w-2xl text-center text-[11px] leading-relaxed text-muted-foreground">
           Testimonios individuales de lectores; las experiencias varían de una persona a otra.
           Este material es educativo y culinario, y no sustituye la orientación de tu médico o
           nutricionista.
