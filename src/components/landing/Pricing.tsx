@@ -19,6 +19,8 @@ type Tier = {
 const tiers: Tier[] = [
   {
     name: "Plan Inicio Rápido",
+    short: "1 Semana",
+    icon: Zap,
     duration: "1 Semana",
     price: "$ 8.076,07 ARS",
     note: "Pago único",
