@@ -79,7 +79,7 @@ const tiers: Tier[] = [
 ];
 
 export function Pricing({ id }: { id: string }) {
-  const [active, setActive] = useState(2);
+  const [active, setActive] = useState(1);
 
   return (
     <section id={id} className="scroll-mt-4 bg-background py-10 sm:py-12">
