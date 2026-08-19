@@ -164,14 +164,13 @@ export function SocialProof() {
 
   // Loop infinito: ao chegar no terceiro conjunto, salta para o segundo sem animação.
   useEffect(() => {
-    if (currentIndex >= 2 * count) {
-      const timer = setTimeout(() => {
-        setIsTransitioning(false);
-        setCurrentIndex(count);
-        requestAnimationFrame(() => setIsTransitioning(true));
-      }, 500);
-      return () => clearTimeout(timer);
-    }
+    if (currentIndex < 2 * count) return;
+    const timer = setTimeout(() => {
+      setIsTransitioning(false);
+      setCurrentIndex(count);
+      requestAnimationFrame(() => setIsTransitioning(true));
+    }, 500);
+    return () => clearTimeout(timer);
   }, [currentIndex, count]);
 
   const handlePointerDown = (e: React.PointerEvent) => {
