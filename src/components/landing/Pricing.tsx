@@ -143,6 +143,10 @@ export function Pricing({ id }: { id: string }) {
               <p className="mt-1 text-xs font-semibold tracking-wide text-primary uppercase">
                 {t.duration}
               </p>
+              <p className="mt-2 inline-flex items-center gap-1.5 text-[11px] font-semibold text-muted-foreground">
+                <ShieldCheck className="h-3.5 w-3.5 shrink-0 text-gold" />
+                Garantía incondicional
+              </p>
 
               <div className="mt-5 flex flex-wrap items-end gap-2">
                 {t.oldPrice && (
