@@ -265,7 +265,7 @@ export function SocialProof() {
                     className="relative w-full shrink-0 px-4 sm:px-6"
                   >
                     {/* Left peek card */}
-                    <figure className="testimonial-card absolute inset-y-0 left-4 right-auto z-10 w-[85%] overflow-hidden rounded-2xl border border-border bg-card p-3 shadow-md opacity-75 sm:left-6 sm:w-[70%] sm:rounded-3xl sm:p-4">
+                    <figure className="testimonial-card left-card absolute inset-y-0 left-4 right-auto z-10 w-[85%] overflow-hidden rounded-2xl border border-border bg-card p-3 shadow-md opacity-75 sm:left-6 sm:w-[70%] sm:rounded-3xl sm:p-4">
                       <div className="flex h-full flex-col">
                         <img
                           src={prev.photo}
@@ -300,7 +300,7 @@ export function SocialProof() {
                     </figure>
 
                     {/* Right peek card */}
-                    <figure className="testimonial-card absolute inset-y-0 right-4 left-auto z-10 w-[85%] overflow-hidden rounded-2xl border border-border bg-card p-3 shadow-md opacity-75 sm:right-6 sm:w-[70%] sm:rounded-3xl sm:p-4">
+                    <figure className="testimonial-card right-card absolute inset-y-0 right-4 left-auto z-10 w-[85%] overflow-hidden rounded-2xl border border-border bg-card p-3 shadow-md opacity-75 sm:right-6 sm:w-[70%] sm:rounded-3xl sm:p-4">
                       <div className="flex h-full flex-col">
                         <img
                           src={next.photo}
@@ -335,7 +335,7 @@ export function SocialProof() {
                     </figure>
 
                     {/* Center featured card */}
-                    <figure className="testimonial-card absolute inset-y-0 left-1/2 z-20 w-[85%] overflow-hidden rounded-2xl border border-border bg-card p-3 shadow-xl ring-2 ring-primary sm:w-[70%] sm:rounded-3xl sm:p-5">
+                    <figure className="testimonial-card center-card absolute inset-y-0 left-1/2 z-20 w-[85%] overflow-hidden rounded-2xl border border-border bg-card p-3 shadow-xl ring-2 ring-primary sm:w-[70%] sm:rounded-3xl sm:p-5">
                       <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary/0 via-primary to-primary/0 opacity-60" />
                       <img
                         src={t.photo}
