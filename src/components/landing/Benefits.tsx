@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 import {
-  ChevronLeft,
-  ChevronRight,
   Clock,
   Dumbbell,
   HeartPulse,
@@ -60,7 +58,6 @@ export function Benefits() {
   const [isPaused, setIsPaused] = useState(false);
 
   const next = () => setActive((i) => (i + 1) % benefits.length);
-  const prev = () => setActive((i) => (i - 1 + benefits.length) % benefits.length);
 
   useEffect(() => {
     if (isPaused) return;
@@ -69,7 +66,6 @@ export function Benefits() {
   }, [isPaused]);
 
   const current = benefits[active]!;
-  const Icon = current.icon;
 
   return (
     <section className="bg-background py-16 sm:py-20">
@@ -95,56 +91,39 @@ export function Benefits() {
           <div className="relative overflow-hidden rounded-2xl border border-border bg-card p-7 shadow-soft sm:p-10">
             <div className="absolute left-0 top-0 h-1 w-full bg-gradient-to-r from-primary via-sage-400 to-emerald-400" />
 
+            <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+              {benefits.map((b, i) => {
+                const Icon = b.icon;
+                const isActive = i === active;
+                return (
+                  <button
+                    key={b.title}
+                    type="button"
+                    onClick={() => setActive(i)}
+                    className={`inline-grid h-10 w-10 place-items-center rounded-xl transition-all sm:h-11 sm:w-11 ${
+                      isActive
+                        ? "scale-110 bg-primary text-primary-foreground shadow-md"
+                        : "bg-accent text-muted-foreground hover:bg-muted hover:text-foreground"
+                    }`}
+                    aria-label={`Ver beneficio: ${b.title}`}
+                    aria-current={isActive ? "true" : undefined}
+                  >
+                    <Icon className="h-4 w-4 sm:h-5 sm:w-5" />
+                  </button>
+                );
+              })}
+            </div>
+
             <div
               key={current.title}
-              className="animate-fade-in text-center"
+              className="animate-fade-in mt-7 text-center"
             >
-              <span className="mx-auto inline-grid h-14 w-14 place-items-center rounded-2xl bg-accent text-accent-foreground">
-                <Icon className="h-6 w-6" />
-              </span>
-              <h3 className="mt-5 text-lg font-bold text-foreground sm:text-xl">
+              <h3 className="text-lg font-bold text-foreground sm:text-xl">
                 {current.title}
               </h3>
               <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
                 {current.text}
               </p>
-            </div>
-
-            <div className="mt-6 flex items-center justify-center gap-4">
-              <button
-                type="button"
-                onClick={prev}
-                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border bg-background text-foreground transition-colors hover:bg-accent"
-                aria-label="Beneficio anterior"
-              >
-                <ChevronLeft className="h-4 w-4" />
-              </button>
-
-              <div className="flex items-center gap-2">
-                {benefits.map((b, i) => (
-                  <button
-                    key={b.title}
-                    type="button"
-                    onClick={() => setActive(i)}
-                    className={`h-2 rounded-full transition-all ${
-                      i === active
-                        ? "w-6 bg-primary"
-                        : "w-2 bg-border hover:bg-muted-foreground/40"
-                    }`}
-                    aria-label={`Ver beneficio ${i + 1}`}
-                    aria-current={i === active ? "true" : undefined}
-                  />
-                ))}
-              </div>
-
-              <button
-                type="button"
-                onClick={next}
-                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border bg-background text-foreground transition-colors hover:bg-accent"
-                aria-label="Siguiente beneficio"
-              >
-                <ChevronRight className="h-4 w-4" />
-              </button>
             </div>
           </div>
         </div>
