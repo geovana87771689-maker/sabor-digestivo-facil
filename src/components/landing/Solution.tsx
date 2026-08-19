@@ -1,4 +1,4 @@
-import { ChefHat, Soup, TableProperties } from "lucide-react";
+import { ChefHat, Clock, Download, Soup, TableProperties } from "lucide-react";
 
 const features = [
   {
@@ -16,7 +16,23 @@ const features = [
     title: "Tabla de compatibilidad digestiva",
     text: "Combinaciones pensadas para evitar la fermentación gástrica.",
   },
+  {
+    icon: Clock,
+    title: "Fichas Nutricionales Claras",
+    text: "Conteo exacto de gramos de proteína (25g a 35g) y calorías por porción para un control diario sin complicaciones.",
+  },
+  {
+    icon: Clock,
+    title: "Preparaciones en Menos de 20 Minutos",
+    text: "Pasos directos y simplificados pensados para el ritmo de vida moderno, sin ingredientes difíciles de encontrar.",
+  },
+  {
+    icon: Download,
+    title: "Formato Digital Interactivo (PDF)",
+    text: "Índice con enlaces directos para navegar fácilmente desde tu móvil, tablet o computadora mientras cocinas.",
+  },
 ];
+
 
 export function Solution() {
   return (
