@@ -62,7 +62,7 @@ function AnimatedNumber({ value, duration = 2500 }: { value: string; duration?: 
           requestAnimationFrame(step);
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.1 }
     );
 
     observer.observe(el);
