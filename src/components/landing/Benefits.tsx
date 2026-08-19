@@ -68,7 +68,7 @@ export function Benefits() {
     return () => clearInterval(id);
   }, [isPaused]);
 
-  const current = benefits[active];
+  const current = benefits[active]!;
   const Icon = current.icon;
 
   return (
