@@ -35,6 +35,7 @@ export const Route = createFileRoute("/")({
 function Index() {
   const heroRef = useRef<HTMLDivElement | null>(null);
   const pricingRef = useRef<HTMLDivElement | null>(null);
+  const solutionRef = useRef<HTMLDivElement | null>(null);
   const [showSticky, setShowSticky] = useState(false);
 
   useEffect(() => {
@@ -51,15 +52,19 @@ function Index() {
 
   const scrollToPricing = () =>
     pricingRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  const scrollToSolution = () =>
+    solutionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
 
   return (
     <main className="min-h-screen bg-background">
       <AnnouncementBar />
       <div ref={heroRef}>
-        <Hero onCta={scrollToPricing} />
+        <Hero onCta={scrollToPricing} onSecondaryCta={scrollToSolution} />
       </div>
       <PainPoints />
-      <Solution />
+      <div ref={solutionRef}>
+        <Solution />
+      </div>
       <Benefits />
       <SocialProof />
       <ForWho />
@@ -73,3 +78,4 @@ function Index() {
     </main>
   );
 }
+
