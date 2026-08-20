@@ -93,9 +93,6 @@ export function Pricing({ id }: { id: string }) {
         <h2 className="text-center text-2xl font-extrabold tracking-tight text-foreground sm:text-4xl">
           Elige tu plan y comienza hoy mismo
         </h2>
-        <p className="mx-auto mt-3 max-w-xl text-center text-sm text-muted-foreground sm:text-base">
-          Pago único, sin suscripciones. Descarga inmediata en PDF tras la confirmación.
-        </p>
 
         <div
           role="tablist"
