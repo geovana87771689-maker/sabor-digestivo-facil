@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Check, Crown, Sparkles, Zap, CalendarDays, ShieldCheck, type LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
+const CHECKOUT_URL = "https://vittacoreus.mycartpanda.com/checkout/212216905:1";
+
 type Tier = {
   name: string;
   short: string;
