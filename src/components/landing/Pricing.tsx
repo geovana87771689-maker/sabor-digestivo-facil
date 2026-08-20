@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Check, Crown, Sparkles, Zap, CalendarDays, ShieldCheck, type LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { CARTPANDA_CHECKOUT_URL } from "@/lib/checkout";
 
 type Tier = {
   name: string;
@@ -189,7 +190,7 @@ export function Pricing({ id }: { id: string }) {
                 variant={t.featured ? "default" : "secondary"}
                 className="mt-7 h-auto w-full rounded-full px-6 py-4 text-sm leading-snug font-bold whitespace-normal"
               >
-                <a href="#">{t.cta}</a>
+                <a href={CARTPANDA_CHECKOUT_URL}>{t.cta}</a>
               </Button>
 
               <p className="mt-3 text-center text-[11px] text-muted-foreground">

@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { CARTPANDA_CHECKOUT_URL } from "@/lib/checkout";
 
 export function StickyMobileCta({ visible, onCta }: { visible: boolean; onCta: () => void }) {
   return (
@@ -12,8 +13,8 @@ export function StickyMobileCta({ visible, onCta }: { visible: boolean; onCta: (
           <p className="truncate text-xs font-semibold text-foreground">Desde € 9,99</p>
           <p className="truncate text-[11px] text-muted-foreground">Pago único · PDF inmediato</p>
         </div>
-        <Button onClick={onCta} className="ml-auto shrink-0 rounded-full px-6 font-bold">
-          Ver Ofertas
+        <Button asChild className="ml-auto shrink-0 rounded-full px-6 font-bold">
+          <a href={CARTPANDA_CHECKOUT_URL}>Ver Ofertas</a>
         </Button>
       </div>
     </div>
