@@ -28,7 +28,7 @@ export function Hero({ onCta, onSecondaryCta }: { onCta: () => void; onSecondary
           <div className="text-center">
             <span className="inline-flex items-center gap-2 rounded-full border border-gold/50 bg-gold/15 px-4 py-1.5 text-[11px] font-semibold tracking-wide text-gold-foreground uppercase sm:text-xs">
               <BadgeCheck className="h-3.5 w-3.5 shrink-0" />
-              Guía Culinaria &amp; Nutricional Premium · Protocolos GLP-1 / GIP
+              Guía Culinaria &amp; Nutricional Premium
             </span>
 
             <h1 className="mt-5 text-[28px] leading-[1.12] font-extrabold tracking-tight text-foreground sm:text-5xl">
