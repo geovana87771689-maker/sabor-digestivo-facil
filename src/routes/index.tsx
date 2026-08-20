@@ -76,7 +76,9 @@ function Index() {
       <Faq />
       <SiteFooter />
       <StickyMobileCta visible={showSticky} onCta={scrollToPricing} />
+      <FloatingCart onCta={scrollToPricing} />
     </main>
+
   );
 }
 
