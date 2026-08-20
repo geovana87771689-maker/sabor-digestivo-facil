@@ -232,9 +232,11 @@
 /* Compact the bottom legal/footer bar */
 #cpd-dock .cpd-badge,
 #cpd-dock .cpd-container {
+  position: static !important;
   padding: 8px 12px !important;
   font-size: 11px !important;
   line-height: 1.35 !important;
+  text-align: center !important;
 }
 
 #cpd-dock #cp-advertising-disclaimer,
@@ -243,6 +245,7 @@
 #cpd-dock a[href*="advertising-media-policy"] {
   display: none !important;
 }
+
 
 
 
