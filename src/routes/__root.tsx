@@ -127,6 +127,32 @@ function RootShell({ children }: { children: ReactNode }) {
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
+  useEffect(() => {
+    let dock = document.getElementById("cpd-dock");
+    if (!dock) {
+      dock = document.createElement("div");
+      dock.id = "cpd-dock";
+      document.body.appendChild(dock);
+    }
+
+    const moveBlocks = () => {
+      document.body.querySelectorAll<HTMLElement>(":scope > [id^='cpd-']").forEach((el) => {
+        if (el.id !== "cpd-dock") dock!.appendChild(el);
+      });
+      document.body.style.paddingBottom = `${dock!.offsetHeight + 16}px`;
+    };
+
+    moveBlocks();
+    const observer = new MutationObserver(moveBlocks);
+    observer.observe(document.body, { childList: true });
+    const interval = window.setInterval(moveBlocks, 1000);
+
+    return () => {
+      observer.disconnect();
+      window.clearInterval(interval);
+    };
+  }, []);
+
   return (
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
@@ -134,3 +160,4 @@ function RootComponent() {
     </QueryClientProvider>
   );
 }
+
