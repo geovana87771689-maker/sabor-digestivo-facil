@@ -1,6 +1,5 @@
 import { ArrowDown, BadgeCheck, Download, ShieldCheck, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { CARTPANDA_CHECKOUT_URL } from "@/lib/checkout";
 
 const bullets = [
   { emoji: "🛡️", text: "25g - 35g de proteína pura por porción compacta" },
