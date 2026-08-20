@@ -15,6 +15,7 @@ type Tier = {
   highlight: string;
   features: string[];
   cta: string;
+  checkoutUrl: string;
   featured?: boolean;
 };
 
@@ -36,6 +37,7 @@ const tiers: Tier[] = [
       "Formato PDF interactivo para móvil y tablet",
     ],
     cta: "Comenzar Plan de 1 Semana",
+    checkoutUrl: "https://vittacoreus.mycartpanda.com/checkout/212216961:1",
   },
   {
     name: "Plan Integral · 5 Semanas Completas",
@@ -58,6 +60,7 @@ const tiers: Tier[] = [
       "Acceso Inmediato y Vitalicio: Descarga en PDF de alta resolución con actualizaciones incluidas.",
     ],
     cta: "Adquirir Programa Completo de 5 Semanas (Acceso Total)",
+    checkoutUrl: "https://vittacoreus.mycartpanda.com/checkout/212216905:1",
     featured: true,
   },
   {
@@ -78,6 +81,7 @@ const tiers: Tier[] = [
       "Actualizaciones de por vida del recetario",
     ],
     cta: "Elegir Plan de 2 Semanas",
+    checkoutUrl: "https://vittacoreus.mycartpanda.com/checkout/212216962:1",
   },
 ];
 
@@ -190,7 +194,7 @@ export function Pricing({ id }: { id: string }) {
                 variant={t.featured ? "default" : "secondary"}
                 className="mt-7 h-auto w-full rounded-full px-6 py-4 text-sm leading-snug font-bold whitespace-normal"
               >
-                <a href={CARTPANDA_CHECKOUT_URL}>{t.cta}</a>
+                <a href={t.checkoutUrl}>{t.cta}</a>
               </Button>
 
               <p className="mt-3 text-center text-[11px] text-muted-foreground">
