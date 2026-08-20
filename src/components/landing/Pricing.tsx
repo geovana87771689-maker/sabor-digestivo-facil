@@ -48,7 +48,7 @@ const tiers: Tier[] = [
     note: "Pago único · 52% OFF",
     subtitle:
       "La solución integral y definitiva para acompañar todo tu protocolo sin preocuparte por qué cocinar.",
-    highlight: "Beneficio clave: ahorras € 20 + acceso vitalicio",
+    highlight: "Beneficio clave: ahorras € 20,00 (paga € 17,99 en vez de € 37,99) + acceso vitalicio",
     features: [
       "Protocolo Completo de 5 Semanas: Desayuno, almuerzo y cena 100% planificados para cubrir todo tu primer ciclo sin pensar qué comer.",
       "Colección Completa de 100 Recetas Gourmet: Alta densidad proteica (25g+ por porción) en porciones reducidas, ideales para la saciedad temprana.",
