@@ -12,6 +12,8 @@ import { Pricing } from "@/components/landing/Pricing";
 import { Faq } from "@/components/landing/Faq";
 import { SiteFooter } from "@/components/landing/SiteFooter";
 import { StickyMobileCta } from "@/components/landing/StickyMobileCta";
+import { FloatingCart } from "@/components/landing/FloatingCart";
+
 
 const TITLE = "Sabor & Balance · Recetas Proteicas y Digestivas GLP-1";
 const DESCRIPTION =
@@ -74,7 +76,9 @@ function Index() {
       <Faq />
       <SiteFooter />
       <StickyMobileCta visible={showSticky} onCta={scrollToPricing} />
+      <FloatingCart onCta={scrollToPricing} />
     </main>
+
   );
 }
 
