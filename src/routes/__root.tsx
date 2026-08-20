@@ -96,6 +96,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
     ],
+    scripts: [
+      {
+        src: "https://assets.mycartpanda.com/cartx-ecomm-ui-assets/js/cpsales.js",
+        type: "text/javascript",
+      },
+    ],
   }),
 
   shellComponent: RootShell,
