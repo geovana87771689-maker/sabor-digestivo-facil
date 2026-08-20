@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { CARTPANDA_CHECKOUT_URL } from "@/lib/checkout";
 
 export function StickyMobileCta({ visible, onCta }: { visible: boolean; onCta: () => void }) {
   return (
