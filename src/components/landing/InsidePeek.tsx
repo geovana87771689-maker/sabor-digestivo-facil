@@ -1,10 +1,10 @@
 import { useRef, useState } from "react";
 import { Hand, LayoutList, Camera } from "lucide-react";
 
-import peek1 from "@/assets/peek-1.jpg.asset.json";
-import peek2 from "@/assets/peek-2-new.jpg.asset.json";
-import peek3 from "@/assets/peek-3-new.jpg.asset.json";
-import peek4 from "@/assets/peek-4-new.jpg.asset.json";
+const peek1 = { url: "/img/peek-1.jpg" };
+const peek2 = { url: "/img/peek-2-new.jpg" };
+const peek3 = { url: "/img/peek-3-new.jpg" };
+const peek4 = { url: "/img/peek-4-new.jpg" };
 
 const pages = [
   {
