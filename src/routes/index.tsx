@@ -11,7 +11,7 @@ import { ForWho } from "@/components/landing/ForWho";
 import { Pricing } from "@/components/landing/Pricing";
 import { Faq } from "@/components/landing/Faq";
 import { SiteFooter } from "@/components/landing/SiteFooter";
-import { StickyMobileCta } from "@/components/landing/StickyMobileCta";
+import { FloatingCart } from "@/components/landing/FloatingCart";
 
 const TITLE = "Sabor & Balance · Recetas Proteicas y Digestivas GLP-1";
 const DESCRIPTION =
