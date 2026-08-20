@@ -55,14 +55,12 @@ export function Hero({ onCta, onSecondaryCta }: { onCta: () => void; onSecondary
 
             <div className="mx-auto mt-6 flex w-full max-w-md flex-col gap-3 sm:flex-row sm:justify-center">
               <Button
-                asChild
                 size="lg"
+                onClick={onCta}
                 className="h-auto w-full rounded-full px-8 py-4 text-base font-bold shadow-editorial sm:w-auto"
               >
-                <a href={CARTPANDA_CHECKOUT_URL}>
-                  Quiero la guía ahora
-                  <ArrowDown className="ml-1 h-4 w-4" />
-                </a>
+                Ver ofertas
+                <ArrowDown className="ml-1 h-4 w-4" />
               </Button>
               <Button
                 size="lg"
