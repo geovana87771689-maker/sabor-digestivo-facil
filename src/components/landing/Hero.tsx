@@ -37,6 +37,16 @@ export function Hero({ onCta, onSecondaryCta }: { onCta: () => void; onSecondary
               sin pesadez, proteger tu músculo y aprovechar tu tratamiento
             </h1>
 
+            <img
+              src="/img/hero-mesa.jpg"
+              alt="Mujer sonriente en su cocina con una mesa llena de platos altos en proteína y la guía Sabor & Balance"
+              width={1024}
+              height={1024}
+              className="mx-auto mt-6 aspect-[4/3] w-full max-w-xl rounded-3xl object-cover shadow-editorial"
+            />
+
+
+
             <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
               Recetas digestivas, altas en proteína y listas en 15 minutos. Diseñadas
               para quienes buscan sabor, confort y resultados reales sin batidos
