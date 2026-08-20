@@ -3,20 +3,25 @@ import { Star } from "lucide-react";
 
 import { useIsMobile } from "@/hooks/use-mobile";
 
-import avatarMariana from "@/assets/Erica_Perfil.jpeg.asset.json";
-import avatarAndres from "@/assets/richard.jpg.asset.json";
-import avatarCarolina from "@/assets/WhatsApp-Image-2022-02-18-at-08.52.06.jpeg.asset.json";
-import avatarJuliana from "@/assets/mulher-negra-carol-figueiredo-cabelo-natural-20231127160756.webp.asset.json";
-import dishChicken from "@/assets/WhatsApp_Image_2026-08-19_at_15.55.42_3-2.jpeg.asset.json";
-import dishSteak from "@/assets/WhatsApp_Image_2026-08-19_at_15.55.41.jpeg.asset.json";
-import dishTacos from "@/assets/WhatsApp_Image_2026-08-19_at_15.55.42_1.jpeg.asset.json";
-import dishToast from "@/assets/WhatsApp_Image_2026-08-19_at_15.55.42_2.jpeg.asset.json";
-import avatarRenata from "@/assets/Renata_1.jpg.asset.json";
-import avatarValentina from "@/assets/images.png.asset.json";
-import avatarMatias from "@/assets/WhatsApp_Image_2026-03-30_at_17.39.59.jpeg.asset.json";
-import dishSalad from "@/assets/WhatsApp_Image_2026-08-19_at_15.55.41_1-2.jpeg.asset.json";
-import dishCurry from "@/assets/WhatsApp_Image_2026-08-19_at_15.55.41_2.jpeg.asset.json";
-import dishKale from "@/assets/WhatsApp_Image_2026-08-19_at_15.55.42.jpeg.asset.json";
+const U = (id: string, w = 800) =>
+  `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`;
+
+const avatarMariana = { url: U("photo-1494790108377-be9c29b29330", 200) };
+const avatarAndres = { url: U("photo-1500648767791-00dcc994a43e", 200) };
+const avatarCarolina = { url: U("photo-1544005313-94ddf0286df2", 200) };
+const avatarJuliana = { url: U("photo-1531123897727-8f129e1688ce", 200) };
+const avatarRenata = { url: U("photo-1517841905240-472988babdf9", 200) };
+const avatarValentina = { url: U("photo-1487412720507-e7ab37603c6f", 200) };
+const avatarMatias = { url: U("photo-1472099645785-5658abf4ff4e", 200) };
+
+const dishChicken = { url: U("photo-1490645935967-10de6ba17061") };
+const dishSteak = { url: U("photo-1504674900247-0877df9cc836") };
+const dishTacos = { url: U("photo-1565299624946-b28f40a0ae38") };
+const dishToast = { url: U("photo-1484723091739-30a097e8f929") };
+const dishSalad = { url: U("photo-1512621776951-a57141f2eefd") };
+const dishCurry = { url: U("photo-1455619452474-d2be8b1e70cd") };
+const dishKale = { url: U("photo-1467003909585-2f8a72700288") };
+
 
 function AnimatedNumber({ value, duration = 2500 }: { value: string; duration?: number }) {
   const [display, setDisplay] = useState(() => value.replace(/[0-9]/g, "0"));
