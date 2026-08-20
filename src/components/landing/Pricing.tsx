@@ -91,7 +91,7 @@ export function Pricing({ id }: { id: string }) {
     <section id={id} className="scroll-mt-4 bg-background py-10 sm:py-12">
       <div className="mx-auto max-w-6xl px-5">
         <h2 className="text-center text-2xl font-extrabold tracking-tight text-foreground sm:text-4xl">
-          Elige tu plan y comienza hoy mismo
+          Elige el plan que tenga sentido para ti y comienza hoy
         </h2>
 
         <div
