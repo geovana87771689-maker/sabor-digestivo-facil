@@ -15,9 +15,10 @@ import { StickyMobileCta } from "@/components/landing/StickyMobileCta";
 import { FloatingCart } from "@/components/landing/FloatingCart";
 
 
-const TITLE = "Sabor & Balance · Recetas Proteicas y Digestivas GLP-1";
+const TITLE = "Sabor & Balance · Recetas Proteicas de Fácil Digestión";
 const DESCRIPTION =
   "Más de 100 recetas compactas, altas en proteína y fáciles de digerir, listas en 15 minutos. Guía digital en PDF con descarga inmediata.";
+const OG_IMAGE = "https://sabor-digestivo-facil.lovable.app/og-image.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -27,7 +28,11 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESCRIPTION },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: OG_IMAGE },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: OG_IMAGE },
     ],
   }),
   component: Index,

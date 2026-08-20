@@ -1,7 +1,7 @@
 import { Check, X } from "lucide-react";
 
 const forYou = [
-  "Estás en un protocolo GLP-1 / GIP y el apetito bajó mucho.",
+  "Tu apetito bajó mucho y necesitas platos más ligeros pero nutritivos.",
   "Sientes náuseas o pesadez con los platos grandes de siempre.",
   "Quieres cuidar tu masa muscular y tu firmeza durante el proceso.",
   "Cocinas con poco tiempo y necesitas ideas resueltas en 15 minutos.",
