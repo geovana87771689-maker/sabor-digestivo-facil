@@ -14,29 +14,6 @@ import { SiteFooter } from "@/components/landing/SiteFooter";
 import { StickyMobileCta } from "@/components/landing/StickyMobileCta";
 import { FloatingCart } from "@/components/landing/FloatingCart";
 
-
-const TITLE = "Sabor & Balance · Recetas Proteicas de Fácil Digestión";
-const DESCRIPTION =
-  "Más de 100 recetas compactas, altas en proteína y fáciles de digerir, listas en 15 minutos. Guía digital en PDF con descarga inmediata.";
-const OG_IMAGE = "https://sabor-digestivo-facil.lovable.app/og-image.jpg";
-
-export const Route = createFileRoute("/")({
- import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useRef, useState } from "react";
-
-import { AnnouncementBar } from "@/components/landing/AnnouncementBar";
-import { Hero } from "@/components/landing/Hero";
-import { PainPoints } from "@/components/landing/PainPoints";
-import { InsidePeek } from "@/components/landing/InsidePeek";
-import { Benefits } from "@/components/landing/Benefits";
-import { SocialProof } from "@/components/landing/SocialProof";
-import { ForWho } from "@/components/landing/ForWho";
-import { Pricing } from "@/components/landing/Pricing";
-import { Faq } from "@/components/landing/Faq";
-import { SiteFooter } from "@/components/landing/SiteFooter";
-import { StickyMobileCta } from "@/components/landing/StickyMobileCta";
-import { FloatingCart } from "@/components/landing/FloatingCart";
-
 const TITLE = "Sabor & Balance · Recetas Proteicas de Fácil Digestión";
 const DESCRIPTION =
   "Más de 100 recetas compactas, altas en proteína y fáciles de digerir, listas en 15 minutos. Guía digital en PDF con descarga inmediata.";
@@ -74,7 +51,7 @@ function Index() {
   const solutionRef = useRef<HTMLDivElement | null>(null);
   const [showSticky, setShowSticky] = useState(false);
 
-  // Script complementar que anexa UTMs dinamicamente em qualquer clique de link do checkout
+  // Anexa UTMs dinamicamente em qualquer clique de link do checkout
   useEffect(() => {
     const handleLinkClicks = (e: MouseEvent) => {
       const target = (e.target as HTMLElement).closest("a");
@@ -92,59 +69,8 @@ function Index() {
     };
 
     document.addEventListener("click", handleLinkClicks);
-    return () => {
-      document.removeEventListener("click", handleLinkClicks);
-    };
+    return () => document.removeEventListener("click", handleLinkClicks);
   }, []);
-
-  useEffect(() => {
-    const el = heroRef.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setShowSticky(!entry.isIntersecting);
-      },
-      { threshold: 0.1 }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-
-  const scrollToPricing = () => {
-    pricingRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  return (
-    <div className="min-h-screen bg-background text-foreground">
-      <AnnouncementBar />
-      <div ref={heroRef}>
-        <Hero onCtaClick={scrollToPricing} />
-      </div>
-      <PainPoints />
-      <div ref={solutionRef}>
-        <InsidePeek />
-      </div>
-      <Benefits />
-      <SocialProof />
-      <ForWho />
-      <div ref={pricingRef}>
-        <Pricing />
-      </div>
-      <Faq />
-      <SiteFooter />
-      <StickyMobileCta isVisible={showSticky} onCtaClick={scrollToPricing} />
-      <FloatingCart onCtaClick={scrollToPricing} />
-    </div>
-  );
-}
-  component: Index,
-});
-
-function Index() {
-  const heroRef = useRef<HTMLDivElement | null>(null);
-  const pricingRef = useRef<HTMLDivElement | null>(null);
-  const solutionRef = useRef<HTMLDivElement | null>(null);
-  const [showSticky, setShowSticky] = useState(false);
 
   useEffect(() => {
     const el = heroRef.current;
@@ -173,7 +99,6 @@ function Index() {
         <InsidePeek />
       </div>
       <PainPoints />
-
       <Benefits />
       <SocialProof />
       <ForWho />
@@ -185,7 +110,5 @@ function Index() {
       <StickyMobileCta visible={showSticky} onCta={scrollToPricing} />
       <FloatingCart onCta={scrollToPricing} />
     </main>
-
   );
 }
-
