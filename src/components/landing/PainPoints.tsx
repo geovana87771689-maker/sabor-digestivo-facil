@@ -3,22 +3,22 @@ import { Moon, Repeat, Salad, TrendingDown } from "lucide-react";
 const cards = [
   {
     icon: Salad,
-    title: "Hiporexia y Náuseas al Ver Platos Grandes",
-    text: "Porciones voluminosas tradicionales que provocan rechazo inmediato en los primeros días del ciclo.",
+    title: "Poco Apetito y Malestar con Platos Grandes",
+    text: "Raciones voluminosas tradicionales que provocan rechazo inmediato al sentarte a la mesa.",
   },
   {
     icon: TrendingDown,
-    title: "El Riesgo de la Pérdida de Masa Magra",
-    text: "Comer insuficiente proteína por falta de apetito compromete el tono muscular y la firmeza.",
+    title: "Riesgo de Pérdida de Masa Muscular",
+    text: "Comer poca proteína por falta de apetito compromete el tono y la firmeza.",
   },
   {
     icon: Moon,
-    title: "Digestión Lenta y Reflujo Nocturno",
-    text: "Preparaciones grasas o mal combinadas que tardan horas en vaciarse y arruinan el descanso.",
+    title: "Digestión Lenta y Pesadez Nocturna",
+    text: "Preparaciones grasas o mal combinadas que tardan horas en digerirse y arruinan tu descanso.",
   },
   {
     icon: Repeat,
-    title: "Monotonía Extrema de Shakes y Huevos",
+    title: "Monotonía de Batidos y Huevos",
     text: "Cansancio de consumir siempre lo mismo por falta de opciones adaptadas.",
   },
 ];
