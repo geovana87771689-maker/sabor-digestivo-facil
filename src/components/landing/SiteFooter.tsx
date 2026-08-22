@@ -7,9 +7,15 @@ export function SiteFooter() {
         <p className="text-base font-bold tracking-tight">Sabor &amp; Balance</p>
 
         <p className="mx-auto mt-5 max-w-2xl text-xs leading-relaxed text-slate-deep-foreground/70">
+          Este producto no sustituye el asesoramiento médico profesional. Consulta siempre a
+          un médico o dietista-nutricionista colegiado para cualquier decisión relativa a tu
+          salud o alimentación.
+        </p>
+
+        <p className="mx-auto mt-3 max-w-2xl text-xs leading-relaxed text-slate-deep-foreground/70">
           Descargo de Responsabilidad: La información contenida en este sitio web y en las guías
           digitales tiene fines exclusivamente informativos y culinarios. No constituye
-          asesoramiento médico, diagnóstico ni prescripción de tratamientos. Los resultados
+          asesoramiento médico, diagnóstico ni prescripción médica. Los resultados
           pueden variar según el metabolismo y la adherencia individual.
         </p>
 

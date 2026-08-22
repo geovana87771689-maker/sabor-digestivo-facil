@@ -96,7 +96,7 @@ const testimonials = [
   {
     name: "Mariana R.",
     place: "Madrid, España",
-    text: "En la semana 3 del tratamiento ya no toleraba nada. Empecé con las mini-recetas de pollo al papillote y por fin volví a terminar un plato completo sin náuseas.",
+    text: "En la semana 3 del proceso ya no toleraba nada. Empecé con las mini-recetas de pollo al papillote y por fin volví a terminar un plato completo sin náuseas.",
     avatar: avatarMariana.url,
     photo: dishChicken.url,
     photoAlt: "Bowl con yogur griego, melocotones frescos y miel de abeja",
@@ -128,7 +128,7 @@ const testimonials = [
   {
     name: "Renata L.",
     place: "Bilbao, España",
-    text: "Con el tratamiento me llenaba con dos bocados. Las porciones del recetario son pequeñas pero completas: como tranquila y llego a mi proteína del día sin sufrir.",
+    text: "Con el proceso me llenaba con dos bocados. Las porciones del recetario son pequeñas pero completas: como tranquila y llego a mi proteína del día sin sufrir.",
     avatar: avatarRenata.url,
     photo: dishSalad.url,
     photoAlt: "Bowl de ensalada verde con pollo grillado y tomates cherry",
@@ -285,7 +285,7 @@ export function SocialProof() {
           </div>
 
           <p className="mt-2 text-center text-xs text-muted-foreground sm:hidden">
-            Deslizá hacia la izquierda para ver más
+            Desliza hacia la izquierda para ver más
           </p>
         </div>
 

@@ -89,7 +89,7 @@ export function Benefits() {
           Lo que cambia desde la primera semana
         </p>
         <h2 className="mx-auto mt-1 max-w-3xl text-center text-2xl font-extrabold tracking-tight text-foreground sm:text-4xl">
-          No es un recetario más: es tu manual diario para comer bien durante el protocolo
+          No es un recetario más: es tu manual diario para comer bien durante el proceso
         </h2>
         <p className="mx-auto mt-2 max-w-2xl text-center text-sm leading-relaxed text-muted-foreground sm:text-base">
           Cada receta fue pensada para el estómago sensible, el apetito reducido y la agenda real

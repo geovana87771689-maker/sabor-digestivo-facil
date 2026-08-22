@@ -32,18 +32,18 @@ const pages = [
 const highlights = [
   {
     icon: LayoutList,
-    title: "Diagramación limpia",
-    text: "Sin bloques densos de texto; visualizá ingredientes, macros y preparación de un solo vistazo.",
+    title: "Diseño limpio",
+    text: "Sin bloques densos de texto; visualiza ingredientes, macros y preparación de un solo vistazo.",
   },
   {
     icon: Hand,
-    title: "Navegación táctil",
-    text: "Saltá directamente a la receta que deseás con un solo toque desde tu móvil o tablet.",
+    title: "Navegación interactiva",
+    text: "Salta directamente a la receta que deseas con un solo toque desde tu móvil o tablet.",
   },
   {
     icon: Camera,
     title: "Fotografía real",
-    text: "Cada plato cuenta con su referencia visual para que sepas exactamente qué esperar en tu mesa.",
+    text: "Cada plato cuenta con su referencia visual para saber exactamente qué servir en tu mesa.",
   },
 ];
 
@@ -100,7 +100,7 @@ export function InsidePeek() {
           Un Vistazo Exclusivo a Tu Nueva Rutina Culinaria
         </h2>
         <p className="mx-auto mt-3 max-w-2xl text-center text-sm text-muted-foreground sm:text-base">
-          Diseñado con la claridad de una revista gourmet y la precisión de una guía clínica.
+          Diseñado con la claridad de una revista gourmet y la precisión de una guía práctica.
         </p>
 
         {/* Libro interactivo: arrastrá para pasar la página */}
@@ -110,7 +110,7 @@ export function InsidePeek() {
 
           <div
             role="group"
-            aria-label="Vista previa del e-book, deslizá hacia la izquierda para pasar la página"
+            aria-label="Vista previa del e-book, desliza hacia la izquierda para ver las páginas"
             onPointerDown={(e) => onDown(e.clientX)}
             onPointerMove={(e) => onMove(e.clientX)}
             onPointerUp={onUp}
@@ -147,7 +147,7 @@ export function InsidePeek() {
           </div>
 
           <p className="pointer-events-none absolute -bottom-6 left-0 right-0 text-center text-xs text-muted-foreground/80 sm:text-sm">
-            Deslizá hacia la izquierda para pasar la página
+            Desliza hacia la izquierda para ver las páginas
           </p>
 
           <div className="mt-10 flex justify-center gap-2">

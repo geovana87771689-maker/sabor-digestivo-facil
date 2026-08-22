@@ -2,11 +2,11 @@ import { ArrowDown, BadgeCheck, Download, ShieldCheck, ChevronRight } from "luci
 import { Button } from "@/components/ui/button";
 
 const bullets = [
-  { emoji: "🛡️", text: "25g - 35g de proteína pura por porción compacta" },
-  { emoji: "🌿", text: "Métodos de cocción anti-reflujo y digestión rápida" },
+  { emoji: "🛡️", text: "25g - 35g de proteína por porción compacta" },
+  { emoji: "🌿", text: "Métodos de cocción ligeros y digestión rápida" },
   {
     emoji: "✨",
-    text: "Ingredientes 100% reales sin batidos artificiales ni saborizante sintético",
+    text: "Ingredientes 100% reales, sin batidos artificiales ni ultraprocesados",
   },
 ];
 
@@ -33,7 +33,7 @@ export function Hero({ onCta, onSecondaryCta }: { onCta: () => void; onSecondary
             <h1 className="mt-5 text-[28px] leading-[1.12] font-extrabold tracking-tight text-foreground sm:text-5xl">
               Más de{" "}
               <span className="text-primary">100 recetas compactas</span> para comer
-              sin pesadez, proteger tu músculo y aprovechar tu tratamiento
+              sin pesadez, proteger tu músculo y potenciar tu cambio
             </h1>
 
             <img
@@ -48,7 +48,7 @@ export function Hero({ onCta, onSecondaryCta }: { onCta: () => void; onSecondary
 
             <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
               Recetas digestivas, altas en proteína y listas en 15 minutos. Diseñadas
-              para quienes buscan sabor, confort y resultados reales sin batidos
+              para quienes buscan sabor, confort y nutrición real sin batidos
               artificiales.
             </p>
 
@@ -58,7 +58,7 @@ export function Hero({ onCta, onSecondaryCta }: { onCta: () => void; onSecondary
                 onClick={onCta}
                 className="h-auto w-full rounded-full px-8 py-4 text-base font-bold shadow-editorial sm:w-auto"
               >
-                Ver ofertas
+                Ver opciones
                 <ArrowDown className="ml-1 h-4 w-4" />
               </Button>
               <Button
@@ -67,7 +67,7 @@ export function Hero({ onCta, onSecondaryCta }: { onCta: () => void; onSecondary
                 onClick={onSecondaryCta}
                 className="h-auto w-full rounded-full border-border bg-card px-6 py-4 text-base font-semibold shadow-soft hover:bg-accent hover:text-accent-foreground sm:w-auto"
               >
-                Ver lo que está incluido
+                Ver contenido incluido
                 <ChevronRight className="ml-1 h-4 w-4" />
               </Button>
             </div>
