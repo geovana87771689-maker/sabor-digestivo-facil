@@ -33,7 +33,7 @@ export function Hero({ onCta, onSecondaryCta }: { onCta: () => void; onSecondary
             <h1 className="mt-5 text-[28px] leading-[1.12] font-extrabold tracking-tight text-foreground sm:text-5xl">
               Más de{" "}
               <span className="text-primary">100 recetas compactas</span> para comer
-              sin pesadez, proteger tu músculo y aprovechar tu tratamiento
+              sin pesadez, proteger tu músculo y potenciar tu cambio
             </h1>
 
             <img
@@ -48,7 +48,7 @@ export function Hero({ onCta, onSecondaryCta }: { onCta: () => void; onSecondary
 
             <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
               Recetas digestivas, altas en proteína y listas en 15 minutos. Diseñadas
-              para quienes buscan sabor, confort y resultados reales sin batidos
+              para quienes buscan sabor, confort y nutrición real sin batidos
               artificiales.
             </p>
 
