@@ -257,15 +257,6 @@ export function SalesPage({ onScrollToPlans }: { onScrollToPlans: ScrollToPlans 
             El secreto no es comer más. Es poner los nutrientes adecuados en los pocos bocados que apetecen. Cada receta está calculada para que una porción pequeña aporte entre 25 y 35 g de proteína real, con cocciones ligeras: papillote, vapor y caldos.
           </p>
 
-          <div className="mt-9 grid gap-4 sm:grid-cols-3">
-            {["Porción pequeña", "Densidad nutricional alta", "Cocción ligera"].map((step, index) => (
-              <div key={step} className="rounded-xl bg-crema2 px-5 py-6">
-                <span className="display text-4xl text-naranja">0{index + 1}</span>
-                <p className="mt-2 font-bold text-tinta">{step}</p>
-              </div>
-            ))}
-          </div>
-
           <div className="mt-9 overflow-hidden rounded-xl border border-border">
             <div className="display grid grid-cols-2 border-b border-border text-xs sm:text-sm">
               <div className="px-4 py-4 text-tinta-sub">Sin método</div>
