@@ -197,16 +197,30 @@
 }
 
 @layer base {
-  * {
+  #root,
+  #root * {
     border-color: var(--color-border);
   }
 
   body {
     background-color: var(--color-background);
-    color: var(--color-foreground);
-    font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
   }
+
+  #root {
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+  }
+
+  /* El contenido inyectado directamente en el body (fuera de la app) conserva
+     los estilos por defecto del navegador y no hereda el reset de la app. */
+  body > :not(#root),
+  body > :not(#root) * {
+    margin: revert;
+    padding: revert;
+    box-sizing: content-box;
+  }
+
 
   html {
     scroll-behavior: smooth;

@@ -119,13 +119,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         "data-utmify-prevent-xcod-sck": "",
         "data-utmify-prevent-subids": "",
       } as Record<string, unknown>,
-      // CartPanda checkout scripts
-      {
-        type: "text/javascript",
-        src: "https://assets.mycartpanda.com/cartx-ecomm-ui-assets/js/cpsales.js",
-        async: true,
-        defer: true,
-      } as Record<string, unknown>,
+      // El script de validación de la pasarela se inyecta una sola vez al final del body (ver RootShell).
     ],
   }),
 
@@ -135,7 +129,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   errorComponent: ErrorComponent,
 });
 
+const CPSALES_SRC = "https://assets.mycartpanda.com/cartx-ecomm-ui-assets/js/cpsales.js";
+
 function RootShell({ children }: { children: ReactNode }) {
+  // Se inyecta una única vez, al final del body, con guarda contra duplicados.
+  useEffect(() => {
+    if (document.querySelector('script[src*="cpsales"]')) return;
+    const s = document.createElement("script");
+    s.type = "text/javascript";
+    s.src = CPSALES_SRC;
+    document.body.appendChild(s);
+  }, []);
+
   return (
     <html lang="es">
       <head>
@@ -151,7 +156,7 @@ function RootShell({ children }: { children: ReactNode }) {
         </noscript>
       </head>
       <body>
-        {children}
+        <div id="root">{children}</div>
         <Scripts />
       </body>
     </html>
