@@ -21,7 +21,8 @@ import { Faq } from "@/components/landing/Faq";
 import { CajaAlerta, OfertaBar } from "@/components/landing/OfertaBar";
 import { Pricing } from "@/components/landing/Pricing";
 import { SiteFooter } from "@/components/landing/SiteFooter";
-import heroSaborBalanceAsset from "@/assets/hero-sabor-balance.jpg.asset.json";
+import heroSaborBalanceAsset from "@/assets/hero-sabor-balance.png.asset.json";
+import heroMesaAsset from "@/assets/hero-sabor-balance.jpg.asset.json";
 import polloEnsaladaAsset from "@/assets/pollo-ensalada.jpeg.asset.json";
 import polloVerdurasAsset from "@/assets/pollo-verduras.jpeg.asset.json";
 import curryArrozAsset from "@/assets/curry-arroz.jpeg.asset.json";
@@ -118,9 +119,9 @@ export function SalesPage({ onScrollToPlans }: { onScrollToPlans: ScrollToPlans 
           </p>
           <img
             src={heroSaborBalanceAsset.url}
-            alt="Mesa con recetas Sabor e Balance: salmón, pollo, ensaladas y el recetario"
-            width={1920}
-            height={1920}
+            alt="Libro Sabor e Balance junto a su versión para móvil"
+            width={768}
+            height={767}
             loading="lazy"
             decoding="async"
             className="mx-auto mt-6 h-auto w-full max-w-lg rounded-xl object-contain"
@@ -243,6 +244,15 @@ export function SalesPage({ onScrollToPlans }: { onScrollToPlans: ScrollToPlans 
         <div className="mx-auto max-w-5xl px-5">
           <p className="display text-sm text-naranja">El método</p>
           <h2 className="mt-2 text-3xl text-tinta sm:text-5xl">Nutrición de Pequeño Volumen</h2>
+          <img
+            src={heroMesaAsset.url}
+            alt="Mujer sonriente en la mesa con platos Sabor e Balance y el recetario"
+            width={1920}
+            height={1920}
+            loading="lazy"
+            decoding="async"
+            className="mx-auto mt-6 h-auto w-full max-w-2xl rounded-xl object-contain"
+          />
           <p className="mt-5 max-w-3xl text-[13px] leading-7 text-tinta-sub sm:text-lg">
             El secreto no es comer más. Es poner los nutrientes adecuados en los pocos bocados que apetecen. Cada receta está calculada para que una porción pequeña aporte entre 25 y 35 g de proteína real, con cocciones ligeras: papillote, vapor y caldos.
           </p>
