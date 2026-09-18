@@ -1,6 +1,6 @@
 export const PROMO = {
-  activa: false,
-  finaliza: "2026-10-05",
+  activa: true,
+  finaliza: "2026-09-18",
   precioPosterior: "37,99 €",
 };
 
