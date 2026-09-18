@@ -87,16 +87,31 @@
   --shadow-soft: 0 6px 24px -14px oklch(0.28 0.03 160 / 0.3);
 }
 
+/* Paleta alternativa 'editorial' disponible más abajo — ver PALETA_B. */
 :root {
+  --tinta: #231d1a;
+  --tinta-sub: #70635c;
+  --crema: #fdf7ec;
+  --crema-2: #f6f0ea;
+  --blanco: #ffffff;
+  --amarillo: #facc15;
+  --naranja: #e44525;
+  --rojo: #ef4343;
+  --verde-cta: #1da54f;
+  --verde-suave: #f1faf4;
+
+  /* PALETA_B (identidad del producto, la del PDF):
+     --tinta:#123332  --crema:#F9EEE7  --naranja:#EF9C82  --verde-cta:#1C4241 */
+
   --radius: 0.75rem;
-  --background: oklch(0.985 0.008 92);
-  --foreground: oklch(0.245 0.017 170);
-  --card: oklch(0.997 0.004 95);
-  --card-foreground: oklch(0.245 0.017 170);
-  --popover: oklch(0.997 0.004 95);
-  --popover-foreground: oklch(0.245 0.017 170);
-  --primary: oklch(0.49 0.088 160);
-  --primary-foreground: oklch(0.985 0.008 92);
+  --background: var(--crema);
+  --foreground: var(--tinta);
+  --card: var(--blanco);
+  --card-foreground: var(--tinta);
+  --popover: var(--blanco);
+  --popover-foreground: var(--tinta);
+  --primary: var(--verde-cta);
+  --primary-foreground: #ffffff;
   --secondary: oklch(0.945 0.018 130);
   --secondary-foreground: oklch(0.33 0.05 165);
   --muted: oklch(0.955 0.011 95);
