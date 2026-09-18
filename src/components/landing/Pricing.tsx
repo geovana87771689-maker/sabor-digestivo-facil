@@ -54,7 +54,7 @@ export function Pricing({ id }: { id: string }) {
               key={plan.name}
               className={
                 plan.featured
-                  ? "relative flex flex-col overflow-hidden rounded-2xl border-[3px] border-verde-cta bg-verde-suave p-6 shadow-[0_24px_60px_-30px_rgba(29,165,79,0.6)] sm:p-8 md:-translate-y-2"
+                  ? "relative mt-5 flex flex-col rounded-2xl border-[3px] border-verde-cta bg-verde-suave p-6 pt-8 shadow-[0_24px_60px_-30px_rgba(29,165,79,0.6)] sm:p-8 sm:pt-10 md:mt-0 md:-translate-y-2"
                   : "flex flex-col rounded-2xl border border-border bg-verde-suave p-6 sm:p-8"
               }
             >
