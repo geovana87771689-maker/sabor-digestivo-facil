@@ -23,10 +23,10 @@ const plans = [
     features: [
       "89 recetas completas",
       "Menú organizado de 34 días",
-      "14 postres proteicos",
-      "13 snacks de bolsillo",
-      "Guía de principios y consejos",
       "Fichas nutricionales en cada receta",
+      "Bonus: 14 postres proteicos",
+      "Bonus: 13 snacks de bolsillo",
+      "Bonus: Guía de macros e hidratación",
       "Acceso de por vida",
       "Garantía de 7 días",
     ],
