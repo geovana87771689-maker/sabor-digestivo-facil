@@ -338,7 +338,7 @@ export function SalesPage({ onScrollToPlans }: { onScrollToPlans: ScrollToPlans 
                   height={240}
                   loading="lazy"
                   decoding="async"
-                  className="h-28 w-28 shrink-0 rounded-lg bg-crema object-contain sm:h-40 sm:w-full"
+                  className="h-28 w-28 shrink-0 rounded-lg bg-crema2 object-contain sm:h-40 sm:w-full"
                 />
                 <div className="flex flex-1 flex-col">
                   <span className="display inline-flex w-fit rounded-full bg-verde-cta px-3 py-1 text-[11px] text-white">
