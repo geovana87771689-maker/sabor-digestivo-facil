@@ -43,12 +43,12 @@ const cifras = [
 ];
 
 const dificultades = [
-  "Abres la nevera y la cierras sin coger nada",
-  "Los platos grandes te echan para atrás nada más verlos",
-  "Llevas semanas comiendo lo mismo porque no se te ocurre otra cosa",
-  "Tiras comida que compraste con buena intención",
-  "Cocinas para ti sola y no compensa el esfuerzo",
-  "Sabes que tendrías que comer más proteína, pero no te entra",
+  { icon: Refrigerator, text: "Abres la nevera y la cierras sin coger nada" },
+  { icon: Utensils, text: "Los platos grandes te echan para atrás nada más verlos" },
+  { icon: RotateCcw, text: "Llevas semanas comiendo lo mismo porque no se te ocurre otra cosa" },
+  { icon: Trash2, text: "Tiras comida que compraste con buena intención" },
+  { icon: UserX, text: "Cocinas para ti sola y no compensa el esfuerzo" },
+  { icon: Dumbbell, text: "Sabes que tendrías que comer más proteína, pero no te entra" },
 ];
 
 const beneficios = [
