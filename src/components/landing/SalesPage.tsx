@@ -27,7 +27,7 @@ import yogurMelocotonAsset from "@/assets/yogur-melocoton.jpeg.asset.json";
 
 type ScrollToPlans = () => void;
 
-// Solo activar cuando los cinco bonus estén realmente a la venta por separado a esos precios.
+// Solo activar cuando los tres bonus estén realmente a la venta por separado a esos precios.
 const MOSTRAR_VALOR_BONUS = false;
 
 const cifras = [
