@@ -86,7 +86,7 @@ export function Pricing({ id }: { id: string }) {
               ) : (
                 <>
                   <span className="display mx-auto w-fit rounded-full bg-crema-2 px-3 py-1 text-[10px] text-tinta">
-                    RECETARIO DIGITAL
+                     {"\n"}
                   </span>
                   <h3 className="display mt-3 text-center text-2xl leading-none text-tinta sm:text-3xl">{plan.name}</h3>
                   <p className="mt-2 text-center text-sm text-tinta-sub">Solo el recetario principal, sin bonus</p>
