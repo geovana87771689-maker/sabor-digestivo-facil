@@ -111,7 +111,16 @@ export function SalesPage({ onScrollToPlans }: { onScrollToPlans: ScrollToPlans 
             89 recetas de porción pequeña con 25 a 35 g de proteína real, listas en 15 minutos. Para
             que comer vuelva a ser algo que te apetece y no algo que tienes que resolver.
           </p>
-          <p className="display mt-5 text-3xl text-naranja sm:text-4xl">Desde 17,99 €</p>
+          <img
+            src={heroSaborBalanceAsset.url}
+            alt="Libro Sabor e Balance junto a su versión para móvil"
+            width={768}
+            height={767}
+            loading="lazy"
+            decoding="async"
+            className="mx-auto mt-6 h-auto w-full max-w-lg rounded-xl object-contain"
+          />
+          <p className="display mt-6 text-3xl text-naranja sm:text-4xl">Desde 17,99 €</p>
           <p className="text-xs font-semibold text-tinta-sub">pago único</p>
           <div className="mt-5 flex justify-center">
             <BotonCompra onClick={onScrollToPlans}>Quiero empezar hoy →</BotonCompra>
@@ -121,15 +130,6 @@ export function SalesPage({ onScrollToPlans }: { onScrollToPlans: ScrollToPlans 
             <span className="inline-flex items-center gap-1"><ShieldCheck className="h-3.5 w-3.5 text-verde-cta" />Garantía de 7 días</span>
             <span className="inline-flex items-center gap-1"><Download className="h-3.5 w-3.5 text-verde-cta" />Acceso inmediato</span>
           </div>
-          <img
-            src={heroSaborBalanceAsset.url}
-            alt="Libro Sabor e Balance junto a su versión para móvil"
-            width={768}
-            height={767}
-            loading="lazy"
-            decoding="async"
-            className="mx-auto mt-8 h-auto w-full max-w-lg rounded-xl object-contain"
-          />
         </div>
 
         {/* Cifras estáticas, sin animación de conteo. */}
