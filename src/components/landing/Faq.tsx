@@ -30,11 +30,15 @@ const faqs = [
     q: "¿Durante cuánto tiempo tengo acceso?",
     a: "De por vida, con las actualizaciones que se incorporen al material.",
   },
+  {
+    q: "¿Esto sustituye a mi médico o a mi dietista-nutricionista?",
+    a: "No, y no pretende hacerlo. Es material culinario e informativo.",
+  },
 ];
 
 export function Faq() {
   return (
-    <section className="bg-background py-12 sm:py-16">
+    <section className="bg-cream py-12 sm:py-16">
       <div className="mx-auto max-w-3xl px-5">
         <h2 className="text-center font-serif text-4xl font-bold text-foreground sm:text-5xl">
           Preguntas frecuentes

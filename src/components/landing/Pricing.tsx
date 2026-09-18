@@ -1,6 +1,9 @@
 import { Check, Crown, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
+// La Directiva Omnibus exige que el precio de referencia sea el más bajo aplicado en los 30 días anteriores. Activar solo después de vender 30 días a 37,99 €.
+const MOSTRAR_PRECIO_ANTERIOR = false;
+
 const plans = [
   {
     name: "Plan Esencial",
@@ -28,7 +31,7 @@ const plans = [
       "Acceso de por vida",
       "Garantía de 7 días",
     ],
-    cta: "ELEGIR COMPLETO",
+    cta: "QUIERO EL PLAN COMPLETO",
     // Hay que comprobar que este enlace cobre 27,99 €, ya que el precio del Plan Completo ha cambiado.
     checkoutUrl: "https://vittacoreus.mycartpanda.com/checkout/212216905:1",
     featured: true,
@@ -51,7 +54,10 @@ export function Pricing({ id }: { id: string }) {
                 <span className="absolute -top-3 left-1/2 inline-flex -translate-x-1/2 items-center gap-1 rounded-full bg-primary px-4 py-1.5 text-[10px] font-extrabold tracking-[0.12em] whitespace-nowrap text-primary-foreground uppercase"><Crown className="h-3.5 w-3.5" />Más elegido</span>
               )}
               <h3 className="text-sm font-extrabold tracking-[0.12em] text-primary uppercase">{plan.name}</h3>
-              <p className="mt-4 font-serif text-5xl font-bold text-foreground">{plan.price}</p>
+              <div className="mt-4 flex items-baseline gap-3">
+                {plan.featured && MOSTRAR_PRECIO_ANTERIOR && <span className="text-lg text-muted-foreground line-through">37,99 €</span>}
+                <p className="font-serif text-5xl font-bold text-foreground">{plan.price}</p>
+              </div>
               <p className="mt-1 text-sm text-muted-foreground">pago único</p>
               <ul className="mt-6 space-y-3">
                 {plan.features.map((feature) => (
@@ -68,6 +74,9 @@ export function Pricing({ id }: { id: string }) {
             </article>
           ))}
         </div>
+        <p className="mx-auto mt-8 max-w-3xl text-center font-serif text-2xl font-bold text-primary sm:text-3xl">
+          10 € de diferencia. 63 recetas más, 20 días más de menú y los cinco bonus.
+        </p>
       </div>
     </section>
   );
