@@ -21,7 +21,7 @@ import { Faq } from "@/components/landing/Faq";
 import { CajaAlerta, OfertaBar } from "@/components/landing/OfertaBar";
 import { Pricing } from "@/components/landing/Pricing";
 import { SiteFooter } from "@/components/landing/SiteFooter";
-import heroSaborBalanceAsset from "@/assets/hero-sabor-balance.png.asset.json";
+import heroSaborBalanceAsset from "@/assets/hero-sabor-balance.jpg.asset.json";
 import polloEnsaladaAsset from "@/assets/pollo-ensalada.jpeg.asset.json";
 import polloVerdurasAsset from "@/assets/pollo-verduras.jpeg.asset.json";
 import curryArrozAsset from "@/assets/curry-arroz.jpeg.asset.json";
@@ -118,9 +118,9 @@ export function SalesPage({ onScrollToPlans }: { onScrollToPlans: ScrollToPlans 
           </p>
           <img
             src={heroSaborBalanceAsset.url}
-            alt="Libro Sabor e Balance junto a su versión para móvil"
-            width={768}
-            height={767}
+            alt="Mesa con recetas Sabor e Balance: salmón, pollo, ensaladas y el recetario"
+            width={1920}
+            height={1920}
             loading="lazy"
             decoding="async"
             className="mx-auto mt-6 h-auto w-full max-w-lg rounded-xl object-contain"
