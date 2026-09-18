@@ -1,22 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useRef, useState } from "react";
+import { useEffect } from "react";
 
-import { AnnouncementBar } from "@/components/landing/AnnouncementBar";
-import { Hero } from "@/components/landing/Hero";
-import { PainPoints } from "@/components/landing/PainPoints";
-import { InsidePeek } from "@/components/landing/InsidePeek";
-import { Benefits } from "@/components/landing/Benefits";
-import { SocialProof } from "@/components/landing/SocialProof";
-import { ForWho } from "@/components/landing/ForWho";
-import { Pricing } from "@/components/landing/Pricing";
-import { Faq } from "@/components/landing/Faq";
-import { SiteFooter } from "@/components/landing/SiteFooter";
-import { StickyMobileCta } from "@/components/landing/StickyMobileCta";
-import { FloatingCart } from "@/components/landing/FloatingCart";
+import { SalesPage } from "@/components/landing/SalesPage";
 
-const TITLE = "Sabor & Balance · Recetas Proteicas de Fácil Digestión";
+const TITLE = "Sabor & Balance · Nutrición de Pequeño Volumen";
 const DESCRIPTION =
-  "Más de 100 recetas compactas, altas en proteína y fáciles de digerir, listas en 15 minutos. Guía digital en PDF con descarga inmediata.";
+  "89 recetas en porciones pequeñas, con 25 a 35 g de proteína y listas en 15 minutos. Menú organizado y acceso inmediato.";
 const OG_IMAGE = "https://sabor-digestivo-facil.lovable.app/og-image.jpg";
 
 export const Route = createFileRoute("/")({
@@ -46,12 +35,7 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
-  const heroRef = useRef<HTMLDivElement | null>(null);
-  const pricingRef = useRef<HTMLDivElement | null>(null);
-  const solutionRef = useRef<HTMLDivElement | null>(null);
-  const [showSticky, setShowSticky] = useState(false);
-
-  // Anexa UTMs dinamicamente em qualquer clique de link do checkout
+  // Conserva todos los parámetros presentes, incluidos los UTM y fbclid, al abrir el pago.
   useEffect(() => {
     const handleLinkClicks = (e: MouseEvent) => {
       const target = (e.target as HTMLElement).closest("a");
@@ -72,43 +56,7 @@ function Index() {
     return () => document.removeEventListener("click", handleLinkClicks);
   }, []);
 
-  useEffect(() => {
-    const el = heroRef.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      (entries) => setShowSticky(!(entries[0]?.isIntersecting ?? true)),
-      { threshold: 0 },
-    );
+  const scrollToPlans = () => document.getElementById("planes")?.scrollIntoView({ behavior: "smooth", block: "start" });
 
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-
-  const scrollToPricing = () =>
-    pricingRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-  const scrollToSolution = () =>
-    solutionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-
-  return (
-    <main className="min-h-screen bg-background">
-      <AnnouncementBar />
-      <div ref={heroRef}>
-        <Hero onCta={scrollToPricing} onSecondaryCta={scrollToSolution} />
-      </div>
-      <div ref={solutionRef}>
-        <InsidePeek />
-      </div>
-      <PainPoints />
-      <Benefits />
-      <SocialProof />
-      <ForWho />
-      <div ref={pricingRef}>
-        <Pricing id="planes" />
-      </div>
-      <Faq />
-      <SiteFooter />
-      <StickyMobileCta visible={showSticky} onCta={scrollToPricing} />
-      <FloatingCart onCta={scrollToPricing} />
-    </main>
-  );
+  return <SalesPage onScrollToPlans={scrollToPlans} />;
 }
