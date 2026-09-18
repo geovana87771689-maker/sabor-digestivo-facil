@@ -66,19 +66,19 @@ const recetas = [
   { src: "/img/peek-2-new.jpg", width: 1024, height: 1408, title: "Página del recetario: bol de salmón", protein: "32 g" },
 ];
 
-// Los mockups /bonus-1-postres-mockup.png, /bonus-2-snacks-mockup.png y /bonus-3-macros-mockup.png
+// Las imágenes /bonus-1-postres.png, /bonus-2-meriendas.png y /bonus-3-desayunos.png
 // son marcadores de posición hasta que se suban las imágenes definitivas de cada bonus.
 const bonificaciones = [
-  { label: "BONUS 1", img: "/bonus-1-postres-mockup.png", title: "14 postres proteicos sin azúcar", text: "Algo dulce que suma proteína en vez de restarla. Para la hora en la que siempre se rompe el plan." },
-  { label: "BONUS 2", img: "/bonus-2-snacks-mockup.png", title: "13 snacks de bolsillo", text: "Pequeños, transportables y con proteína de verdad. Para los días de oficina y los huecos entre comidas." },
-  { label: "BONUS 3", img: "/bonus-3-macros-mockup.png", title: "Guía de macros e hidratación", text: "Cuánta proteína necesitas al día, cómo repartirla y por qué el orden en el plato importa." },
+  { label: "BONUS 1", img: "/bonus-1-postres.png", title: "14 postres proteicos sin azúcar", text: "Algo dulce que suma proteína en vez de restarla. Para la hora en la que siempre se rompe el plan." },
+  { label: "BONUS 2", img: "/bonus-2-meriendas.png", title: "13 meriendas saludables", text: "Ideas prácticas, ligeras y con proteína de verdad para el hueco de media mañana y el de media tarde." },
+  { label: "BONUS 3", img: "/bonus-3-desayunos.png", title: "18 desayunos proteicos", text: "Empieza el día con proteína de verdad. Dulces y salados, todos listos en 15 minutos o menos." },
 ];
 
 // Testimonios verificados. Cada nuevo testimonio requiere un registro de compra.
 const testimonios = [
   { name: "Mariana R.", city: "Madrid", initials: "MR", text: "Empecé con las mini-recetas de pollo al papillote y por fin volví a terminar un plato completo." },
   { name: "Andrés P.", city: "Barcelona", initials: "AP", text: "Lo que más me sirvió fue el planificador. Dejé de improvisar a las nueve de la noche y ahora ceno ligero." },
-  { name: "Carolina M.", city: "Valencia", initials: "CM", text: "Estaba cansada de huevo y batidos. Los tentempiés de bolsillo me salvaron los días de oficina." },
+  { name: "Carolina M.", city: "Valencia", initials: "CM", text: "Estaba cansada de huevo y batidos. Las meriendas saludables me salvaron los días de oficina." },
   { name: "Juliana S.", city: "Sevilla", initials: "JS", text: "Las listas de la compra con sustituciones locales fueron un alivio: encontré todo en el mercado de la esquina." },
   { name: "Valentina C.", city: "Málaga", initials: "VC", text: "Pensé que iba a ser comida triste de dieta y me encontré con platos con sabor de verdad." },
   { name: "Matías D.", city: "Zaragoza", initials: "MD", text: "Sumé las recetas altas en proteína y en un mes volví a levantar lo mismo de antes en el gimnasio." },
