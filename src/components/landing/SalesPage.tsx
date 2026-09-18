@@ -284,25 +284,25 @@ export function SalesPage({ onScrollToPlans }: { onScrollToPlans: ScrollToPlans 
             Porque tener las recetas es media batalla. La otra media es no tener que pensar.
           </p>
 
-          <div className="mt-10 grid gap-5 sm:grid-cols-2">
+          <div className="mt-10 grid gap-5 sm:grid-cols-3">
             {bonificaciones.map((item) => (
-              <article key={item.title} className="flex gap-4 rounded-2xl border border-border bg-crema2 p-4 sm:p-5">
+              <article key={item.title} className="flex flex-col rounded-2xl border border-border bg-crema2 p-4 sm:p-5">
                 <img
                   src={item.img}
                   alt={item.title}
-                  width={160}
-                  height={200}
+                  width={320}
+                  height={240}
                   loading="lazy"
                   decoding="async"
-                  className="h-28 w-24 shrink-0 rounded-lg bg-crema object-cover sm:h-32 sm:w-28"
+                  className="h-40 w-full rounded-lg bg-crema object-contain"
                 />
-                <div>
-                  <span className="display inline-flex rounded-full bg-verde-cta px-3 py-1 text-[11px] text-white">
+                <div className="mt-4 flex flex-1 flex-col">
+                  <span className="display inline-flex w-fit rounded-full bg-verde-cta px-3 py-1 text-[11px] text-white">
                     {item.label}
                   </span>
-                  <h3 className="mt-2 text-base text-tinta sm:text-lg">{item.title}</h3>
-                  <p className="mt-2 text-[13px] leading-6 text-tinta-sub">{item.text}</p>
-                  <div className="mt-3 flex items-center gap-3">
+                  <h3 className="mt-3 text-base text-tinta sm:text-lg">{item.title}</h3>
+                  <p className="mt-2 flex-1 text-[13px] leading-6 text-tinta-sub">{item.text}</p>
+                  <div className="mt-4 flex items-center gap-3 border-t border-border pt-3">
                     <span className="display text-xs text-verde-cta">Incluido</span>
                     {MOSTRAR_VALOR_BONUS && (
                       <span className="text-sm text-tinta-sub line-through">{item.value}</span>
@@ -314,7 +314,7 @@ export function SalesPage({ onScrollToPlans }: { onScrollToPlans: ScrollToPlans 
           </div>
 
           {MOSTRAR_VALOR_BONUS && (
-            <p className="display mt-7 text-center text-2xl text-naranja">Los cinco, sueltos, son 41,50 €.</p>
+            <p className="display mt-7 text-center text-2xl text-naranja">Los tres, sueltos, son 29,70 €.</p>
           )}
 
           <div className="mt-10 flex justify-center">
