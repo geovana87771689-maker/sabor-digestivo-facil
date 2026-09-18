@@ -150,22 +150,28 @@ export function SalesPage({ onScrollToPlans }: { onScrollToPlans: ScrollToPlans 
 
       {/* 3 · PROBLEMA */}
       <section className="bg-crema2 py-14 sm:py-20">
-        <div className="mx-auto max-w-5xl px-5">
-          <h2 className="text-3xl text-tinta sm:text-5xl">¿Te suena esto?</h2>
-          <div className="mt-6 max-w-3xl space-y-4 text-[13px] leading-7 text-tinta-sub sm:text-base">
-            <p>Son las nueve de la noche. Abres la nevera, miras lo que hay, y la cierras.</p>
-            <p>No es que no tengas hambre exactamente. Es que nada de lo que ves te apetece lo suficiente como para ponerte a cocinarlo. Otra vez huevo no. El batido lo dejaste hace semanas. Y lo que preparaste el domingo lleva tres días ahí.</p>
-            <p className="font-bold text-tinta">Así que cenas cualquier cosa. O no cenas.</p>
-          </div>
-          <div className="mt-9 grid grid-cols-2 gap-3 lg:grid-cols-3">
-            {dificultades.map((item) => (
-              <article key={item} className="flex items-start gap-3 rounded-xl bg-blanco p-4 sm:p-5">
-                <span aria-hidden className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-naranja text-white">
-                  <Check className="h-4 w-4" />
-                </span>
-                <p className="text-[13px] leading-snug font-semibold text-tinta sm:text-sm">{item}</p>
-              </article>
-            ))}
+        <div className="mx-auto max-w-3xl px-5 text-center sm:max-w-5xl">
+          <h2 className="text-3xl sm:text-5xl">
+            <span className="block text-tinta">¿TE SUENA ESTO?</span>
+            <span className="block text-naranja">NO ES HAMBRE. ES EL PLATO.</span>
+          </h2>
+          <p className="mx-auto mt-6 max-w-2xl text-[13px] leading-7 text-tinta-sub sm:text-base">
+            Son las nueve de la noche. Abres la nevera, miras lo que hay, y la cierras. No es que
+            no tengas hambre: es que nada de lo que ves te apetece lo suficiente como para ponerte a
+            cocinarlo. Así que cenas cualquier cosa. O no cenas.
+          </p>
+          <div className="mt-9 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {dificultades.map((item) => {
+              const Icon = item.icon;
+              return (
+                <article key={item.text} className="flex items-center gap-3 rounded-2xl border border-border bg-blanco p-4 text-left sm:p-5">
+                  <span aria-hidden className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-crema2 text-naranja">
+                    <Icon className="h-5 w-5" />
+                  </span>
+                  <p className="text-[13px] leading-snug font-semibold text-tinta sm:text-sm">{item.text}</p>
+                </article>
+              );
+            })}
           </div>
         </div>
       </section>
