@@ -318,7 +318,7 @@ export function SalesPage({ onScrollToPlans }: { onScrollToPlans: ScrollToPlans 
       </section>
 
       {/* 8 · BÓNUS */}
-      <section className="bg-blanco py-14 sm:py-20">
+      <section className="bg-crema2 py-14 sm:py-20">
         <div className="mx-auto max-w-5xl px-5">
           <h2 className="text-center text-3xl sm:text-5xl">
             <span className="block text-tinta">Hoy te llevas</span>
@@ -330,7 +330,7 @@ export function SalesPage({ onScrollToPlans }: { onScrollToPlans: ScrollToPlans 
 
           <div className="mt-10 grid gap-5 sm:grid-cols-3">
             {bonificaciones.map((item) => (
-              <article key={item.title} className="flex flex-row gap-4 rounded-2xl border border-border bg-crema2 p-4 sm:flex-col sm:p-5">
+              <article key={item.title} className="flex flex-row gap-4 rounded-2xl border border-border bg-blanco p-4 sm:flex-col sm:p-5">
                 <img
                   src={item.img}
                   alt={item.title}
@@ -338,7 +338,7 @@ export function SalesPage({ onScrollToPlans }: { onScrollToPlans: ScrollToPlans 
                   height={240}
                   loading="lazy"
                   decoding="async"
-                  className="h-28 w-28 shrink-0 rounded-lg bg-crema object-contain sm:h-40 sm:w-full"
+                  className="h-28 w-28 shrink-0 rounded-lg bg-crema2 object-contain sm:h-40 sm:w-full"
                 />
                 <div className="flex flex-1 flex-col">
                   <span className="display inline-flex w-fit rounded-full bg-verde-cta px-3 py-1 text-[11px] text-white">
