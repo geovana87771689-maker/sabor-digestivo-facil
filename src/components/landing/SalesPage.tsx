@@ -323,9 +323,11 @@ export function SalesPage({ onScrollToPlans }: { onScrollToPlans: ScrollToPlans 
           <p className="mt-8 text-center text-sm font-semibold text-tinta-sub sm:text-base">
             Y 81 recetas más, todas con ingredientes, preparación y ficha nutricional completa.
           </p>
-          <div className="mt-8 flex justify-center">
-            <BotonCompra onClick={onScrollToPlans}>Quiero empezar hoy →</BotonCompra>
-          </div>
+          <p className="mx-auto mt-8 max-w-md text-center text-[13px] leading-6 text-tinta-sub sm:text-sm">
+            Valor total de los bonus:{" "}
+            <span className="font-semibold text-rojo line-through decoration-1">96,00 €</span>
+            {" "}— <span className="font-bold text-verde-cta">Hoy incluidos gratis</span>
+          </p>
         </div>
       </section>
 
