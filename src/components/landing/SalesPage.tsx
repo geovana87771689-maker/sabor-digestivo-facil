@@ -30,6 +30,9 @@ import tacosCarneVerdurasAsset from "@/assets/tacos-carne-verduras.jpeg.asset.js
 import terneraVerdurasAguacateAsset from "@/assets/ternera-verduras-aguacate.jpeg.asset.json";
 import tostadaProteicaAsset from "@/assets/tostada-proteica.jpeg.asset.json";
 import yogurMelocotonAsset from "@/assets/yogur-melocoton.jpeg.asset.json";
+import bonus1PostresAsset from "@/assets/bonus-1-postres.png.asset.json";
+import bonus2MeriendasAsset from "@/assets/bonus-2-meriendas.png.asset.json";
+import bonus3DesayunosAsset from "@/assets/bonus-3-desayunos.png.asset.json";
 
 type ScrollToPlans = () => void;
 
@@ -75,9 +78,9 @@ const recetas = [
 // Las imágenes /bonus-1-postres.png, /bonus-2-meriendas.png y /bonus-3-desayunos.png
 // son marcadores de posición hasta que se suban las imágenes definitivas de cada bonus.
 const bonificaciones = [
-  { label: "BONUS 1", img: "/bonus-1-postres.png", title: "14 postres proteicos sin azúcar", text: "Algo dulce que suma proteína en vez de restarla. Para la hora en la que siempre se rompe el plan." },
-  { label: "BONUS 2", img: "/bonus-2-meriendas.png", title: "13 meriendas saludables", text: "Ideas prácticas, ligeras y con proteína de verdad para el hueco de media mañana y el de media tarde." },
-  { label: "BONUS 3", img: "/bonus-3-desayunos.png", title: "18 desayunos proteicos", text: "Empieza el día con proteína de verdad. Dulces y salados, todos listos en 15 minutos o menos." },
+  { label: "BONUS 1", img: bonus1PostresAsset.url, title: "14 postres proteicos sin azúcar", text: "Algo dulce que suma proteína en vez de restarla. Para la hora en la que siempre se rompe el plan." },
+  { label: "BONUS 2", img: bonus2MeriendasAsset.url, title: "13 meriendas saludables", text: "Ideas prácticas, ligeras y con proteína de verdad para el hueco de media mañana y el de media tarde." },
+  { label: "BONUS 3", img: bonus3DesayunosAsset.url, title: "18 desayunos proteicos", text: "Empieza el día con proteína de verdad. Dulces y salados, todos listos en 15 minutos o menos." },
 ];
 
 // Testimonios verificados. Cada nuevo testimonio requiere un registro de compra.
