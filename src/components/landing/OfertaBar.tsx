@@ -39,7 +39,7 @@ export function CajaAlerta() {
   if (!PROMO.activa) return null;
 
   return (
-    <section className="bg-crema-2 px-5 pb-12 sm:pb-16">
+    <section className="bg-crema2 px-5 pb-12 sm:pb-16">
       <div
         className="mx-auto max-w-4xl rounded-2xl px-6 py-8 text-center"
         style={{ background: "linear-gradient(135deg, var(--naranja), var(--rojo))" }}
