@@ -6,7 +6,7 @@ import { SalesPage } from "@/components/landing/SalesPage";
 const TITLE = "Sabor & Balance · Nutrición de Pequeño Volumen";
 const DESCRIPTION =
   "89 recetas en porciones pequeñas, con 25 a 35 g de proteína y listas en 15 minutos. Menú organizado y acceso inmediato.";
-const OG_IMAGE = "https://sabor-digestivo-facil.lovable.app/og-image.jpg";
+const OG_IMAGE = "https://saborebalance.es/og-image.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
