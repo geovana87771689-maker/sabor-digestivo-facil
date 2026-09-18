@@ -48,7 +48,7 @@ export function CajaAlerta() {
           ⚠️
         </p>
         <h2 className="mt-3 text-2xl text-white sm:text-4xl">
-          La oferta de lanzamiento termina el {formatearFecha(PROMO.finaliza)}
+           LA OFERTA DE LANZAMIENTO TERMINA EL 19 DE SEPTIEMBRE
         </h2>
         <p className="mt-3 text-sm font-semibold text-white/90 sm:text-base">
           Después, el Plan Completo vuelve a su precio normal.
