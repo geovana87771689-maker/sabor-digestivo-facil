@@ -23,10 +23,10 @@ const plans = [
     features: [
       "89 recetas completas",
       "Menú organizado de 34 días",
-      "14 postres proteicos",
-      "13 snacks de bolsillo",
-      "Guía de principios y consejos",
       "Fichas nutricionales en cada receta",
+      "Bonus: 14 postres proteicos",
+      "Bonus: 13 snacks de bolsillo",
+      "Bonus: Guía de macros e hidratación",
       "Acceso de por vida",
       "Garantía de 7 días",
     ],
@@ -89,7 +89,7 @@ export function Pricing({ id }: { id: string }) {
         <p className="mx-auto mt-10 max-w-3xl text-center text-xl text-tinta sm:text-3xl">
           <span className="display">
             10 € de diferencia. <span className="text-naranja">63 recetas más</span>, 20 días más de
-            menú y los cinco bonus.
+            menú y los tres bonus.
           </span>
         </p>
       </div>

@@ -27,7 +27,7 @@ import yogurMelocotonAsset from "@/assets/yogur-melocoton.jpeg.asset.json";
 
 type ScrollToPlans = () => void;
 
-// Solo activar cuando los cinco bonus estén realmente a la venta por separado a esos precios.
+// Solo activar cuando los tres bonus estén realmente a la venta por separado a esos precios.
 const MOSTRAR_VALOR_BONUS = false;
 
 const cifras = [
@@ -66,14 +66,12 @@ const recetas = [
   { src: "/img/peek-2-new.jpg", width: 1024, height: 1408, title: "Página del recetario: bol de salmón", protein: "32 g" },
 ];
 
-// Los mockups /bonus-1-mockup.png … /bonus-5-mockup.png son marcadores de posición
-// hasta que se suban las imágenes definitivas de cada bonus.
+// Los mockups /bonus-1-postres-mockup.png, /bonus-2-snacks-mockup.png y /bonus-3-macros-mockup.png
+// son marcadores de posición hasta que se suban las imágenes definitivas de cada bonus.
 const bonificaciones = [
-  { label: "BONUS 1", img: "/bonus-1-mockup.png", title: "14 postres proteicos sin azúcar", text: "Algo dulce que suma proteína en vez de restarla. Para la hora en la que siempre se rompe el plan.", value: "9,90 €" },
-  { label: "BONUS 2", img: "/bonus-2-mockup.png", title: "13 snacks de bolsillo", text: "Pequeños, transportables y con proteína de verdad. Para los días de oficina y los huecos entre comidas.", value: "9,90 €" },
-  { label: "BONUS 3", img: "/bonus-3-mockup.png", title: "Planificador semanal", text: "Los 34 días en tablas para imprimir, con casilla para marcar el día que ya has hecho.", value: "7,90 €" },
-  { label: "BONUS 4", img: "/bonus-4-mockup.png", title: "Listas de la compra", text: "Una por semana, con los ingredientes agrupados por sección del supermercado y 10 sustituciones por si falta algo.", value: "7,90 €" },
-  { label: "BONUS 5", img: "/bonus-5-mockup.png", title: "Guía de macros e hidratación", text: "Cuánta proteína al día, cómo repartirla y cuándo beber para no quitarle sitio a la comida.", value: "5,90 €" },
+  { label: "BONUS 1", img: "/bonus-1-postres-mockup.png", title: "14 postres proteicos sin azúcar", text: "Algo dulce que suma proteína en vez de restarla. Para la hora en la que siempre se rompe el plan." },
+  { label: "BONUS 2", img: "/bonus-2-snacks-mockup.png", title: "13 snacks de bolsillo", text: "Pequeños, transportables y con proteína de verdad. Para los días de oficina y los huecos entre comidas." },
+  { label: "BONUS 3", img: "/bonus-3-macros-mockup.png", title: "Guía de macros e hidratación", text: "Cuánta proteína necesitas al día, cómo repartirla y por qué el orden en el plato importa." },
 ];
 
 // Testimonios verificados. Cada nuevo testimonio requiere un registro de compra.
@@ -286,38 +284,31 @@ export function SalesPage({ onScrollToPlans }: { onScrollToPlans: ScrollToPlans 
             Porque tener las recetas es media batalla. La otra media es no tener que pensar.
           </p>
 
-          <div className="mt-10 grid gap-5 sm:grid-cols-2">
+          <div className="mt-10 grid gap-5 sm:grid-cols-3">
             {bonificaciones.map((item) => (
-              <article key={item.title} className="flex gap-4 rounded-2xl border border-border bg-crema2 p-4 sm:p-5">
+              <article key={item.title} className="flex flex-col rounded-2xl border border-border bg-crema2 p-4 sm:p-5">
                 <img
                   src={item.img}
                   alt={item.title}
-                  width={160}
-                  height={200}
+                  width={320}
+                  height={240}
                   loading="lazy"
                   decoding="async"
-                  className="h-28 w-24 shrink-0 rounded-lg bg-crema object-cover sm:h-32 sm:w-28"
+                  className="h-40 w-full rounded-lg bg-crema object-contain"
                 />
-                <div>
-                  <span className="display inline-flex rounded-full bg-verde-cta px-3 py-1 text-[11px] text-white">
+                <div className="mt-4 flex flex-1 flex-col">
+                  <span className="display inline-flex w-fit rounded-full bg-verde-cta px-3 py-1 text-[11px] text-white">
                     {item.label}
                   </span>
-                  <h3 className="mt-2 text-base text-tinta sm:text-lg">{item.title}</h3>
-                  <p className="mt-2 text-[13px] leading-6 text-tinta-sub">{item.text}</p>
-                  <div className="mt-3 flex items-center gap-3">
+                  <h3 className="mt-3 text-base text-tinta sm:text-lg">{item.title}</h3>
+                  <p className="mt-2 flex-1 text-[13px] leading-6 text-tinta-sub">{item.text}</p>
+                  <div className="mt-4 flex items-center gap-3 border-t border-border pt-3">
                     <span className="display text-xs text-verde-cta">Incluido</span>
-                    {MOSTRAR_VALOR_BONUS && (
-                      <span className="text-sm text-tinta-sub line-through">{item.value}</span>
-                    )}
                   </div>
                 </div>
               </article>
             ))}
           </div>
-
-          {MOSTRAR_VALOR_BONUS && (
-            <p className="display mt-7 text-center text-2xl text-naranja">Los cinco, sueltos, son 41,50 €.</p>
-          )}
 
           <div className="mt-10 flex justify-center">
             <BotonCompra onClick={onScrollToPlans}>Quiero empezar hoy →</BotonCompra>
