@@ -46,7 +46,7 @@ export function Pricing({ id }: { id: string }) {
     <section id={id} className="scroll-mt-4 bg-blanco py-14 sm:py-20">
       <div className="mx-auto max-w-5xl px-5">
         <p className="display text-center text-sm text-naranja">Elige tu plan</p>
-        <h2 className="mt-2 text-center text-3xl text-tinta sm:text-5xl">Dos formas de empezar</h2>
+        <h2 className="mt-2 text-center text-3xl text-tinta sm:text-5xl">OFERTA CON UN 76 % DE DESCUENTO — VÁLIDA MIENTRAS ESTA PÁGINA ESTÉ ACTIVA.</h2>
 
         <div className="mx-auto mt-10 grid max-w-4xl gap-6 md:grid-cols-2 md:items-stretch">
           {plans.map((plan) => (
