@@ -20,7 +20,7 @@ export function SiteFooter() {
         <nav className="mt-6 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-xs">
           {links.map((link, i) => (
             <span key={link.to} className="inline-flex items-center gap-3">
-              <Link to={link.to} className="transition-opacity hover:opacity-70">
+              <Link to={link.to} suppressHydrationWarning className="transition-opacity hover:opacity-70">
                 {link.label}
               </Link>
               {i < links.length - 1 && (

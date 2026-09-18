@@ -62,7 +62,7 @@ export function Pricing({ id }: { id: string }) {
                 ))}
               </ul>
               <Button asChild size="lg" variant={plan.featured ? "default" : "secondary"} className="mt-7 h-auto w-full rounded-md px-6 py-4 font-extrabold">
-                <a href={plan.checkoutUrl}>{plan.cta}</a>
+                <a href={plan.checkoutUrl} suppressHydrationWarning>{plan.cta}</a>
               </Button>
               <p className="mt-3 flex items-center justify-center gap-1.5 text-center text-[11px] text-muted-foreground"><ShieldCheck className="h-3.5 w-3.5 text-primary" />Pago seguro · Acceso inmediato</p>
             </article>
