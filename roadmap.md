@@ -1,9 +1,9 @@
 # Reconstrucción
 
-- [ ] Rehacer la página principal con las 16 secciones aprobadas.
-- [ ] Reutilizar exclusivamente imágenes existentes y etiquetarlas según su contenido real.
-- [ ] Crear las páginas `/terminos`, `/privacidad` y `/contacto`.
-- [ ] Eliminar contadores, texto prohibido, portugués e inglés visibles.
-- [ ] Conservar Meta Pixel y reenvío de UTM/fbclid sin eventos nuevos.
-- [ ] Ocultar el bloque externo de CartPanda en inglés.
-- [ ] Verificar móvil, escritorio, enlaces y contenido final.
+- [x] Rehacer la página principal con las secciones aprobadas.
+- [x] Reutilizar exclusivamente imágenes existentes y etiquetarlas según su contenido real.
+- [x] Crear las páginas `/terminos`, `/privacidad` y `/contacto`.
+- [x] Eliminar contadores, texto prohibido, portugués e inglés visibles.
+- [x] Conservar Meta Pixel y reenvío de UTM/fbclid sin eventos nuevos.
+- [x] Ocultar el bloque externo de CartPanda en inglés.
+- [x] Verificar móvil, escritorio, enlaces y contenido final.
