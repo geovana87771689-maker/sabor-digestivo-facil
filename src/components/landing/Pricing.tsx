@@ -67,7 +67,7 @@ export function Pricing({ id }: { id: string }) {
               {plan.featured ? (
                 <>
                   <span className="display mx-auto w-fit rounded-full bg-naranja px-3 py-1 text-[10px] text-white">
-                    PACK COMPLETO
+                    PREMIUM
                   </span>
                   <h3 className="display mt-3 text-center text-2xl leading-none text-tinta sm:text-3xl">
                     PLAN COMPLETO + BONUS
