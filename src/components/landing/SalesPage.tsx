@@ -66,14 +66,12 @@ const recetas = [
   { src: "/img/peek-2-new.jpg", width: 1024, height: 1408, title: "Página del recetario: bol de salmón", protein: "32 g" },
 ];
 
-// Los mockups /bonus-1-mockup.png … /bonus-5-mockup.png son marcadores de posición
-// hasta que se suban las imágenes definitivas de cada bonus.
+// Los mockups /bonus-1-postres-mockup.png, /bonus-2-snacks-mockup.png y /bonus-3-macros-mockup.png
+// son marcadores de posición hasta que se suban las imágenes definitivas de cada bonus.
 const bonificaciones = [
-  { label: "BONUS 1", img: "/bonus-1-mockup.png", title: "14 postres proteicos sin azúcar", text: "Algo dulce que suma proteína en vez de restarla. Para la hora en la que siempre se rompe el plan.", value: "9,90 €" },
-  { label: "BONUS 2", img: "/bonus-2-mockup.png", title: "13 snacks de bolsillo", text: "Pequeños, transportables y con proteína de verdad. Para los días de oficina y los huecos entre comidas.", value: "9,90 €" },
-  { label: "BONUS 3", img: "/bonus-3-mockup.png", title: "Planificador semanal", text: "Los 34 días en tablas para imprimir, con casilla para marcar el día que ya has hecho.", value: "7,90 €" },
-  { label: "BONUS 4", img: "/bonus-4-mockup.png", title: "Listas de la compra", text: "Una por semana, con los ingredientes agrupados por sección del supermercado y 10 sustituciones por si falta algo.", value: "7,90 €" },
-  { label: "BONUS 5", img: "/bonus-5-mockup.png", title: "Guía de macros e hidratación", text: "Cuánta proteína al día, cómo repartirla y cuándo beber para no quitarle sitio a la comida.", value: "5,90 €" },
+  { label: "BONUS 1", img: "/bonus-1-postres-mockup.png", title: "14 postres proteicos sin azúcar", text: "Algo dulce que suma proteína en vez de restarla. Para la hora en la que siempre se rompe el plan." },
+  { label: "BONUS 2", img: "/bonus-2-snacks-mockup.png", title: "13 snacks de bolsillo", text: "Pequeños, transportables y con proteína de verdad. Para los días de oficina y los huecos entre comidas." },
+  { label: "BONUS 3", img: "/bonus-3-macros-mockup.png", title: "Guía de macros e hidratación", text: "Cuánta proteína necesitas al día, cómo repartirla y por qué el orden en el plato importa." },
 ];
 
 // Testimonios verificados. Cada nuevo testimonio requiere un registro de compra.
