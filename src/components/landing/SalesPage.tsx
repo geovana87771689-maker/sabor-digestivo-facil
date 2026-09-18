@@ -342,7 +342,7 @@ export function SalesPage({ onScrollToPlans }: { onScrollToPlans: ScrollToPlans 
 
           <div className="mt-10 grid gap-5 sm:grid-cols-3">
             {bonificaciones.map((item) => (
-              <article key={item.title} className="flex flex-col rounded-2xl border border-border bg-crema2 p-4 sm:p-5">
+              <article key={item.title} className="flex flex-row gap-4 rounded-2xl border border-border bg-crema2 p-4 sm:flex-col sm:p-5">
                 <img
                   src={item.img}
                   alt={item.title}
@@ -350,15 +350,15 @@ export function SalesPage({ onScrollToPlans }: { onScrollToPlans: ScrollToPlans 
                   height={240}
                   loading="lazy"
                   decoding="async"
-                  className="h-40 w-full rounded-lg bg-crema object-contain"
+                  className="h-28 w-28 shrink-0 rounded-lg bg-crema object-contain sm:h-40 sm:w-full"
                 />
-                <div className="mt-4 flex flex-1 flex-col">
+                <div className="flex flex-1 flex-col">
                   <span className="display inline-flex w-fit rounded-full bg-verde-cta px-3 py-1 text-[11px] text-white">
                     {item.label}
                   </span>
-                  <h3 className="mt-3 text-base text-tinta sm:text-lg">{item.title}</h3>
-                  <p className="mt-2 flex-1 text-[13px] leading-6 text-tinta-sub">{item.text}</p>
-                  <div className="mt-4 flex items-center gap-2 border-t border-border pt-3">
+                  <h3 className="mt-2 text-base leading-tight text-tinta sm:mt-3 sm:text-lg">{item.title}</h3>
+                  <p className="mt-1 flex-1 text-[13px] leading-snug text-tinta-sub sm:mt-2 sm:leading-6">{item.text}</p>
+                  <div className="mt-3 flex items-center gap-2 border-t border-border pt-2 sm:mt-4 sm:pt-3">
                     <span className="text-sm text-tinta-sub line-through decoration-1">{item.price}</span>
                     <span className="display rounded-full bg-verde-cta px-2.5 py-0.5 text-xs text-white">GRATIS</span>
                   </div>
@@ -367,9 +367,11 @@ export function SalesPage({ onScrollToPlans }: { onScrollToPlans: ScrollToPlans 
             ))}
           </div>
 
-          <div className="mt-10 flex justify-center">
-            <BotonCompra onClick={onScrollToPlans}>Quiero empezar hoy →</BotonCompra>
-          </div>
+          <p className="mx-auto mt-10 max-w-md text-center text-[13px] leading-6 text-tinta-sub sm:text-sm">
+            Valor total de los bonus:{" "}
+            <span className="font-semibold text-rojo line-through decoration-1">96,00 €</span>
+            {" "}— <span className="font-bold text-verde-cta">Hoy incluidos gratis</span>
+          </p>
         </div>
       </section>
 
