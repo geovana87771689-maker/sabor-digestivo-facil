@@ -119,9 +119,9 @@ export function SalesPage({ onScrollToPlans }: { onScrollToPlans: ScrollToPlans 
           </p>
           <img
             src={heroSaborBalanceAsset.url}
-            alt="Mesa con recetas Sabor e Balance: salmón, pollo, ensaladas y el recetario"
-            width={1920}
-            height={1920}
+            alt="Libro Sabor e Balance junto a su versión para móvil"
+            width={768}
+            height={767}
             loading="lazy"
             decoding="async"
             className="mx-auto mt-6 h-auto w-full max-w-lg rounded-xl object-contain"
