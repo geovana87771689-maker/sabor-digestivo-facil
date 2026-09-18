@@ -89,7 +89,7 @@ export function Pricing({ id }: { id: string }) {
         <p className="mx-auto mt-10 max-w-3xl text-center text-xl text-tinta sm:text-3xl">
           <span className="display">
             10 € de diferencia. <span className="text-naranja">63 recetas más</span>, 20 días más de
-            menú y los cinco bonus.
+            menú y los tres bonus.
           </span>
         </p>
       </div>
