@@ -28,7 +28,7 @@ export function OfertaBar() {
   if (!PROMO.activa) return null;
 
   return (
-    <div className="display bg-naranja px-4 py-3 text-center text-sm font-bold uppercase tracking-wide text-white sm:text-base">
+    <div className="display px-4 py-3 text-center text-sm font-bold uppercase tracking-wide text-white sm:text-base" style={{ backgroundColor: "#034200" }}>
       🔥 ¡ESTA PROMOCIÓN ACABA HOY! DESPUÉS, EL PLAN COMPLETO.
     </div>
   );
