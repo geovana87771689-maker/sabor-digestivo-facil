@@ -1,5 +1,6 @@
 import { Check, ShieldCheck } from "lucide-react";
 import planCompletoAsset from "@/assets/plan-completo-producto.png.asset.json";
+import planEsencialAsset from "@/assets/plan-esencial-producto.jpg.asset.json";
 
 // La Directiva Omnibus exige que el precio de referencia sea el más bajo aplicado en los 30 días anteriores. Activar solo después de vender 30 días a 37,99 €.
 const MOSTRAR_PRECIO_ANTERIOR = false;
@@ -61,10 +62,20 @@ export function Pricing({ id }: { id: string }) {
                 </span>
               )}
               <h3 className="display text-lg text-tinta">{plan.name}</h3>
-              {plan.featured && (
+              {plan.featured ? (
                 <img
                   src={planCompletoAsset.url}
                   alt="Pack Sabor e Balance: recetario principal + bonus de postres, meriendas y desayunos"
+                  width={520}
+                  height={520}
+                  loading="lazy"
+                  decoding="async"
+                  className="-mx-2 -my-2 h-auto w-full object-contain"
+                />
+              ) : (
+                <img
+                  src={planEsencialAsset.url}
+                  alt="Libro Sabor e Balance: recetario principal"
                   width={520}
                   height={520}
                   loading="lazy"
