@@ -356,7 +356,12 @@ export function SalesPage({ onScrollToPlans }: { onScrollToPlans: ScrollToPlans 
               <figure key={item.name} className="rounded-md border border-border bg-card p-5 shadow-soft">
                 <blockquote className="text-sm leading-relaxed text-foreground">{item.text}</blockquote>
                 <figcaption className="mt-5 flex items-center gap-3 border-t border-border pt-4">
-                  <img src={item.avatar} alt={`Retrato de ${item.name}`} width={item.width} height={item.height} loading="lazy" decoding="async" className="h-11 w-11 rounded-full object-cover" />
+                  <div
+                    aria-hidden
+                    className="grid h-11 w-11 place-items-center rounded-full bg-cream font-serif text-sm font-bold text-slate-deep"
+                  >
+                    {item.initials}
+                  </div>
                   <span><strong className="block text-sm">{item.name}</strong><span className="text-xs text-muted-foreground">{item.city}</span></span>
                 </figcaption>
               </figure>
