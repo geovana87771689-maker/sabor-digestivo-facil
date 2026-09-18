@@ -24,7 +24,7 @@ const plans = [
       "89 recetas completas",
       "Menú organizado de 34 días",
       "Fichas nutricionales en cada receta",
-      "Bonus: 14 postres proteicos sin azúcar",
+      "Bonus: 54 postres sin azúcar añadido",
       "Bonus: 13 meriendas saludables",
       "Bonus: 18 desayunos proteicos",
       "Acceso de por vida",
