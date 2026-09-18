@@ -130,7 +130,7 @@ export function SalesPage({ onScrollToPlans }: { onScrollToPlans: ScrollToPlans 
             className="mx-auto mt-6 h-auto w-full max-w-lg rounded-xl object-contain"
           />
           <p className="display mt-6 text-3xl text-naranja sm:text-4xl">Desde 17,99 €</p>
-          <p className="text-xs font-semibold text-tinta-sub">pago único</p>
+           <p className="text-xs font-semibold text-tinta-sub">pago único + 3 bonificaciones</p>
           <div className="mt-5 flex justify-center">
             <BotonCompra onClick={onScrollToPlans}>Quiero empezar hoy →</BotonCompra>
           </div>
