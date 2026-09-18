@@ -1,15 +1,20 @@
 import {
   Check,
+  CircleX,
   Clock3,
   Download,
   Dumbbell,
   LockKeyhole,
+  Refrigerator,
+  RotateCcw,
   Salad,
   ShieldCheck,
   ShoppingBasket,
   Smartphone,
   Soup,
-  X,
+  Trash2,
+  Utensils,
+  UserX,
 } from "lucide-react";
 
 import { Faq } from "@/components/landing/Faq";
