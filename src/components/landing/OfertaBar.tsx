@@ -29,7 +29,7 @@ export function OfertaBar() {
 
   return (
     <div className="display bg-naranja px-4 py-3 text-center text-sm font-bold uppercase tracking-wide text-white sm:text-base">
-      🔥 ¡Esta promoción acaba hoy! Después, el Plan Completo vuelve a {PROMO.precioPosterior}.
+      🔥 ¡ESTA PROMOCIÓN ACABA HOY! DESPUÉS, EL PLAN COMPLETO.
     </div>
   );
 }
