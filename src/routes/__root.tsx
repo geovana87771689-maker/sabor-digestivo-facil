@@ -143,10 +143,25 @@ function RootShell({ children }: { children: ReactNode }) {
       if (node.tagName === "SCRIPT" || node.id === "root" || node.id === "cpsales-slot") return;
       if (node.parentElement !== document.body || !slot) return;
       slot.appendChild(node);
-      node.style.setProperty("position", "static", "important");
-      node.style.setProperty("inset", "auto", "important");
-      node.style.setProperty("transform", "none", "important");
-      node.style.setProperty("max-width", "100%", "important");
+      const unpin = (el: HTMLElement) => {
+        const pos = getComputedStyle(el).position;
+        if (pos === "fixed" || pos === "sticky" || pos === "absolute") {
+          el.style.setProperty("position", "static", "important");
+        }
+        el.style.setProperty("inset", "auto", "important");
+        el.style.setProperty("transform", "none", "important");
+        el.style.setProperty("max-width", "100%", "important");
+        el.style.setProperty("z-index", "auto", "important");
+      };
+      unpin(node);
+      node.querySelectorAll<HTMLElement>("*").forEach(unpin);
+      // Algunos bloques se reposicionan tras cargar: repetimos unas cuantas veces.
+      let ticks = 0;
+      const timer = window.setInterval(() => {
+        unpin(node);
+        node.querySelectorAll<HTMLElement>("*").forEach(unpin);
+        if (++ticks > 10) window.clearInterval(timer);
+      }, 300);
     };
 
     const observer = new MutationObserver((mutations) => {
