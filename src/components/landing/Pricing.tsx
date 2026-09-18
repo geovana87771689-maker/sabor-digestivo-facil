@@ -2,7 +2,8 @@ import { Check, ShieldCheck } from "lucide-react";
 import planCompletoAsset from "@/assets/plan-completo-producto.png.asset.json";
 import planEsencialAsset from "@/assets/plan-esencial-producto.jpg.asset.json";
 
-// La Directiva Omnibus exige que el precio de referencia sea el más bajo aplicado en los 30 días anteriores. Activar solo después de vender 30 días a 37,99 €.
+// La Directiva Omnibus exige que el precio de referencia sea el más bajo aplicado en los 30 días anteriores.
+// Activar MOSTRAR_PRECIO_ANTERIOR solo después de haber vendido 30 días seguidos a 37,99 €.
 const MOSTRAR_PRECIO_ANTERIOR = false;
 
 const plans = [
@@ -22,13 +23,14 @@ const plans = [
   {
     name: "Plan Completo",
     price: "27,99 €",
+    previousPrice: "37,99 €",
     features: [
       "89 recetas completas",
       "Menú organizado de 34 días",
       "Fichas nutricionales en cada receta",
       "Bonus: 54 postres sin azúcar añadido",
-      "Bonus: 13 meriendas saludables",
-      "Bonus: 18 desayunos proteicos",
+      "Bonus: 20 meriendas saludables",
+      "Bonus: 20 desayunos proteicos",
       "Acceso de por vida",
       "Garantía de 7 días",
     ],
@@ -52,8 +54,8 @@ export function Pricing({ id }: { id: string }) {
               key={plan.name}
               className={
                 plan.featured
-                  ? "relative flex flex-col rounded-2xl border-[3px] border-verde-cta bg-verde-suave p-7 shadow-[0_24px_60px_-30px_rgba(29,165,79,0.6)] md:-translate-y-2"
-                  : "flex flex-col rounded-2xl border border-border bg-verde-suave p-7"
+                  ? "relative flex flex-col overflow-hidden rounded-2xl border-[3px] border-verde-cta bg-verde-suave p-6 shadow-[0_24px_60px_-30px_rgba(29,165,79,0.6)] sm:p-8 md:-translate-y-2"
+                  : "flex flex-col rounded-2xl border border-border bg-verde-suave p-6 sm:p-8"
               }
             >
               {plan.featured && (
@@ -61,35 +63,50 @@ export function Pricing({ id }: { id: string }) {
                   Más elegido
                 </span>
               )}
-              <h3 className="display text-lg text-tinta">{plan.name}</h3>
+
               {plan.featured ? (
-                <img
-                  src={planCompletoAsset.url}
-                  alt="Pack Sabor e Balance: recetario principal + bonus de postres, meriendas y desayunos"
-                  width={520}
-                  height={520}
-                  loading="lazy"
-                  decoding="async"
-                  className="-mx-2 -my-2 h-auto w-full object-contain"
-                />
+                <>
+                  <span className="display mx-auto w-fit rounded-full bg-naranja px-3 py-1 text-[10px] text-white">
+                    PACK COMPLETO
+                  </span>
+                  <h3 className="display mt-3 text-center text-2xl leading-none text-tinta sm:text-3xl">
+                    PLAN COMPLETO + BONUS
+                  </h3>
+                  <p className="mt-2 text-center text-sm text-tinta-sub">El recetario principal + los 3 bonus incluidos</p>
+                  <img
+                    src={planCompletoAsset.url}
+                    alt="Pack Sabor e Balance: recetario principal + bonus de postres, meriendas y desayunos"
+                    width={520}
+                    height={520}
+                    loading="lazy"
+                    decoding="async"
+                    className="-mx-2 mt-4 h-auto w-full object-contain"
+                  />
+                </>
               ) : (
-                <img
-                  src={planEsencialAsset.url}
-                  alt="Libro Sabor e Balance: recetario principal"
-                  width={520}
-                  height={520}
-                  loading="lazy"
-                  decoding="async"
-                  className="-mx-2 -my-2 h-auto w-full object-contain"
-                />
+                <>
+                  <h3 className="display text-center text-2xl leading-none text-tinta sm:text-3xl">{plan.name}</h3>
+                  <p className="mt-2 text-center text-sm text-tinta-sub">Recetario principal en formato digital</p>
+                  <img
+                    src={planEsencialAsset.url}
+                    alt="Libro Sabor e Balance: recetario principal"
+                    width={520}
+                    height={520}
+                    loading="lazy"
+                    decoding="async"
+                    className="-mx-2 mt-4 h-auto w-full object-contain"
+                  />
+                </>
               )}
-              <div className="mt-2 flex items-baseline gap-3">
+
+              <div className="mt-4 flex items-end justify-center gap-3">
                 {plan.featured && MOSTRAR_PRECIO_ANTERIOR && (
-                  <span className="text-lg text-tinta-sub line-through">37,99 €</span>
+                  <span className="text-lg text-tinta-sub line-through">{plan.previousPrice}</span>
                 )}
-                <p className="display text-5xl text-naranja">{plan.price}</p>
+                <p className="display text-5xl text-naranja sm:text-6xl">{plan.price}</p>
               </div>
-              <p className="mt-1 text-sm text-tinta-sub">pago único</p>
+              <p className="text-center text-sm text-tinta-sub">pago único</p>
+
               <ul className="mt-6 space-y-3">
                 {plan.features.map((feature) => (
                   <li key={feature} className="flex items-start gap-2.5">
@@ -98,13 +115,16 @@ export function Pricing({ id }: { id: string }) {
                   </li>
                 ))}
               </ul>
-              <a href={plan.checkoutUrl} suppressHydrationWarning className="btn-compra mt-7 w-full">
-                {plan.cta}
-              </a>
-              <p className="mt-3 flex items-center justify-center gap-1.5 text-center text-[11px] text-tinta-sub">
-                <ShieldCheck className="h-3.5 w-3.5 text-verde-cta" />
-                Pago seguro · Acceso inmediato
-              </p>
+
+              <div className="mt-auto pt-7">
+                <a href={plan.checkoutUrl} suppressHydrationWarning className="btn-compra w-full">
+                  {plan.cta}
+                </a>
+                <p className="mt-3 flex items-center justify-center gap-1.5 text-center text-[11px] text-tinta-sub">
+                  <ShieldCheck className="h-3.5 w-3.5 text-verde-cta" />
+                  Pago seguro · Acceso inmediato
+                </p>
+              </div>
             </article>
           ))}
         </div>
