@@ -6,4 +6,4 @@
 - [x] Eliminar contadores, texto prohibido, portugués e inglés visibles.
 - [x] Conservar Meta Pixel y reenvío de UTM/fbclid sin eventos nuevos.
 - [x] Ocultar el bloque externo de CartPanda en inglés.
-- [ ] Verificar móvil, escritorio, enlaces y contenido final.
+- [x] Verificar móvil, escritorio, enlaces y contenido final.
