@@ -433,20 +433,20 @@ export function SalesPage({ onScrollToPlans }: { onScrollToPlans: ScrollToPlans 
       </section>
 
       {/* 12 · GARANTÍA */}
-      <section className="bg-tinta py-14 text-crema sm:py-20">
+      <section className="bg-verde-cta py-14 text-white sm:py-20">
         <div className="mx-auto max-w-4xl px-5">
-          <div className="display grid h-24 w-24 place-items-center rounded-full bg-amarillo text-center text-lg leading-none text-tinta">
+          <div className="display grid h-24 w-24 place-items-center rounded-full bg-blanco text-center text-lg leading-none text-verde-cta">
             7 días
           </div>
-          <h2 className="display mt-6 text-3xl text-crema sm:text-5xl">El riesgo lo asumo yo</h2>
-          <div className="mt-5 space-y-4 text-[13px] leading-7 text-crema/80 sm:text-base">
+          <h2 className="display mt-6 text-3xl text-white sm:text-5xl">El riesgo lo asumo yo</h2>
+          <div className="mt-5 space-y-4 text-[13px] leading-7 text-white/80 sm:text-base">
             <p>Entras hoy, descargas las 89 recetas y el menú de 34 días, y lo pruebas durante 7 días completos.</p>
             <p>Cocina lo que quieras. Imprime lo que quieras. Si al séptimo día sigues abriendo la nevera sin saber qué hacer, escribes a soporte y te devuelvo el 100 %.</p>
           </div>
-          <p className="display my-7 text-2xl text-amarillo sm:text-4xl">
+          <p className="display my-7 text-2xl text-white sm:text-4xl">
             Sin formularios. Sin preguntas. Sin tener que justificar nada.
           </p>
-          <p className="text-[13px] leading-7 text-crema/80 sm:text-base">Lo que hayas descargado se queda contigo.</p>
+          <p className="text-[13px] leading-7 text-white/80 sm:text-base">Lo que hayas descargado se queda contigo.</p>
         </div>
       </section>
 
