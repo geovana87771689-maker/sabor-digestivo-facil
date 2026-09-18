@@ -101,6 +101,24 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         type: "text/javascript",
         children: `!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','1737731590615395');fbq('track','PageView');`,
       },
+      // UTMify — pixel
+      {
+        type: "text/javascript",
+        children: `window.pixelId = "6a87a0d641703962200a2ecf";`,
+      },
+      {
+        src: "https://cdn.utmify.com.br/scripts/pixel/pixel.js",
+        async: true,
+        defer: true,
+      },
+      // UTMify — captura de UTMs
+      {
+        src: "https://cdn.utmify.com.br/scripts/utms/latest.js",
+        async: true,
+        defer: true,
+        "data-utmify-prevent-xcod-sck": "",
+        "data-utmify-prevent-subids": "",
+      } as Record<string, unknown>,
     ],
   }),
 
