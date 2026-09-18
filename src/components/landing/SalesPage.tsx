@@ -176,21 +176,62 @@ export function SalesPage({ onScrollToPlans }: { onScrollToPlans: ScrollToPlans 
         </div>
       </section>
 
-      {/* 4 · AGITACIÓN */}
-      <section className="bg-tinta py-14 text-crema sm:py-20">
-        <div className="mx-auto max-w-4xl px-5">
-          <h2 className="text-3xl sm:text-5xl">El problema no es un día. Es lo que pasa cuando son treinta.</h2>
-          <div className="mt-6 space-y-4 text-[13px] leading-7 text-crema/80 sm:text-base">
-            <p>Un día mal comido no pasa nada. El problema es que no es un día.</p>
-            <p>Comer poco y mal no se nota la primera semana. Se nota cuando subes las escaleras y te falta el aire donde antes no te faltaba. Cuando levantas en el gimnasio lo que levantabas hace dos meses y te cuesta.</p>
-            <p>Y mientras tanto sigues gastando. En la compra que se estropea. En el pedido de las nueve y media porque ya no hay nada hecho. En el bote de proteína que te tomaste tres veces.</p>
+      {/* 4 · VENTAJAS */}
+      <section className="bg-crema py-14 sm:py-20">
+        <div className="mx-auto max-w-3xl px-5">
+          <h2 className="text-center text-3xl sm:text-5xl">
+            <span className="block text-tinta">HECHO PARA TU DÍA A DÍA</span>
+            <span className="block text-naranja">SIN VUELTAS NI COMPLICACIONES</span>
+          </h2>
+          <p className="mx-auto mt-6 max-w-2xl text-center text-[13px] leading-7 text-tinta-sub sm:text-base">
+            Lo caro no es comer bien. Lo caro es ir improvisando. Por eso todo está pensado para que
+            sea fácil desde el primer día.
+          </p>
+          <div className="mt-9 grid gap-4">
+            {[
+              {
+                emoji: "🍽️",
+                title: "Sal de la rutina de lo mismo cada día",
+                text: "89 opciones distintas para variar tus comidas de forma sencilla y práctica.",
+              },
+              {
+                emoji: "💰",
+                title: "Ingredientes sencillos y asequibles",
+                text: "Ingredientes baratos y fáciles de encontrar para preparar platos completos y sabrosos.",
+              },
+              {
+                emoji: "📖",
+                title: "Paso a paso completo",
+                text: "Recetas claras, directas y fáciles de seguir, aunque tengas poca práctica en la cocina.",
+              },
+              {
+                emoji: "⚡",
+                title: "Recetas listas en pocos minutos",
+                text: "En 15 minutos tienes opciones prácticas para tu rutina más ocupada.",
+              },
+              {
+                emoji: "🧑‍🍳",
+                title: "Sin complicaciones",
+                text: "Recetas con ingredientes fáciles de encontrar que ya tienes en tu cocina.",
+              },
+              {
+                emoji: "📱",
+                title: "Accede desde donde quieras",
+                text: "Úsalo en el móvil, la tablet o el ordenador — o imprime tus recetas favoritas para tenerlas en la cocina.",
+              },
+            ].map((item) => (
+              <article key={item.title} className="flex items-start gap-4 rounded-2xl bg-verde-suave p-5 sm:p-6">
+                <span aria-hidden className="text-2xl leading-none sm:text-3xl">{item.emoji}</span>
+                <div>
+                  <h3 className="display text-lg uppercase tracking-tight text-tinta sm:text-xl">{item.title}</h3>
+                  <p className="mt-1 text-[13px] leading-6 text-tinta-sub sm:text-sm">{item.text}</p>
+                </div>
+              </article>
+            ))}
           </div>
-          <p className="my-9 border-y border-amarillo/40 py-7 text-3xl text-amarillo sm:text-5xl">
-            Lo caro no es comer bien. Lo caro es ir improvisando.
-          </p>
-          <p className="max-w-3xl text-[13px] leading-7 text-crema/80 sm:text-base">
-            No necesitas más fuerza de voluntad. Necesitas que, cuando abras la nevera, ya esté decidido qué vas a cenar — y que sea algo que te apetezca de verdad.
-          </p>
+          <div className="mt-9 flex justify-center">
+            <BotonCompra onClick={onScrollToPlans}>Quiero las recetas ahora →</BotonCompra>
+          </div>
         </div>
       </section>
 
