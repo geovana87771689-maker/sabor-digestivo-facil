@@ -381,7 +381,7 @@ export function SalesPage({ onScrollToPlans }: { onScrollToPlans: ScrollToPlans 
                 "No estás dispuesta a cocinar ni 15 minutos",
               ].map((item) => (
                 <li key={item} className="flex gap-3 text-sm text-tinta-sub">
-                  <X className="h-5 w-5 shrink-0" />
+                  <CircleX className="h-5 w-5 shrink-0" />
                   <span>{item}</span>
                 </li>
               ))}
