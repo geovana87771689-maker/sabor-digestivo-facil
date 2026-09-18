@@ -133,12 +133,37 @@ const CPSALES_SRC = "https://assets.mycartpanda.com/cartx-ecomm-ui-assets/js/cps
 
 function RootShell({ children }: { children: ReactNode }) {
   // Se inyecta una única vez, al final del body, con guarda contra duplicados.
+  // El bloque legal que inserta la pasarela se mueve al final de la página
+  // (hueco #cpsales-slot) y queda estático: no sigue el scroll.
   useEffect(() => {
-    if (document.querySelector('script[src*="cpsales"]')) return;
-    const s = document.createElement("script");
-    s.type = "text/javascript";
-    s.src = CPSALES_SRC;
-    document.body.appendChild(s);
+    const slot = document.getElementById("cpsales-slot");
+
+    const adopt = (node: Node) => {
+      if (!(node instanceof HTMLElement)) return;
+      if (node.tagName === "SCRIPT" || node.id === "root" || node.id === "cpsales-slot") return;
+      if (node.parentElement !== document.body || !slot) return;
+      slot.appendChild(node);
+      node.style.setProperty("position", "static", "important");
+      node.style.setProperty("inset", "auto", "important");
+      node.style.setProperty("transform", "none", "important");
+      node.style.setProperty("max-width", "100%", "important");
+    };
+
+    const observer = new MutationObserver((mutations) => {
+      for (const m of mutations) m.addedNodes.forEach(adopt);
+    });
+    observer.observe(document.body, { childList: true });
+    // Por si el bloque ya existía antes de observar.
+    Array.from(document.body.children).forEach(adopt);
+
+    if (!document.querySelector('script[src*="cpsales"]')) {
+      const s = document.createElement("script");
+      s.type = "text/javascript";
+      s.src = CPSALES_SRC;
+      document.body.appendChild(s);
+    }
+
+    return () => observer.disconnect();
   }, []);
 
   return (
@@ -157,6 +182,7 @@ function RootShell({ children }: { children: ReactNode }) {
       </head>
       <body>
         <div id="root">{children}</div>
+        <div id="cpsales-slot" />
         <Scripts />
       </body>
     </html>
