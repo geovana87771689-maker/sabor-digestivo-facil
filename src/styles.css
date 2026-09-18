@@ -212,5 +212,50 @@
     scroll-behavior: smooth;
   }
 
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
+    line-height: 1.05;
+  }
+}
+
+/* Titulares y cifras: Anton condensado en mayúsculas. */
+@utility display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
+  line-height: 1.05;
+}
+
+/* Botón de compra: verde alto contraste, 56px+, esquinas 12px. */
+@utility btn-compra {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 56px;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  background-color: var(--verde-cta);
+  color: #ffffff;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.05rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  box-shadow: 0 10px 24px -12px rgba(29, 165, 79, 0.75);
+  transition:
+    transform 0.15s ease,
+    filter 0.15s ease;
+
+  &:hover {
+    transform: scale(1.02);
+    filter: brightness(1.05);
+  }
 }
 
