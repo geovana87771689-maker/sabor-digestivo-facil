@@ -30,6 +30,9 @@ import tacosCarneVerdurasAsset from "@/assets/tacos-carne-verduras.jpeg.asset.js
 import terneraVerdurasAguacateAsset from "@/assets/ternera-verduras-aguacate.jpeg.asset.json";
 import tostadaProteicaAsset from "@/assets/tostada-proteica.jpeg.asset.json";
 import yogurMelocotonAsset from "@/assets/yogur-melocoton.jpeg.asset.json";
+import bonus1PostresAsset from "@/assets/bonus-1-postres.png.asset.json";
+import bonus2MeriendasAsset from "@/assets/bonus-2-meriendas.png.asset.json";
+import bonus3DesayunosAsset from "@/assets/bonus-3-desayunos.png.asset.json";
 
 type ScrollToPlans = () => void;
 
