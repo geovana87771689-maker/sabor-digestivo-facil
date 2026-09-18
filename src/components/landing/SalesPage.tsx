@@ -304,18 +304,11 @@ export function SalesPage({ onScrollToPlans }: { onScrollToPlans: ScrollToPlans 
                   <p className="mt-2 flex-1 text-[13px] leading-6 text-tinta-sub">{item.text}</p>
                   <div className="mt-4 flex items-center gap-3 border-t border-border pt-3">
                     <span className="display text-xs text-verde-cta">Incluido</span>
-                    {MOSTRAR_VALOR_BONUS && (
-                      <span className="text-sm text-tinta-sub line-through">{item.value}</span>
-                    )}
                   </div>
                 </div>
               </article>
             ))}
           </div>
-
-          {MOSTRAR_VALOR_BONUS && (
-            <p className="display mt-7 text-center text-2xl text-naranja">Los tres, sueltos, son 29,70 €.</p>
-          )}
 
           <div className="mt-10 flex justify-center">
             <BotonCompra onClick={onScrollToPlans}>Quiero empezar hoy →</BotonCompra>
