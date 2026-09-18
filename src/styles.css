@@ -273,3 +273,11 @@
   }
 }
 
+
+/* Bloque legal inyectado por la pasarela: siempre al final, nunca fijo. */
+#cpsales-slot, #cpsales-slot * {
+  position: static !important;
+  inset: auto !important;
+  z-index: auto !important;
+  max-width: 100% !important;
+}

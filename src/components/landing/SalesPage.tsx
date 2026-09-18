@@ -21,18 +21,6 @@ import { Faq } from "@/components/landing/Faq";
 import { CajaAlerta, OfertaBar } from "@/components/landing/OfertaBar";
 import { Pricing } from "@/components/landing/Pricing";
 import { SiteFooter } from "@/components/landing/SiteFooter";
-import heroSaborBalanceAsset from "@/assets/hero-sabor-balance.png.asset.json";
-import heroMesaAsset from "@/assets/hero-sabor-balance.jpg.asset.json";
-import polloEnsaladaAsset from "@/assets/pollo-ensalada.jpeg.asset.json";
-import polloVerdurasAsset from "@/assets/pollo-verduras.jpeg.asset.json";
-import curryArrozAsset from "@/assets/curry-arroz.jpeg.asset.json";
-import tacosCarneVerdurasAsset from "@/assets/tacos-carne-verduras.jpeg.asset.json";
-import terneraVerdurasAguacateAsset from "@/assets/ternera-verduras-aguacate.jpeg.asset.json";
-import tostadaProteicaAsset from "@/assets/tostada-proteica.jpeg.asset.json";
-import yogurMelocotonAsset from "@/assets/yogur-melocoton.jpeg.asset.json";
-import bonus1PostresAsset from "@/assets/bonus-1-postres.png.asset.json";
-import bonus2MeriendasAsset from "@/assets/bonus-2-meriendas.png.asset.json";
-import bonus3DesayunosAsset from "@/assets/bonus-3-desayunos.png.asset.json";
 
 type ScrollToPlans = () => void;
 
@@ -65,22 +53,22 @@ const beneficios = [
 ];
 
 const recetas = [
-  { src: terneraVerdurasAguacateAsset.url, width: 768, height: 1024, title: "Ternera con verduras y aguacate", protein: "34 g" },
-  { src: polloEnsaladaAsset.url, width: 768, height: 1024, title: "Pollo con ensalada", protein: "32 g" },
-  { src: curryArrozAsset.url, width: 768, height: 1024, title: "Curry suave con arroz", protein: "27 g" },
-  { src: polloVerdurasAsset.url, width: 768, height: 1024, title: "Pollo con verduras salteadas", protein: "33 g" },
-  { src: tacosCarneVerdurasAsset.url, width: 768, height: 1024, title: "Tacos de carne y verduras", protein: "29 g" },
-  { src: tostadaProteicaAsset.url, width: 768, height: 1024, title: "Tostada proteica", protein: "28 g" },
-  { src: yogurMelocotonAsset.url, width: 768, height: 1024, title: "Yogur con melocotón", protein: "25 g" },
+  { src: "/img/ternera-verduras-aguacate.jpeg", width: 768, height: 1024, title: "Ternera con verduras y aguacate", protein: "34 g" },
+  { src: "/img/pollo-ensalada.jpeg", width: 768, height: 1024, title: "Pollo con ensalada", protein: "32 g" },
+  { src: "/img/curry-arroz.jpeg", width: 768, height: 1024, title: "Curry suave con arroz", protein: "27 g" },
+  { src: "/img/pollo-verduras.jpeg", width: 768, height: 1024, title: "Pollo con verduras salteadas", protein: "33 g" },
+  { src: "/img/tacos-carne-verduras.jpeg", width: 768, height: 1024, title: "Tacos de carne y verduras", protein: "29 g" },
+  { src: "/img/tostada-proteica.jpeg", width: 768, height: 1024, title: "Tostada proteica", protein: "28 g" },
+  { src: "/img/yogur-melocoton.jpeg", width: 768, height: 1024, title: "Yogur con melocotón", protein: "25 g" },
   { src: "/img/peek-2-new.jpg", width: 1024, height: 1408, title: "Página del recetario: bol de salmón", protein: "32 g" },
 ];
 
 // Las imágenes /bonus-1-postres.png, /bonus-2-meriendas.png y /bonus-3-desayunos.png
 // son marcadores de posición hasta que se suban las imágenes definitivas de cada bonus.
 const bonificaciones = [
-  { label: "BONUS 1", img: bonus1PostresAsset.url, title: "54 POSTRES SIN AZÚCAR AÑADIDO", text: "Algo dulce que suma proteína en vez de restarla. Entre 26 y 35 g por porción, en raciones pequeñas que se terminan.", price: "24,90 €" },
-  { label: "BONUS 2", img: bonus2MeriendasAsset.url, title: "20 MERIENDAS SALUDABLES", text: "Ideas prácticas, ligeras y con proteína de verdad para el hueco de media mañana y el de media tarde.", price: "31,20 €" },
-  { label: "BONUS 3", img: bonus3DesayunosAsset.url, title: "20 DESAYUNOS PROTEICOS", text: "Empieza el día con proteína de verdad. Dulces y salados, todos listos en 15 minutos o menos.", price: "39,90 €" },
+  { label: "BONUS 1", img: "/img/bonus-1-postres.jpg", title: "54 POSTRES SIN AZÚCAR AÑADIDO", text: "Algo dulce que suma proteína en vez de restarla. Entre 26 y 35 g por porción, en raciones pequeñas que se terminan.", price: "24,90 €" },
+  { label: "BONUS 2", img: "/img/bonus-2-meriendas.jpg", title: "20 MERIENDAS SALUDABLES", text: "Ideas prácticas, ligeras y con proteína de verdad para el hueco de media mañana y el de media tarde.", price: "31,20 €" },
+  { label: "BONUS 3", img: "/img/bonus-3-desayunos.jpg", title: "20 DESAYUNOS PROTEICOS", text: "Empieza el día con proteína de verdad. Dulces y salados, todos listos en 15 minutos o menos.", price: "39,90 €" },
 ];
 
 // Testimonios verificados. Cada nuevo testimonio requiere un registro de compra.
@@ -121,7 +109,7 @@ export function SalesPage({ onScrollToPlans }: { onScrollToPlans: ScrollToPlans 
             que comer vuelva a ser algo que te apetece y no algo que tienes que resolver.
           </p>
           <img
-            src={heroSaborBalanceAsset.url}
+            src={"/img/hero-libro.jpg"}
             alt="Libro Sabor e Balance junto a su versión para móvil"
             width={768}
             height={767}
@@ -248,7 +236,7 @@ export function SalesPage({ onScrollToPlans }: { onScrollToPlans: ScrollToPlans 
           <p className="display text-sm text-naranja">El método</p>
           <h2 className="mt-2 text-3xl text-tinta sm:text-5xl">Nutrición de Pequeño Volumen</h2>
           <img
-            src={heroMesaAsset.url}
+            src={"/img/hero-mesa-balance.jpg"}
             alt="Mujer sonriente en la mesa con platos Sabor e Balance y el recetario"
             width={1920}
             height={1920}
