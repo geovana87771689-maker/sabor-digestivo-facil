@@ -38,26 +38,24 @@ const faqs = [
 
 export function Faq() {
   return (
-    <section className="bg-cream py-12 sm:py-16">
+    <section className="bg-crema2 py-14 sm:py-20">
       <div className="mx-auto max-w-3xl px-5">
-        <h2 className="text-center font-serif text-4xl font-bold text-foreground sm:text-5xl">
-          Preguntas frecuentes
-        </h2>
-        <p className="mt-3 text-center text-sm text-muted-foreground sm:text-base">
+        <h2 className="text-center text-3xl text-tinta sm:text-5xl">Preguntas frecuentes</h2>
+        <p className="mt-3 text-center text-sm text-tinta-sub sm:text-base">
           Respuestas claras antes de elegir.
         </p>
 
-        <Accordion type="single" collapsible className="mt-6 w-full space-y-3">
+        <Accordion type="single" collapsible className="mt-7 w-full space-y-3">
           {faqs.map((f, i) => (
             <AccordionItem
               key={f.q}
               value={`item-${i}`}
-              className="rounded-md border border-border bg-card px-5 shadow-soft last:border-b"
+              className="rounded-xl border border-border bg-blanco px-5 last:border-b"
             >
-              <AccordionTrigger className="text-left text-sm font-bold text-foreground hover:no-underline sm:text-base">
+              <AccordionTrigger className="text-left text-sm font-bold text-tinta hover:no-underline sm:text-base">
                 {f.q}
               </AccordionTrigger>
-              <AccordionContent className="text-sm leading-relaxed text-muted-foreground">
+              <AccordionContent className="text-sm leading-relaxed text-tinta-sub">
                 {f.a}
               </AccordionContent>
             </AccordionItem>

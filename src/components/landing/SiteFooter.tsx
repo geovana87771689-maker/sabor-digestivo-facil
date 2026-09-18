@@ -8,11 +8,11 @@ const links = [
 
 export function SiteFooter() {
   return (
-    <footer className="bg-slate-deep py-10 text-slate-deep-foreground">
+    <footer className="bg-tinta py-12 text-crema">
       <div className="mx-auto max-w-3xl px-5 text-center">
-        <p className="text-base font-bold tracking-tight">Sabor &amp; Balance</p>
+        <p className="display text-xl">Sabor &amp; Balance</p>
 
-        <p className="mx-auto mt-5 max-w-2xl text-xs leading-relaxed text-slate-deep-foreground/70">
+        <p className="mx-auto mt-5 max-w-2xl text-xs leading-relaxed text-crema/70">
           Este material es culinario e informativo y no sustituye la orientación de un médico o
           dietista-nutricionista colegiado.
         </p>
@@ -24,7 +24,7 @@ export function SiteFooter() {
                 {link.label}
               </Link>
               {i < links.length - 1 && (
-                <span aria-hidden className="text-slate-deep-foreground/40">
+                <span aria-hidden className="text-crema/40">
                   ·
                 </span>
               )}
@@ -32,7 +32,7 @@ export function SiteFooter() {
           ))}
         </nav>
 
-        <p className="mt-6 text-xs text-slate-deep-foreground/60">
+        <p className="mt-6 text-xs text-crema/60">
           © 2026 Sabor &amp; Balance. Todos los derechos reservados.
         </p>
       </div>

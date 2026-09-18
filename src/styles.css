@@ -19,9 +19,19 @@
  */
 
 @theme inline {
-  --font-sans:
-    ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-serif: Georgia, "Times New Roman", serif;
+  --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-serif: Anton, Impact, "Arial Narrow", sans-serif;
+  --font-display: Anton, Impact, "Arial Narrow", sans-serif;
+  --color-tinta: var(--tinta);
+  --color-tinta-sub: var(--tinta-sub);
+  --color-crema: var(--crema);
+  --color-crema2: var(--crema-2);
+  --color-blanco: var(--blanco);
+  --color-amarillo: var(--amarillo);
+  --color-naranja: var(--naranja);
+  --color-rojo: var(--rojo);
+  --color-verde-cta: var(--verde-cta);
+  --color-verde-suave: var(--verde-suave);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -77,38 +87,53 @@
   --shadow-soft: 0 6px 24px -14px oklch(0.28 0.03 160 / 0.3);
 }
 
+/* Paleta alternativa 'editorial' disponible más abajo — ver PALETA_B. */
 :root {
+  --tinta: #231d1a;
+  --tinta-sub: #70635c;
+  --crema: #fdf7ec;
+  --crema-2: #f6f0ea;
+  --blanco: #ffffff;
+  --amarillo: #facc15;
+  --naranja: #e44525;
+  --rojo: #ef4343;
+  --verde-cta: #1da54f;
+  --verde-suave: #f1faf4;
+
+  /* PALETA_B (identidad del producto, la del PDF):
+     --tinta:#123332  --crema:#F9EEE7  --naranja:#EF9C82  --verde-cta:#1C4241 */
+
   --radius: 0.75rem;
-  --background: oklch(0.985 0.008 92);
-  --foreground: oklch(0.245 0.017 170);
-  --card: oklch(0.997 0.004 95);
-  --card-foreground: oklch(0.245 0.017 170);
-  --popover: oklch(0.997 0.004 95);
-  --popover-foreground: oklch(0.245 0.017 170);
-  --primary: oklch(0.49 0.088 160);
-  --primary-foreground: oklch(0.985 0.008 92);
-  --secondary: oklch(0.945 0.018 130);
-  --secondary-foreground: oklch(0.33 0.05 165);
-  --muted: oklch(0.955 0.011 95);
-  --muted-foreground: oklch(0.505 0.021 160);
-  --accent: oklch(0.93 0.03 145);
-  --accent-foreground: oklch(0.33 0.05 165);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.985 0.008 92);
-  --border: oklch(0.9 0.014 120);
-  --input: oklch(0.9 0.014 120);
-  --ring: oklch(0.49 0.088 160);
-  --sage: oklch(0.72 0.05 150);
-  --sage-foreground: oklch(0.23 0.03 165);
-  --emerald: oklch(0.56 0.12 160);
-  --emerald-foreground: oklch(0.985 0.008 92);
-  --slate-deep: oklch(0.2964 0.0384 192.584);
-  --slate-deep-foreground: oklch(0.965 0.01 95);
-  --gold: oklch(0.79 0.11 85);
-  --gold-foreground: oklch(0.28 0.04 80);
-  --cream: oklch(0.9558 0.0152 54.93);
-  --terracotta: oklch(0.7697 0.1066 38.145);
-  --terracotta-foreground: oklch(0.2964 0.0384 192.584);
+  --background: var(--crema);
+  --foreground: var(--tinta);
+  --card: var(--blanco);
+  --card-foreground: var(--tinta);
+  --popover: var(--blanco);
+  --popover-foreground: var(--tinta);
+  --primary: var(--verde-cta);
+  --primary-foreground: #ffffff;
+  --secondary: var(--crema-2);
+  --secondary-foreground: var(--tinta);
+  --muted: var(--crema-2);
+  --muted-foreground: var(--tinta-sub);
+  --accent: var(--amarillo);
+  --accent-foreground: var(--tinta);
+  --destructive: var(--rojo);
+  --destructive-foreground: #ffffff;
+  --border: #e6ded5;
+  --input: #e6ded5;
+  --ring: var(--verde-cta);
+  --sage: var(--verde-suave);
+  --sage-foreground: var(--tinta);
+  --emerald: var(--verde-cta);
+  --emerald-foreground: #ffffff;
+  --slate-deep: var(--tinta);
+  --slate-deep-foreground: var(--crema);
+  --gold: var(--amarillo);
+  --gold-foreground: var(--tinta);
+  --cream: var(--crema);
+  --terracotta: var(--naranja);
+  --terracotta-foreground: #ffffff;
   --chart-1: oklch(0.56 0.12 160);
   --chart-2: oklch(0.72 0.05 150);
   --chart-3: oklch(0.79 0.11 85);
@@ -187,5 +212,50 @@
     scroll-behavior: smooth;
   }
 
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
+    line-height: 1.05;
+  }
+}
+
+/* Titulares y cifras: Anton condensado en mayúsculas. */
+@utility display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
+  line-height: 1.05;
+}
+
+/* Botón de compra: verde alto contraste, 56px+, esquinas 12px. */
+@utility btn-compra {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 56px;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  background-color: var(--verde-cta);
+  color: #ffffff;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.05rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  box-shadow: 0 10px 24px -12px rgba(29, 165, 79, 0.75);
+  transition:
+    transform 0.15s ease,
+    filter 0.15s ease;
+
+  &:hover {
+    transform: scale(1.02);
+    filter: brightness(1.05);
+  }
 }
 
