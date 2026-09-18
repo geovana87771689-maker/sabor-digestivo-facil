@@ -60,7 +60,7 @@ export function Pricing({ id }: { id: string }) {
             >
               {plan.featured && (
                 <span className="display absolute -top-3.5 left-1/2 -translate-x-1/2 rounded-full bg-amarillo px-4 py-1.5 text-xs whitespace-nowrap text-tinta">
-                  Más elegido
+                  MÁS ELEGIDO
                 </span>
               )}
 
