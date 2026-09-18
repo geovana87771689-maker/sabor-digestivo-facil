@@ -1,30 +1,28 @@
-const links = ["Términos y Condiciones", "Política de Privacidad", "Contacto y Soporte"];
+import { Link } from "@tanstack/react-router";
+
+const links = [
+  { label: "Términos y condiciones", to: "/terminos" as const },
+  { label: "Política de privacidad", to: "/privacidad" as const },
+  { label: "Contacto y soporte", to: "/contacto" as const },
+];
 
 export function SiteFooter() {
   return (
-    <footer className="bg-slate-deep py-12 pb-28 text-slate-deep-foreground sm:pb-12">
+    <footer className="bg-slate-deep py-10 text-slate-deep-foreground">
       <div className="mx-auto max-w-3xl px-5 text-center">
         <p className="text-base font-bold tracking-tight">Sabor &amp; Balance</p>
 
         <p className="mx-auto mt-5 max-w-2xl text-xs leading-relaxed text-slate-deep-foreground/70">
-          Este producto no sustituye el asesoramiento médico profesional. Consulta siempre a
-          un médico o dietista-nutricionista colegiado para cualquier decisión relativa a tu
-          salud o alimentación.
-        </p>
-
-        <p className="mx-auto mt-3 max-w-2xl text-xs leading-relaxed text-slate-deep-foreground/70">
-          Descargo de Responsabilidad: La información contenida en este sitio web y en las guías
-          digitales tiene fines exclusivamente informativos y culinarios. No constituye
-          asesoramiento médico, diagnóstico ni prescripción médica. Los resultados
-          pueden variar según el metabolismo y la adherencia individual.
+          Este material es culinario e informativo y no sustituye la orientación de un médico o
+          dietista-nutricionista colegiado.
         </p>
 
         <nav className="mt-6 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-xs">
-          {links.map((l, i) => (
-            <span key={l} className="inline-flex items-center gap-3">
-              <a href="#" className="transition-opacity hover:opacity-70">
-                {l}
-              </a>
+          {links.map((link, i) => (
+            <span key={link.to} className="inline-flex items-center gap-3">
+              <Link to={link.to} suppressHydrationWarning className="transition-opacity hover:opacity-70">
+                {link.label}
+              </Link>
               {i < links.length - 1 && (
                 <span aria-hidden className="text-slate-deep-foreground/40">
                   ·
