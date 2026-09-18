@@ -78,9 +78,9 @@ const recetas = [
 // Las imágenes /bonus-1-postres.png, /bonus-2-meriendas.png y /bonus-3-desayunos.png
 // son marcadores de posición hasta que se suban las imágenes definitivas de cada bonus.
 const bonificaciones = [
-  { label: "BONUS 1", img: bonus1PostresAsset.url, title: "54 POSTRES SIN AZÚCAR AÑADIDO", text: "Algo dulce que suma proteína en vez de restarla. Entre 26 y 35 g por porción, en raciones pequeñas que se terminan." },
-  { label: "BONUS 2", img: bonus2MeriendasAsset.url, title: "20 MERIENDAS SALUDABLES", text: "Ideas prácticas, ligeras y con proteína de verdad para el hueco de media mañana y el de media tarde." },
-  { label: "BONUS 3", img: bonus3DesayunosAsset.url, title: "20 DESAYUNOS PROTEICOS", text: "Empieza el día con proteína de verdad. Dulces y salados, todos listos en 15 minutos o menos." },
+  { label: "BONUS 1", img: bonus1PostresAsset.url, title: "54 POSTRES SIN AZÚCAR AÑADIDO", text: "Algo dulce que suma proteína en vez de restarla. Entre 26 y 35 g por porción, en raciones pequeñas que se terminan.", price: "24,90 €" },
+  { label: "BONUS 2", img: bonus2MeriendasAsset.url, title: "20 MERIENDAS SALUDABLES", text: "Ideas prácticas, ligeras y con proteína de verdad para el hueco de media mañana y el de media tarde.", price: "31,20 €" },
+  { label: "BONUS 3", img: bonus3DesayunosAsset.url, title: "20 DESAYUNOS PROTEICOS", text: "Empieza el día con proteína de verdad. Dulces y salados, todos listos en 15 minutos o menos.", price: "39,90 €" },
 ];
 
 // Testimonios verificados. Cada nuevo testimonio requiere un registro de compra.
@@ -323,11 +323,9 @@ export function SalesPage({ onScrollToPlans }: { onScrollToPlans: ScrollToPlans 
           <p className="mt-8 text-center text-sm font-semibold text-tinta-sub sm:text-base">
             Y 81 recetas más, todas con ingredientes, preparación y ficha nutricional completa.
           </p>
-          <p className="mx-auto mt-8 max-w-md text-center text-[13px] leading-6 text-tinta-sub sm:text-sm">
-            Valor total de los bonus:{" "}
-            <span className="font-semibold text-rojo line-through decoration-1">96,00 €</span>
-            {" "}— <span className="font-bold text-verde-cta">Hoy incluidos gratis</span>
-          </p>
+          <div className="mt-8 flex justify-center">
+            <BotonCompra onClick={onScrollToPlans}>Quiero empezar hoy →</BotonCompra>
+          </div>
         </div>
       </section>
 
@@ -360,8 +358,9 @@ export function SalesPage({ onScrollToPlans }: { onScrollToPlans: ScrollToPlans 
                   </span>
                   <h3 className="mt-3 text-base text-tinta sm:text-lg">{item.title}</h3>
                   <p className="mt-2 flex-1 text-[13px] leading-6 text-tinta-sub">{item.text}</p>
-                  <div className="mt-4 flex items-center gap-3 border-t border-border pt-3">
-                    <span className="display text-xs text-verde-cta">Incluido</span>
+                  <div className="mt-4 flex items-center gap-2 border-t border-border pt-3">
+                    <span className="text-sm text-tinta-sub line-through decoration-1">{item.price}</span>
+                    <span className="display rounded-full bg-verde-cta px-2.5 py-0.5 text-xs text-white">GRATIS</span>
                   </div>
                 </div>
               </article>
