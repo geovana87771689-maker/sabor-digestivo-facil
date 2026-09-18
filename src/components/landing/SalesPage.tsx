@@ -23,6 +23,13 @@ import { Button } from "@/components/ui/button";
 import { Faq } from "@/components/landing/Faq";
 import { Pricing } from "@/components/landing/Pricing";
 import { SiteFooter } from "@/components/landing/SiteFooter";
+import polloEnsaladaAsset from "@/assets/pollo-ensalada.jpeg.asset.json";
+import polloVerdurasAsset from "@/assets/pollo-verduras.jpeg.asset.json";
+import curryArrozAsset from "@/assets/curry-arroz.jpeg.asset.json";
+import tacosCarneVerdurasAsset from "@/assets/tacos-carne-verduras.jpeg.asset.json";
+import terneraVerdurasAguacateAsset from "@/assets/ternera-verduras-aguacate.jpeg.asset.json";
+import tostadaProteicaAsset from "@/assets/tostada-proteica.jpeg.asset.json";
+import yogurMelocotonAsset from "@/assets/yogur-melocoton.jpeg.asset.json";
 
 type ScrollToPlans = () => void;
 
@@ -46,51 +53,51 @@ const benefits = [
 
 const recipes = [
   {
-    src: "/img/WhatsApp_Image_2026-08-19_at_15.55.41.jpeg",
-    width: 640,
-    height: 853,
+    src: terneraVerdurasAguacateAsset.url,
+    width: 768,
+    height: 1024,
     title: "Ternera con verduras y aguacate",
     protein: "34 g",
   },
   {
-    src: "/img/WhatsApp_Image_2026-08-19_at_15.55.41_1.jpeg",
-    width: 640,
-    height: 853,
+    src: polloEnsaladaAsset.url,
+    width: 768,
+    height: 1024,
     title: "Pollo con ensalada",
     protein: "32 g",
   },
   {
-    src: "/img/WhatsApp_Image_2026-08-19_at_15.55.41_2.jpeg",
-    width: 640,
-    height: 853,
+    src: curryArrozAsset.url,
+    width: 768,
+    height: 1024,
     title: "Curry suave con arroz",
     protein: "27 g",
   },
   {
-    src: "/img/WhatsApp_Image_2026-08-19_at_15.55.42.jpeg",
-    width: 640,
-    height: 853,
-    title: "Filete con verduras salteadas",
+    src: polloVerdurasAsset.url,
+    width: 768,
+    height: 1024,
+    title: "Pollo con verduras salteadas",
     protein: "33 g",
   },
   {
-    src: "/img/WhatsApp_Image_2026-08-19_at_15.55.42_1.jpeg",
-    width: 640,
-    height: 853,
+    src: tacosCarneVerdurasAsset.url,
+    width: 768,
+    height: 1024,
     title: "Tacos de carne y verduras",
     protein: "29 g",
   },
   {
-    src: "/img/WhatsApp_Image_2026-08-19_at_15.55.42_2.jpeg",
-    width: 640,
-    height: 853,
+    src: tostadaProteicaAsset.url,
+    width: 768,
+    height: 1024,
     title: "Tostada proteica",
     protein: "28 g",
   },
   {
-    src: "/img/WhatsApp_Image_2026-08-19_at_15.55.42_3.jpeg",
-    width: 640,
-    height: 853,
+    src: yogurMelocotonAsset.url,
+    width: 768,
+    height: 1024,
     title: "Yogur con melocotón",
     protein: "25 g",
   },
