@@ -119,13 +119,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         "data-utmify-prevent-xcod-sck": "",
         "data-utmify-prevent-subids": "",
       } as Record<string, unknown>,
-      // CartPanda checkout scripts
-      {
-        type: "text/javascript",
-        src: "https://assets.mycartpanda.com/cartx-ecomm-ui-assets/js/cpsales.js",
-        async: true,
-        defer: true,
-      } as Record<string, unknown>,
+      // El script de validación de la pasarela se inyecta una sola vez al final del body (ver RootShell).
     ],
   }),
 
