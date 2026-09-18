@@ -1,6 +1,6 @@
 import { Check, ShieldCheck } from "lucide-react";
 import planCompletoAsset from "@/assets/plan-completo-producto.png.asset.json";
-import planEsencialAsset from "@/assets/plan-esencial-producto.jpg.asset.json";
+import planBasicoAsset from "@/assets/plan-basico-producto.png.asset.json";
 
 // La Directiva Omnibus exige que el precio de referencia sea el más bajo aplicado en los 30 días anteriores.
 // Activar MOSTRAR_PRECIO_ANTERIOR solo después de haber vendido 30 días seguidos a 37,99 €.
@@ -8,7 +8,7 @@ const MOSTRAR_PRECIO_ANTERIOR = false;
 
 const plans = [
   {
-    name: "Plan Esencial",
+    name: "Plan Básico",
     price: "17,99 €",
     features: [
       "26 recetas completas",
@@ -17,7 +17,7 @@ const plans = [
       "Acceso de por vida",
       "Garantía de 7 días",
     ],
-    cta: "ELEGIR ESENCIAL",
+    cta: "ELEGIR BÁSICO",
     checkoutUrl: "https://vittacoreus.mycartpanda.com/checkout/212216962:1",
   },
   {
@@ -85,10 +85,13 @@ export function Pricing({ id }: { id: string }) {
                 </>
               ) : (
                 <>
-                  <h3 className="display text-center text-2xl leading-none text-tinta sm:text-3xl">{plan.name}</h3>
-                  <p className="mt-2 text-center text-sm text-tinta-sub">Recetario principal en formato digital</p>
+                  <span className="display mx-auto w-fit rounded-full bg-crema-2 px-3 py-1 text-[10px] text-tinta">
+                    RECETARIO DIGITAL
+                  </span>
+                  <h3 className="display mt-3 text-center text-2xl leading-none text-tinta sm:text-3xl">{plan.name}</h3>
+                  <p className="mt-2 text-center text-sm text-tinta-sub">Solo el recetario principal, sin bonus</p>
                   <img
-                    src={planEsencialAsset.url}
+                    src={planBasicoAsset.url}
                     alt="Libro Sabor e Balance: recetario principal"
                     width={520}
                     height={520}
