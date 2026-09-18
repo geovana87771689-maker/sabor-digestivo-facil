@@ -28,9 +28,8 @@ export function OfertaBar() {
   if (!PROMO.activa) return null;
 
   return (
-    <div className="display bg-naranja px-4 py-3 text-center text-sm text-white sm:text-base">
-      La oferta de lanzamiento termina el {formatearFecha(PROMO.finaliza)}. Después, el Plan
-      Completo vuelve a {PROMO.precioPosterior}.
+    <div className="display bg-naranja px-4 py-3 text-center text-sm font-bold uppercase tracking-wide text-white sm:text-base">
+      🔥 ¡Esta promoción acaba hoy! Después, el Plan Completo vuelve a {PROMO.precioPosterior}.
     </div>
   );
 }
