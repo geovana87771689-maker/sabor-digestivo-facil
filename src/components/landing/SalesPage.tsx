@@ -78,7 +78,7 @@ const bonificaciones = [
 const testimonios = [
   { name: "Mariana R.", city: "Madrid", initials: "MR", text: "Empecé con las mini-recetas de pollo al papillote y por fin volví a terminar un plato completo." },
   { name: "Andrés P.", city: "Barcelona", initials: "AP", text: "Lo que más me sirvió fue el planificador. Dejé de improvisar a las nueve de la noche y ahora ceno ligero." },
-  { name: "Carolina M.", city: "Valencia", initials: "CM", text: "Estaba cansada de huevo y batidos. Los tentempiés de bolsillo me salvaron los días de oficina." },
+  { name: "Carolina M.", city: "Valencia", initials: "CM", text: "Estaba cansada de huevo y batidos. Las meriendas saludables me salvaron los días de oficina." },
   { name: "Juliana S.", city: "Sevilla", initials: "JS", text: "Las listas de la compra con sustituciones locales fueron un alivio: encontré todo en el mercado de la esquina." },
   { name: "Valentina C.", city: "Málaga", initials: "VC", text: "Pensé que iba a ser comida triste de dieta y me encontré con platos con sabor de verdad." },
   { name: "Matías D.", city: "Zaragoza", initials: "MD", text: "Sumé las recetas altas en proteína y en un mes volví a levantar lo mismo de antes en el gimnasio." },
